@@ -1,39 +1,45 @@
-CakePHP
+Zwangstudie
 =======
+Dotprobe-Ablauf:
+-	Instruktionen (Erklärung wie es gleich abläuft und dass sie so schnell und genau wie möglich auf die Position des Punktes reagieren sollen... gleich werden sie erstmal Übungsdurchgänge machen...) 
+-	Übungstrials: 10 Trials, bei denen RTs nicht erfasst werden, hier immer Rückmeldung/ Warnung wenn falsch
+-	dann nochmal ne seite wo steht: jetzt geht’s wirklich los
+-	Trial-Ablauf:
+ - erst Fixationskreuz im Zentrum des Bildschirms für 500 ms
+ - dann zwei Bilder (ein Zwang, ein Neutral-Bild) für 500 ms
+     - übereinander
+     - (bei Böttcher jeweils 6cm hoch, 4,7 cm breit) 
+     - horizontal und vertikal zentriert
+     - 1 cm/ 1,5 cm Abstand zwischen dem unteren und dem oberen Bild
+ - dann ein Punkt/ Kreuz an der Stelle des oberen oder des unteren Bildes bis Reaktion erfolgt (oben oder unten Pfeil oder vielleicht besser rechts/links Pfeil, so dass sie es gut mit einer Hand machen können)
+-	Darbietung der Stimuli:
+ - 42 Zwangsbilder, 42 neutrale Bilder
+ - 2 mögliche Positionen des Zwangsbildes (oben vs. unten)
+ - das ganze 2 mal 
+→ 2x2x42 = 168 Trials
+(d.h. jedes einzelne Bild wird pro session 4 mal dargeboten)
+ - in Trainingsgruppe: Probe immer hinter neutralem Bild (100% Kontingenz)
+ - in Kontrollgruppe: Probe 50% nach neutralem, 50% nach Zwangsbild
+ - für Messung: Probe 50% nach neutralem, 50% nach Zwangsbild
 
-[![CakePHP](http://cakephp.org/img/cake-logo.png)](http://www.cakephp.org)
+Was Website können muss:
 
-CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.
-Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.
+für Training:
+-	den Personen je nach Gruppenzugehörigkeit automatisch Training vs. Placebo zuordnen
+-	registrieren wer wie oft trainiert hat
+-	am Ende einer session Feedback geben (wie oft richtig und wie schnell) → zur Motivation
+-	full-screen Modus
 
-Some Handy Links
-----------------
+für Bias-Messung:
+-	RTs messen und zuordnen können in welchem Trial (kongruent, inkongruent)
+-	wissen, welche Person (bzw. code) und welcher Gruppe sie angehört
 
-[CakePHP](http://www.cakephp.org) - The rapid development PHP framework
+für Fragebögen:
+-	Pausen erlauben, nicht dass alles wieder weg ist nach längerer Pause, sondern so, dass sie da weitermachen können wo sie aufgehört haben, vielleicht aufgeteilt nach einzelnen Fragebögen
+-	Fortschrittsbalken, damit sie sehen wieviel sie schon geschafft haben
 
-[Cookbook](http://book.cakephp.org) - THE Cake user documentation; start learning here!
-
-[Plugins](http://plugins.cakephp.org/) - A repository of extensions to the framework
-
-[The Bakery](http://bakery.cakephp.org) - Tips, tutorials and articles
-
-[API](http://api.cakephp.org) - A reference to Cake's classes
-
-[CakePHP TV](http://tv.cakephp.org) - Screen casts from events and video tutorials
-
-[The Cake Software Foundation](http://cakefoundation.org/) - promoting development related to CakePHP
-
-Get Support!
-------------
-
-[Our Google Group](http://groups.google.com/group/cake-php) - community mailing list and forum
-
-[#cakephp](http://webchat.freenode.net/?channels=#cakephp) on irc.freenode.net - Come chat with us, we have cake.
-
-[Q & A](http://ask.cakephp.org/) - Ask questions here, all questions welcome
-
-[Lighthouse](http://cakephp.lighthouseapp.com/) - Got issues? Please tell us!
-
-[![Bake Status](https://secure.travis-ci.org/cakephp/cakephp.png?branch=master)](http://travis-ci.org/cakephp/cakephp)
-
-![Cake Power](https://raw.github.com/cakephp/cakephp/master/lib/Cake/Console/Templates/skel/webroot/img/cake.power.gif)
+Allgemein:
+-	wäre cool, wenn sie sich auf der Hauptseite einloggen könnten mit ihrem codename und passwort und dann zu ner Übersichtsseite gelangen (wie bei vomstudiumindenberuf), auf der sie sehen, was sie schon gemacht haben und was sie noch machen müssen (á la „sie haben schon viermal trainiert und müssen nur noch 4 mal“) und Zugriff zum Training haben 
+-	Fragebögen und Bias-messung würden wir wahrscheinlich am besten über personalisierte Links machen, die wir am Anfang und am Ende per email schicken, oder? (also kein Zugriff über die Übersichtsseite notwendig)
+-	Personen können erst mit dem Training anfangen, wenn sie die pretest-Fragebögen ausgefüllt haben und pretest-Messung gemacht haben, d.h. Homepage muss erkennen, ob jeweilige Person (bzw. Code) schon Zugriff zum Training haben soll
+-	Personen können erst nach 4 Wochen bzw. nach mind. 8 mal trainieren (beides Untergrenzen, die erfüllt sein müssen) die post-test Fragebögen ausfüllen und post-test Messung machen (ergibt sich ja sowieso wenn wir dann erst die personalisierten Links verschicken
