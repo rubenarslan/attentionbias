@@ -1,6 +1,8 @@
 Zwangstudie
 =======
-Dotprobe-Ablauf:
+
+## Dotprobe-Ablauf:
+
 -	Instruktionen (Erklärung wie es gleich abläuft und dass sie so schnell und genau wie möglich auf die Position des Punktes reagieren sollen... gleich werden sie erstmal Übungsdurchgänge machen...) 
 -	Übungstrials: 10 Trials, bei denen RTs nicht erfasst werden, hier immer Rückmeldung/ Warnung wenn falsch
 -	dann nochmal ne seite wo steht: jetzt geht’s wirklich los
@@ -22,23 +24,27 @@ Dotprobe-Ablauf:
  - in Kontrollgruppe: Probe 50% nach neutralem, 50% nach Zwangsbild
  - für Messung: Probe 50% nach neutralem, 50% nach Zwangsbild
 
-Was Website können muss:
+## Was Website können muss:
 
-für Training:
+### für Training:
+
 -	den Personen je nach Gruppenzugehörigkeit automatisch Training vs. Placebo zuordnen
 -	registrieren wer wie oft trainiert hat
 -	am Ende einer session Feedback geben (wie oft richtig und wie schnell) → zur Motivation
 -	full-screen Modus
 
-für Bias-Messung:
+### für Bias-Messung:
+
 -	RTs messen und zuordnen können in welchem Trial (kongruent, inkongruent)
 -	wissen, welche Person (bzw. code) und welcher Gruppe sie angehört
 
-für Fragebögen:
+### für Fragebögen:
+
 -	Pausen erlauben, nicht dass alles wieder weg ist nach längerer Pause, sondern so, dass sie da weitermachen können wo sie aufgehört haben, vielleicht aufgeteilt nach einzelnen Fragebögen
 -	Fortschrittsbalken, damit sie sehen wieviel sie schon geschafft haben
 
-Allgemein:
+### Allgemein:
+
 -	wäre cool, wenn sie sich auf der Hauptseite einloggen könnten mit ihrem codename und passwort und dann zu ner Übersichtsseite gelangen (wie bei vomstudiumindenberuf), auf der sie sehen, was sie schon gemacht haben und was sie noch machen müssen (á la „sie haben schon viermal trainiert und müssen nur noch 4 mal“) und Zugriff zum Training haben 
 -	Fragebögen und Bias-messung würden wir wahrscheinlich am besten über personalisierte Links machen, die wir am Anfang und am Ende per email schicken, oder? (also kein Zugriff über die Übersichtsseite notwendig)
 -	Personen können erst mit dem Training anfangen, wenn sie die pretest-Fragebögen ausgefüllt haben und pretest-Messung gemacht haben, d.h. Homepage muss erkennen, ob jeweilige Person (bzw. Code) schon Zugriff zum Training haben soll

@@ -37,7 +37,7 @@ if ($noLogs || isset($_forced_from_dbo_)):
 	foreach ($logs as $source => $logInfo):
 		$text = $logInfo['count'] > 1 ? 'queries' : 'query';
 		printf(
-			'<table class="cake-sql-log" id="cakeSqlLog_%s" summary="Cake SQL Log" cellspacing="0">',
+			'<table class="table cake-sql-log" id="cakeSqlLog_%s" summary="Cake SQL Log" cellspacing="0">',
 			preg_replace('/[^A-Za-z0-9_]/', '_', uniqid(time(), true))
 		);
 		printf('<caption>(%s) %s %s took %s ms</caption>', $source, $logInfo['count'], $text, $logInfo['time']);
