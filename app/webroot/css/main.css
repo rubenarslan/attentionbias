@@ -4,10 +4,47 @@
    Author's custom styles
    ========================================================================== */
 
+.fixation {
+	font-size:2cm;
+	width:2cm;
+	height:2cm;
+	overflow:hidden;
+}
+#trial_outer {
+	display:table;
+	background-color:white;
+}
 
+#trial {
+	display:table-cell;
+	vertical-align:middle;
+}
+#trial>div {
+	margin:auto;
+}
 
+.session_instructions {
+	font-size:0.5cm;
+	width:8cm;
+}
 
-
+.trial_images {
+	width:14cm;
+	height:8cm;
+}
+.trial_images img {
+	width:14cm;
+	height:8cm;
+}
+.trial_images img:first-child {
+	margin-bottom:1cm;
+}
+.probe {
+	margin-top:13cm;
+}
+.probe.probe_top {
+	margin-top:4cm;
+}
 
 
 

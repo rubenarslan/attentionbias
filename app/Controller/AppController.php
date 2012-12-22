@@ -32,4 +32,26 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $helpers = array("Html","Form", "Js", "Csv");
+	public $components = array(
+			'Session',
+	        'Auth' => array('authorize' => array(
+		'Controller' => 
+			array(
+				'userModel' => 'User',
+		'		recursive' => 3)
+		)), # Controller means that the controller's function isAuthorized will be called
+		'RequestHandler',
+		);
+	function beforeFilter() {
+			parent::beforeFilter();
+			$this->Auth->allow('login','logout','register','pages','display','train');
+	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
+	        $this->Auth->logoutRedirect = array('controller' => 'Users', 'action' => 'login');
+	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'index');
+	}
+	public function isAuthorized($user = null, $request = null) {
+		$admin = $user['Group']['name']==='admin' OR $user['Group']['name']==='manager';
+		if($admin) return $admin; # admins can do anything 
+	}
 }

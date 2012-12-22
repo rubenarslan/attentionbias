@@ -21,8 +21,6 @@
             }
         </style>
         <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/bootstrap-responsive.min.css">
-        <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/main.css">
-
         <script src="<?php echo $this->webroot; ?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<?php
 
@@ -50,7 +48,15 @@
                     <a class="brand" href="#">Zwangsstörung-Studie</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><?php echo $this->Html->link('Home', '/'); ?></li>
+							<?php
+							if(AuthComponent::user() === NULL) { ?>
+							<li><?php echo $this->Html->link('Login', '/users/login', array('class'=>'')); ?></li>
+							<li><?php echo $this->Html->link('Sign up', '/users/register', array('class'=>'')); ?></li>
+							<?php }
+							else {?>
+							<li><?php echo $this->Html->link("Logout ".AuthComponent::user('name'), '/users/logout'); ?></li>
+							<?php }?>
                             <li><a href="#about">About</a></li>
                             <li><a href="#contact">Contact</a></li>
                             <li class="dropdown">
@@ -88,7 +94,6 @@
             </footer>
 
         </div> <!-- /container -->
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo $this->webroot; ?>js/vendor/jquery-1.8.3.js"><\/script>')</script>
 
@@ -104,7 +109,10 @@
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-		<?php echo $this->element('sql_dump'); ?>
+		<?php echo $this->element('sql_dump');
+		
+		pr($this->validationErrors);
+?>
 
     </body>
 </html>
