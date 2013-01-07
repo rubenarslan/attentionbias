@@ -26,7 +26,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `zwang`.`users` ;
 
 CREATE  TABLE IF NOT EXISTS `zwang`.`users` (
-  `id` INT NOT NULL COMMENT '		' ,
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '		' ,
   `group_id` INT NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
@@ -34,6 +34,7 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`users` (
   `email` VARCHAR(255) NULL ,
   `code` VARCHAR(255) NULL ,
   `password` VARCHAR(255) NULL ,
+  `condition` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_users_groups1_idx` (`group_id` ASC) ,
   CONSTRAINT `fk_users_groups1`
@@ -50,7 +51,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `zwang`.`training_sessions` ;
 
 CREATE  TABLE IF NOT EXISTS `zwang`.`training_sessions` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `user_id` INT NOT NULL ,
   `loaded` DATETIME NULL DEFAULT NULL ,
   `loaded_unixtime` INT NULL ,
@@ -58,6 +59,7 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`training_sessions` (
   `began_unixtime` INT NULL DEFAULT NULL ,
   `ended` DATETIME NULL DEFAULT NULL ,
   `ended_unixtime` INT NULL DEFAULT NULL ,
+  `conditon` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_sessions_users1_idx` (`user_id` ASC) ,
   CONSTRAINT `fk_sessions_users`
@@ -74,18 +76,17 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `zwang`.`trials` ;
 
 CREATE  TABLE IF NOT EXISTS `zwang`.`trials` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `user_id` INT NULL ,
   `session_id` INT NULL ,
   `began_unixtime` INT NULL ,
-  `top_image_id` INT NULL ,
-  `bottom_image_id` INT NULL ,
+  `ocd_image_id` INT NULL ,
+  `neutral_image_id` INT NULL ,
   `ocd_on_top` TINYINT(1) NULL ,
   `probe_on_top` TINYINT(1) NULL ,
   `first_valid_response` TINYINT(1) NULL ,
   `first_reaction_time_since_trial_began` DOUBLE NULL ,
   `first_reaction_time_since_probe_shown` DOUBLE NULL ,
-  `currently_displayed` VARCHAR(255) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `user_id_idx` (`user_id` ASC) ,
   INDEX `session_id_idx` (`session_id` ASC) ,
@@ -108,14 +109,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `zwang`.`reactions` ;
 
 CREATE  TABLE IF NOT EXISTS `zwang`.`reactions` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `user_id` INT NULL ,
-  `time_since_session_began` VARCHAR(45) NULL ,
-  `time_since_trial_began` INT NULL ,
-  `time_since_last_probe_shown` INT NULL ,
+  `time_since_session_began` DOUBLE NULL ,
+  `time_since_trial_began` DOUBLE NULL ,
+  `time_since_last_probe_shown` DOUBLE NULL ,
   `response` VARCHAR(45) NULL ,
   `active_trial_id` INT NULL ,
-  `currently_displayed` VARCHAR(255) NULL ,
+  `currently_displayed` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `active_trial_idx` (`active_trial_id` ASC) ,
   INDEX `user_id_idx` (`user_id` ASC) ,
