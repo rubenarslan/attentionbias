@@ -35,7 +35,10 @@ function shuffle ( myArray ) {
  return myArray;
 }
 var imgpath = "<?php echo $this->webroot; ?>" + "img/training/";
-var condition = <?php echo "'learn'"; # todo: set condition ?>;
+var condition = <?php 
+	echo "'bias_manipulation'"; 
+	# todo: set condition 
+?>;
 var fixation_duration = 500;
 var img_duration = 4000; // fixme: 500
 var key_top = 'O'; // have to be uppercase
@@ -191,7 +194,6 @@ Session.begin = (function() {
 	
 	if(Session.interrupted == true) return;
 	
-	console.log(Session.interrupted);
 	Session.db.began = new Date();
 	Session.db.began_unixtime = new Date().getTime();
 	Session.SessionBegan = performance.now();
@@ -245,8 +247,8 @@ Session.end = (function() {
 
 Session.interrupt = (function() { // on leaving fullscreen
 	console.log('Session.interrupt');
-	
-	if( $('#trial_outer').fullScreen() == false) { // if they have left fullscreen
+	console.log("fs", $('#trial_outer').fullScreen());
+	if( $('#trial_outer').fullScreen() == false || $('#trial_outer').fullScreen() == null) { // if they have left fullscreen
 		clearTimeout(Session.waitForNextStep); // don't do next step
 		$(window).off('keydown'); // don't log reactions and valid responses anymore
 		Session.interrupted = true;
@@ -270,7 +272,7 @@ $(document).ready(function () {
 	Session.preload(false); // call it on domready to load
 	
 	$(document).one("fullscreenerror", Session.fullscreenFail);
-	$(document).one("fullscreenchange", Session.interrupt); // only does something if fullscreen was left
+	$(document).on("fullscreenchange", Session.interrupt); // only does something if fullscreen was left
 	
 	$('#begin_session').click(function () {
 		if($('#trial_outer').fullScreen() != null) { // supports full screen
