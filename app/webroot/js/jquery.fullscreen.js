@@ -75,7 +75,18 @@ function fullScreen(state)
     // When state was specified then enter or exit fullscreen mode.
     if (state)
     {
+	
         // Enter fullscreen
+		if(e["webkitRequestFullScreen"]) {
+			e.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+			setTimeout(function () {
+				if (!document.webkitCurrentFullScreenElement) {
+				    alert('Your browser is too old.');
+					return;
+				}
+			},1000);
+			return this;
+		}
         func = (/** @type {?Function} */ e["requestFullScreen"])
             || (/** @type {?Function} */ e["webkitRequestFullScreen"])
             || (/** @type {?Function} */ e["mozRequestFullScreen"]);

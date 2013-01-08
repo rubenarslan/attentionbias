@@ -13,12 +13,16 @@
 #trial_outer {
 	display:table;
 	background-color:white;
+	width:100%;
+	height:100%;  
 }
+
 
 #trial {
 	display:table-cell;
 	vertical-align:middle;
 	text-align:center;
+	background-color:white;
 }
 #trial>div {
 	margin-left:auto;
@@ -46,15 +50,7 @@
 .probe.probe_on_top {
 	margin-top:-4cm;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+.mistake_message {
+	color:red;
+	font-weight:bold;
+}

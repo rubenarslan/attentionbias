@@ -36,7 +36,6 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`users` (
   `password` VARCHAR(255) NULL ,
   `condition` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_users_groups1_idx` (`group_id` ASC) ,
   CONSTRAINT `fk_users_groups1`
     FOREIGN KEY (`group_id` )
     REFERENCES `zwang`.`groups` (`id` )
@@ -53,15 +52,15 @@ DROP TABLE IF EXISTS `zwang`.`training_sessions` ;
 CREATE  TABLE IF NOT EXISTS `zwang`.`training_sessions` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `user_id` INT NOT NULL ,
+  `number` INT UNSIGNED NULL ,
   `loaded` DATETIME NULL DEFAULT NULL ,
-  `loaded_unixtime` INT NULL ,
+  `loaded_unixtime` INT UNSIGNED NULL ,
   `began` DATETIME NULL DEFAULT NULL ,
-  `began_unixtime` INT NULL DEFAULT NULL ,
+  `began_unixtime` INT UNSIGNED NULL DEFAULT NULL ,
   `ended` DATETIME NULL DEFAULT NULL ,
-  `ended_unixtime` INT NULL DEFAULT NULL ,
-  `conditon` VARCHAR(45) NULL ,
+  `ended_unixtime` INT UNSIGNED NULL DEFAULT NULL ,
+  `condition` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_sessions_users1_idx` (`user_id` ASC) ,
   CONSTRAINT `fk_sessions_users`
     FOREIGN KEY (`user_id` )
     REFERENCES `zwang`.`users` (`id` )
@@ -78,18 +77,17 @@ DROP TABLE IF EXISTS `zwang`.`trials` ;
 CREATE  TABLE IF NOT EXISTS `zwang`.`trials` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `user_id` INT NULL ,
-  `session_id` INT NULL ,
-  `began_unixtime` INT NULL ,
-  `ocd_image_id` INT NULL ,
-  `neutral_image_id` INT NULL ,
+  `session_id` INT NOT NULL ,
+  `number` INT UNSIGNED NULL ,
+  `began_unixtime` INT UNSIGNED NULL ,
+  `ocd_image_id` INT UNSIGNED NULL ,
+  `neutral_image_id` INT UNSIGNED NULL ,
   `ocd_on_top` TINYINT(1) NULL ,
   `probe_on_top` TINYINT(1) NULL ,
   `first_valid_response` TINYINT(1) NULL ,
   `first_reaction_time_since_trial_began` DOUBLE NULL ,
   `first_reaction_time_since_probe_shown` DOUBLE NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `user_id_idx` (`user_id` ASC) ,
-  INDEX `session_id_idx` (`session_id` ASC) ,
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id` )
     REFERENCES `zwang`.`users` (`id` )
@@ -109,17 +107,15 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `zwang`.`reactions` ;
 
 CREATE  TABLE IF NOT EXISTS `zwang`.`reactions` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `user_id` INT NULL ,
+  `active_trial_id` INT NULL ,
   `time_since_session_began` DOUBLE NULL ,
   `time_since_trial_began` DOUBLE NULL ,
   `time_since_last_probe_shown` DOUBLE NULL ,
   `response` VARCHAR(45) NULL ,
-  `active_trial_id` INT NULL ,
   `currently_displayed` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `active_trial_idx` (`active_trial_id` ASC) ,
-  INDEX `user_id_idx` (`user_id` ASC) ,
   CONSTRAINT `active_trial`
     FOREIGN KEY (`active_trial_id` )
     REFERENCES `zwang`.`trials` (`id` )
