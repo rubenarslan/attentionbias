@@ -47,8 +47,6 @@ var session_tryout_instructions = 'Gleich erscheint ein Knopf, bitte klicken Sie
 var session_test_instructions = 'Bitte klicken Sie auf den Knopf oder drücken Sie eine beliebige Taste, wenn Sie bereit sind mit dem richtigen Training anzufangen.<br><br>Drücken Sie "' + key_top + '" / "' + key_top.toLowerCase() + '", wenn der Punkt oben erscheint, und "' + key_bottom + '" / "' + key_bottom.toLowerCase() + '", wenn der Punkt unten erscheint.';
 
 var mistake_message = 'Falsche Antwort.';
-
-
 var session_end_message = 'Vielen Dank für Ihre heutige Teilnahme.';
 var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen.';
 var begin_tryout_button = 'Test-Training starten!';
@@ -340,10 +338,17 @@ Session.nextTrial = (function() {
 		Trial.begin();
 	}
 });
-
+//fixme: 11 trials, sollten 12 sein
 Session.end = (function() {
 	console.log('Session.end');
-
+	$.ajax('../../TrainingSessions/addAjax',{
+		data: Session.db,
+		type: 'post',
+		cache: false,
+		complete: function () {
+			console.log("Session.saved");
+		}
+	});
 	$(document).off("fullscreenchange"); // remove error message	
 	Session.end_message = $('<div class="session_end_message">' + session_end_message +'</div>');
 	$('#trial').empty();

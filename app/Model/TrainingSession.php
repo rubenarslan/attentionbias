@@ -4,6 +4,7 @@ App::uses('AppModel', 'Model');
  * TrainingSession Model
  *
  * @property User $User
+ * @property session_id $Trial
  */
 class TrainingSession extends AppModel {
 
@@ -12,7 +13,7 @@ class TrainingSession extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'began';
+	public $displayField = 'number';
 
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -31,4 +32,26 @@ class TrainingSession extends AppModel {
 			'order' => ''
 		)
 	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Trial' => array(
+			'className' => 'Trial',
+			'foreignKey' => 'session_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

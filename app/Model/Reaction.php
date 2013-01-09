@@ -8,6 +8,13 @@ App::uses('AppModel', 'Model');
  */
 class Reaction extends AppModel {
 
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'response';
+
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -25,7 +32,7 @@ class Reaction extends AppModel {
 			'order' => ''
 		),
 		'ActiveTrial' => array(
-			'className' => 'ActiveTrial',
+			'className' => 'Trial',
 			'foreignKey' => 'active_trial_id',
 			'conditions' => '',
 			'fields' => '',
