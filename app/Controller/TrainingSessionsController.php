@@ -7,6 +7,32 @@ App::uses('AppController', 'Controller');
  */
 class TrainingSessionsController extends AppController {
 
+	function isAuthorized($user = null, $request = null) {	
+		$admin = parent::isAuthorized($user); # allow admins to do anything
+		if($admin) return true;
+
+		$req_action = $this->request->params['action'];
+		if(in_array($req_action, array('ajaxAdd'))) return true; # viewing and adding is allowed to all registered users
+
+		$session_id = $this->request->params['pass'][0];
+		$this->TrainingSession->id = $session_id;
+		if (!$this->TrainingSession->exists()) {
+		    throw new NotFoundException('Invalid training session.');
+		}
+		else {
+			$allowed = $this->TrainingSession->find('first',array(
+				"recursive" => -1,
+				"conditions" => array(
+					'user_id' => $this->Auth->user('id'),
+					'id' => $session_id
+					)
+				));
+			if( $allowed['Codedpaper']['user_id'] == $this->Auth->user('id')) { # is this the creator of the coded paper
+				return true;
+			}
+		}
+		return false;
+	}
 /**
  * index method
  *
@@ -39,13 +65,19 @@ class TrainingSessionsController extends AppController {
  */
 	public function ajaxAdd() {
 		if ($this->request->is('ajax')) {
+			$this->layout = 'ajax'; // empty layout
 			$this->TrainingSession->create();
-			debug($this->request->data);
-			if ($this->TrainingSession->saveAll($this->request->data)) {
-				echo 'The training session has been saved';
-				exit;
+			if(!isset($this->request->data['TrainingSession']['user_id']))
+				$this->request->data['TrainingSession']['user_id'] = $this->Auth->user('id');
+			if( $this->request->data['TrainingSession']['user_id'] == $this->Auth->user('id')) { # is the 	creator of the training session the logged in user.
+				debug($this->request->data);
+				if ($this->TrainingSession->saveAssociated($this->request->data,array("deep" => TRUE) ) ) {
+					echo 'The training session has been saved';
+				} else {
+					echo 'The training session could not be saved. Please, try again.';
+				}
 			} else {
-				echo 'The training session could not be saved. Please, try again.';
+				echo 'Not your session.';
 			}
 		}
 	}

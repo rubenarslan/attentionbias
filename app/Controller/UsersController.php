@@ -2,18 +2,17 @@
 App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 	function isAuthorized($user = null, $request = null) {	
-		$admin = parent::isAuthorized($user); # allow admins to do anything
-		if($admin) return true;		
-
 		$req_action = $this->request->params['action'];
 		if(in_array($req_action, array(''))) return true; # viewing and adding is allowed to all users
+
+		return parent::isAuthorized($user); # allow admins to do anything
 	}
 	public function login() {
 	    if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
 	            $this->redirect($this->Auth->redirect());
 	        } else {
-	            $this->Session->setFlash(__('Invalid username or password, try again'));
+	            $this->Session->setFlash(__('Invalid email or password, try again'));
 	        }
 	    }
 	}
@@ -27,9 +26,11 @@ class UsersController extends AppController {
             if ($this->User->save($this->request->data)) {
 			 	$id = $this->User->id;
 			    $this->request->data['User'] = array_merge($this->request->data['User'], array('id' => $id));
-			    $this->Auth->login();
-                $this->Session->setFlash(__('You have been registered and logged in.'));
-                $this->redirect(array('action' => 'index'));
+			    if($this->Auth->login())
+                	$this->Session->setFlash(__('You have been registered and logged in.'));
+				else
+					$this->Session->setFlash(__('Login went wrong.'));
+	            $this->redirect($this->Auth->redirect());
             } else {
                 $this->Session->setFlash(__('Registration unsuccessful. Please, try again.'));
             }

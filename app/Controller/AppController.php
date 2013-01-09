@@ -35,20 +35,31 @@ class AppController extends Controller {
 	public $helpers = array("Html","Form", "Js", "Csv");
 	public $components = array(
 			'Session',
-	        'Auth' => array('authorize' => array(
-		'Controller' => 
-			array(
-				'userModel' => 'User',
-		'		recursive' => 3)
-		)), # Controller means that the controller's function isAuthorized will be called
+ 	       'Auth' => array(
+				'authenticate' => array(
+				            'Form' => array(
+				                'fields' => array(
+									'username' => 'email',
+									'password' => 'password',
+								),
+				            )
+				),
+				'authorize' => 
+					array(
+						'Controller' => 
+							array(
+								'recursive' => 3,
+							)
+					)
+			), # Controller means that the controller's function isAuthorized will be called
 		'RequestHandler',
-		);
+	);
 	function beforeFilter() {
 			parent::beforeFilter();
-			$this->Auth->allow('login','logout','register','pages','display','train');
+			$this->Auth->allow('login','logout','register','pages','display');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
-	        $this->Auth->logoutRedirect = array('controller' => 'Users', 'action' => 'login');
-	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'index');
+	        $this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'display');
+	        $this->Auth->loginRedirect = array('controller' => 'Trials', 'action' => 'train');
 	}
 	public function isAuthorized($user = null, $request = null) {
 		$admin = $user['Group']['name']==='admin' OR $user['Group']['name']==='manager';

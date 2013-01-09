@@ -92,6 +92,11 @@ function shuffle ( myArray ) {
    }
  return myArray;
 }
+function mysqldate (myDate) {
+	var myDate_string = myDate.toISOString();
+	var myDate_string = myDate_string.replace("T"," ");
+	return myDate_string.substring(0, myDate_string.length - 5);
+}
 
 window.performance = window.performance || {};
 performance.now = (function() {
@@ -113,8 +118,7 @@ window.Trial = {
 
 Trial.begin = (function() { // start a trial
 	console.log('Trial.begin');
-	Session.db.trials[Trial.current].began_unixtime = new Date().getTime();
-	Trial.TrialBegan = performance.now();
+	Session.db.Trial[Trial.current].began_unixtime = new Date().getTime();
 	$('#trial div.session_instructions').remove();
 	$('#trial').append(Trial.fixation,Trial.probe,Trial.mistake_message);
 	Trial.showFixation();
@@ -124,6 +128,8 @@ Trial.showFixation = (function() {
 	console.log('Trial.showFixation');
 	
 	$('#trial div.fixation').show();
+	Trial.FixationShown = performance.now();
+	
 	Trial.CurrentlyDisplayed = 'fixation';
 	
 	Session.waitForNextStep = setTimeout(Trial.showImages, fixation_duration);
@@ -134,8 +140,10 @@ Trial.showImages = (function() {
 	
 	$('#trial div.fixation').hide();
 	$('#trial_images_'+Trial.current).show();
+	Trial.ImagesShown = performance.now();
 
 	Trial.CurrentlyDisplayed = 'images';
+	
 	
 	Session.waitForNextStep = setTimeout(Trial.showProbe, img_duration);
 });
@@ -145,13 +153,14 @@ Trial.showProbe = (function() {
 	
 	$('#trial_images_'+Trial.current).hide();
 							// is the probe on top or not?
-	$('#trial div.probe').toggleClass('probe_on_top',Session.db.trials[Trial.current].probe_on_top).show();
+	$('#trial div.probe').toggleClass('probe_on_top',!! Session.db.Trial[Trial.current].probe_on_top).show(); // !! to ensure it's cast as a bool
 
 	Trial.ProbeShown = performance.now();
 	Trial.CurrentlyDisplayed = 'probe';
 	$(window).on('keydown',Trial.response);
 });
-
+// SELECT AVG( first_reaction_time_since_trial_began - first_reaction_time_since_probe_shown), STDDEV(first_reaction_time_since_trial_began - first_reaction_time_since_probe_shown) FROM trials
+// should be 1000 and 0
 Trial.response = (function(e) { // log valid responses
 	console.log('Trial.response');
 	
@@ -159,19 +168,19 @@ Trial.response = (function(e) { // log valid responses
 	var key = String.fromCharCode( e.which );
 	key = key.toUpperCase();
 	if(key == key_top || key == key_bottom) { // if it's valid input
-		Session.db.trials[Trial.current].first_reaction_time_since_trial_began = valid_response_time - Trial.TrialBegan;
-		Session.db.trials[Trial.current].first_reaction_time_since_probe_shown = valid_response_time - Trial.ProbeShown;
-		Session.db.trials[Trial.current].first_valid_response = (key == key_top); // bool: pressed top, false = pressed bottom
+		Session.db.Trial[Trial.current].first_reaction_time_since_trial_began = valid_response_time - Trial.FixationShown;
+		Session.db.Trial[Trial.current].first_reaction_time_since_probe_shown = valid_response_time - Trial.ProbeShown;
+		Session.db.Trial[Trial.current].first_valid_response = (key == key_top) ? 1 : 0; // bool: pressed top, false = pressed bottom
 		$(window).off('keydown',Trial.response); // just one valid response per trial
 		
 		$('#trial div.probe').hide();
 		
 		
-		if(Trial.current > number_of_test_trials) // for non test trials
+		if(Trial.current > number_of_test_trials - 1) // for non test trials
 			Trial.end();
 		else {
-			if( Session.db.trials[Trial.current].probe_on_top !=
-				Session.db.trials[Trial.current].first_valid_response)
+			if( Session.db.Trial[Trial.current].probe_on_top !=
+				Session.db.Trial[Trial.current].first_valid_response)
 				Trial.showMistakeMessage(); // incorrect trials get reprimanded
 			else {
 				Trial.end();
@@ -190,7 +199,9 @@ Trial.showMistakeMessage = (function() { // log valid responses
 });
 
 Trial.end = (function() { // log valid responses
-	if(Trial.current != number_of_test_trials)
+	Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesShown - Trial.FixationShown;
+	Session.db.Trial[Trial.current].images_duration = Trial.ProbeShown - Trial.ImagesShown;
+	if(Trial.current != number_of_test_trials - 1)
 		Session.nextTrial(); // trigger
 	else
 		Session.showTestInstructions();
@@ -208,10 +219,10 @@ Reaction.logReaction = (function(e) { // simply log all keypresses during the se
 	
 	console.log(key);
 	
-	Session.db.trials[Trial.current].reactions.push({
+	Session.db.Trial[Trial.current].Reaction.push({
 		'response': key,
 		'time_since_session_began': valid_response_time - Session.SessionBegan,
-		'time_since_trial_began': valid_response_time - Trial.TrialBegan,
+		'time_since_trial_began': valid_response_time - Trial.FixationShown,
 		'time_since_last_probe_shown': valid_response_time - Trial.ProbeShown,
 		'currently_displayed': Trial.CurrentlyDisplayed
 	});
@@ -221,14 +232,14 @@ window.Session = {
 	'db': { // object where we hierarchically store all the session-related db
 		'number': session_number,
 		'condition': condition,
-		'loaded': new Date(),
+		'loaded': mysqldate( new Date() ),
 		'loaded_unixtime': new Date().getTime(),
 		'browser': navigator.userAgent,
 		'window_width': $(window).width(),
 		'document_width': $(document).width(), // should be identical in full screen
 		'window_height': $(window).height(),
 		'document_height': $(document).height(),
-		'trials': [] ,// array for all trials in this session
+		'Trial': [] ,// array for all trials in this session
 	},
 	'interrupted': false,
 	'sequence_ocd': ocd_sequence,
@@ -269,7 +280,7 @@ Session.showTryoutInstructions = (function() {
 	
 	if(Session.interrupted == true) return;
 	
-	Session.db.began = new Date();
+	Session.db.began = mysqldate( new Date() );
 	Session.db.began_unixtime = new Date().getTime();
 	Session.SessionBegan = performance.now();
 	Session.instructions = $('<div class="session_instructions">'+ session_tryout_instructions +'</div>');
@@ -316,37 +327,40 @@ Session.nextTrial = (function() {
 	
 	if(Session.interrupted == true) return;
 	
-	if(Session.number_of_trials == Session.db.trials.length) // last trial
+	if(Session.number_of_trials == Session.db.Trial.length) // last trial
 		Session.end();
 	else {
-		Trial.current = Session.db.trials.length;
-		Session.db.trials.push( {
+		Trial.current = Session.db.Trial.length;
+		Session.db.Trial.push( {
 			'number': Trial.current,
 			'ocd_image_id': Session.sequence_ocd[Trial.current],
 			'neutral_image_id': Session.sequence_neutral[Trial.current],
-			'ocd_on_top': Session.sequence_ocd_top[Trial.current],
-			'reactions': [],
+			'ocd_on_top': (Session.sequence_ocd_top[Trial.current] ) ? 1:0,
+			'Reaction': [],
 			});
 			
-		if(condition == 'bias_assessment')
-			Session.db.trials[Trial.current].probe_on_top = !round(Math.random()); // ! to ensure it's a bool
+		if(condition == 'bias_assessment' || condition || 'bias_control')
+			Session.db.Trial[Trial.current].probe_on_top = ( ! Math.round(Math.random()) ) ? 1 : 0; // ! to ensure it's a bool
 		else if (condition == 'bias_manipulation')
-			Session.db.trials[Trial.current].probe_on_top = ! Session.db.trials[Trial.current].ocd_on_top;
-		else if(condition == 'bias_control')
-			Session.db.trials[Trial.current].probe_on_top = !round(Math.random());
+			Session.db.Trial[Trial.current].probe_on_top = (! Session.db.Trial[Trial.current].ocd_on_top) ? 1 : 0;
 		
 		Trial.begin();
 	}
 });
 //fixme: 11 trials, sollten 12 sein
 Session.end = (function() {
+	Session.db.ended = mysqldate( new Date() );
+	Session.db.ended_unixtime = new Date().getTime();
+	
 	console.log('Session.end');
-	$.ajax('../../TrainingSessions/addAjax',{
-		data: Session.db,
+	var data = {TrainingSession: Session.db };
+	$.ajax('../TrainingSessions/ajaxAdd',{
+		data: data,
 		type: 'post',
 		cache: false,
-		complete: function () {
+		complete: function (resp) {
 			console.log("Session.saved");
+			console.log(resp);
 		}
 	});
 	$(document).off("fullscreenchange"); // remove error message	

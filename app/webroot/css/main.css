@@ -54,3 +54,8 @@
 	color:red;
 	font-weight:bold;
 }
+
+#flashMessage {
+	color: #3a87ad;
+	font-weight:bold;
+}

@@ -24,14 +24,7 @@ class Reaction extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'ActiveTrial' => array(
+		'Trial' => array(
 			'className' => 'Trial',
 			'foreignKey' => 'active_trial_id',
 			'conditions' => '',

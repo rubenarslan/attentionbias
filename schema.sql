@@ -54,11 +54,11 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`training_sessions` (
   `user_id` INT NOT NULL ,
   `number` INT UNSIGNED NULL ,
   `loaded` DATETIME NULL DEFAULT NULL ,
-  `loaded_unixtime` INT UNSIGNED NULL ,
+  `loaded_unixtime` BIGINT NULL ,
   `began` DATETIME NULL DEFAULT NULL ,
-  `began_unixtime` INT UNSIGNED NULL DEFAULT NULL ,
+  `began_unixtime` BIGINT NULL DEFAULT NULL ,
   `ended` DATETIME NULL DEFAULT NULL ,
-  `ended_unixtime` INT UNSIGNED NULL DEFAULT NULL ,
+  `ended_unixtime` BIGINT NULL DEFAULT NULL ,
   `condition` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `fk_sessions_users`
@@ -79,7 +79,7 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`trials` (
   `user_id` INT NULL ,
   `session_id` INT NOT NULL ,
   `number` INT UNSIGNED NULL ,
-  `began_unixtime` INT UNSIGNED NULL ,
+  `began_unixtime` BIGINT UNSIGNED NULL ,
   `ocd_image_id` INT UNSIGNED NULL ,
   `neutral_image_id` INT UNSIGNED NULL ,
   `ocd_on_top` TINYINT(1) NULL ,
@@ -87,6 +87,8 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`trials` (
   `first_valid_response` TINYINT(1) NULL ,
   `first_reaction_time_since_trial_began` DOUBLE NULL ,
   `first_reaction_time_since_probe_shown` DOUBLE NULL ,
+  `fixation_duration` DOUBLE UNSIGNED NULL ,
+  `images_duration` DOUBLE UNSIGNED NULL ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id` )
@@ -108,7 +110,6 @@ DROP TABLE IF EXISTS `zwang`.`reactions` ;
 
 CREATE  TABLE IF NOT EXISTS `zwang`.`reactions` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `user_id` INT NULL ,
   `active_trial_id` INT NULL ,
   `time_since_session_began` DOUBLE NULL ,
   `time_since_trial_began` DOUBLE NULL ,
@@ -119,11 +120,6 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`reactions` (
   CONSTRAINT `active_trial`
     FOREIGN KEY (`active_trial_id` )
     REFERENCES `zwang`.`trials` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `reaction_user_id`
-    FOREIGN KEY (`user_id` )
-    REFERENCES `zwang`.`users` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

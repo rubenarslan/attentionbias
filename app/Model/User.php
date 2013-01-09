@@ -9,13 +9,42 @@ App::uses('AppModel', 'Model');
  * @property Trial $Trial
  */
 class User extends AppModel {
+	 public $components = array(
+			'Session',
+			'Security', # the one addition
+	        'Auth' => array(
+				'authenticate' => array(
+				            'Form' => array(
+				                'fields' => array(
+									'username' => 'email',
+									'password' => 'password',
+								),
+				            )
+				),
+				'authorize' => 
+					array(
+						'Controller' => 
+							array(
+								'recursive' => 3,
+							)
+					)
+			), # Controller means that the controller's function isAuthorized will be called
 
+			'RequestHandler'
+	);
+	public function beforeSave($options = array()) {
+		if (isset($this->data['User']['password'])) {
+            $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']); ## hash
+		}
+        return true;
+	}
+	
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'name';
+	public $displayField = 'email';
 
 /**
  * Validation rules
@@ -63,24 +92,16 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'Email address has to be valid.',
+				'allowEmpty' => false,
+				'required' => true,
+			),
+			'isUnique' => array(
+				'rule' => 'isUnique',
+				'message' => 'This email address is already registered.'
 			),
 		),
 		'code' => array(
@@ -94,9 +115,9 @@ class User extends AppModel {
 			),
 		),
 		'password' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				'message' => "Password can't be empty.",
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -128,21 +149,12 @@ class User extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Reaction' => array(
-			'className' => 'Reaction',
-			'foreignKey' => 'user_id',
-			'dependent' => false,
-		),
+
 		'TrainingSession' => array(
 			'className' => 'TrainingSession',
 			'foreignKey' => 'user_id',
 			'dependent' => false,
 		),
-		'Trial' => array(
-			'className' => 'Trial',
-			'foreignKey' => 'user_id',
-			'dependent' => false,
-		)
 	);
 
 }

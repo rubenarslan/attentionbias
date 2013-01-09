@@ -48,35 +48,47 @@
                     <a class="brand" href="#">Zwangsstörung-Studie</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><?php echo $this->Html->link('Home', '/'); ?></li>
+                            <li class="active"><?php echo $this->Html->link('Startseite', '/'); ?></li>
 							<?php
 							if(AuthComponent::user() === NULL) { ?>
-							<li><?php echo $this->Html->link('Login', '/users/login', array('class'=>'')); ?></li>
-							<li><?php echo $this->Html->link('Sign up', '/users/register', array('class'=>'')); ?></li>
-							<?php }
-							else {?>
-							<li><?php echo $this->Html->link("Logout ".AuthComponent::user('name'), '/users/logout'); ?></li>
+							<li><?php echo $this->Html->link('Registrierung', '/users/register', array('class'=>'')); ?></li>
 							<?php }?>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li class="nav-header">Nav header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <form class="navbar-form pull-right">
-                            <input class="span2" type="text" placeholder="Email">
-                            <input class="span2" type="password" placeholder="Password">
-                            <button type="submit" class="btn">Sign in</button>
-                        </form>
+                            <li><a href="#about">Informationen</a></li>
+                            <li><a href="mailto:zwangPSYCHOLOGIE@hu-berlin.de">Kontakt</a></li>
+							<li>
+						<?php
+						if(AuthComponent::user() === NULL) {
+							echo $this->Form->create('User', array(
+								'class' => 'navbar-form pull-right',
+								'action' => "login"	
+							));
+					    	echo $this->Form->input('email', array(
+								'class'=>'span2', 
+								'placeholder' => 'Email',
+								'type' => 'email',
+								'label' => false,
+								'between'=> '<div class="span input-prepend" style="margin-top:5px;margin-right:5px"><span class="add-on"><i class="icon-envelope"></i></span>', 
+								'after' => '</div>',
+								'div' => false,
+							));
+					        echo $this->Form->input('password', array(
+								'class'=>'span2', 
+								'style' => 'margin-right:5px',
+					        	'placeholder' => 'Passwort',
+								'div' => false,
+								'label' => false,
+					        ));
+							echo $this->Form->end(array(
+								'label' => 'Anmelden',
+								'class' => 'btn',
+								'div' => false,
+							)); 
+						}
+						else { ?>
+							<?php echo $this->Html->link("Logout ".AuthComponent::user('email'), '/users/logout'); ?>
+						<?php } ?>
+						</li>
+						</ul>
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
@@ -110,7 +122,7 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
 		<?php echo $this->element('sql_dump');
-		
+		debug($this->data);
 		pr($this->validationErrors);
 ?>
 
