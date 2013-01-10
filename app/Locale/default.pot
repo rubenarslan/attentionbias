@@ -1,0 +1,591 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-01-09 16:23+0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/GroupsController.php:30;62;90;120;152;180
+msgid "Invalid group"
+msgstr ""
+
+#: Controller/GroupsController.php:44;66;134;156
+msgid "The group has been saved"
+msgstr ""
+
+#: Controller/GroupsController.php:47;69;137;159
+msgid "The group could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/GroupsController.php:93;183
+msgid "Group deleted"
+msgstr ""
+
+#: Controller/GroupsController.php:96;186
+msgid "Group was not deleted"
+msgstr ""
+
+#: Controller/TrainingSessionsController.php:56;109;139;169;203;233
+msgid "Invalid training session"
+msgstr ""
+
+#: Controller/TrainingSessionsController.php:89;113;183;207
+msgid "The training session has been saved"
+msgstr ""
+
+#: Controller/TrainingSessionsController.php:92;116;186;210
+msgid "The training session could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/TrainingSessionsController.php:142;236
+msgid "Training session deleted"
+msgstr ""
+
+#: Controller/TrainingSessionsController.php:145;239
+msgid "Training session was not deleted"
+msgstr ""
+
+#: Controller/UsersController.php:15
+msgid "Invalid email or password, try again"
+msgstr ""
+
+#: Controller/UsersController.php:30
+msgid "You have been registered and logged in."
+msgstr ""
+
+#: Controller/UsersController.php:32
+msgid "Login went wrong."
+msgstr ""
+
+#: Controller/UsersController.php:35
+msgid "Registration unsuccessful. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:59;93;123;154;188;218
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsersController.php:73;97;168;192
+msgid "The user has been saved"
+msgstr ""
+
+#: Controller/UsersController.php:76;100;171;195
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:126;221
+msgid "User deleted"
+msgstr ""
+
+#: Controller/UsersController.php:129;224
+msgid "User was not deleted"
+msgstr ""
+
+#: View/Groups/add.ctp:4
+msgid "Add Group"
+msgstr ""
+
+#: View/Groups/add.ctp:9
+#: View/Groups/edit.ctp:10
+#: View/TrainingSessions/add.ctp:17
+#: View/TrainingSessions/admin_add.ctp:17
+#: View/TrainingSessions/admin_edit.ctp:18
+#: View/TrainingSessions/edit.ctp:18
+#: View/Users/add.ctp:12
+msgid "Submit"
+msgstr ""
+
+#: View/Groups/add.ctp:12
+#: View/Groups/edit.ctp:13
+#: View/Groups/index.ctp:9;42
+#: View/Groups/view.ctp:27;50
+#: View/TrainingSessions/add.ctp:20
+#: View/TrainingSessions/admin_add.ctp:20
+#: View/TrainingSessions/admin_edit.ctp:21
+#: View/TrainingSessions/admin_index.ctp:15;56
+#: View/TrainingSessions/admin_view.ctp:57;86
+#: View/TrainingSessions/edit.ctp:21
+#: View/TrainingSessions/index.ctp:15;56
+#: View/TrainingSessions/view.ctp:57;86
+#: View/Users/add.ctp:15
+#: View/Users/edit.ctp:52
+#: View/Users/index.ctp:12;38
+#: View/Users/view.ctp:37;60;82
+msgid "Actions"
+msgstr ""
+
+#: View/Groups/add.ctp:15
+#: View/Groups/edit.ctp:17
+#: View/Groups/view.ctp:31
+#: View/Users/add.ctp:19
+#: View/Users/edit.ctp:57
+#: View/Users/index.ctp:42
+#: View/Users/view.ctp:44
+msgid "List Groups"
+msgstr ""
+
+#: View/Groups/add.ctp:16
+#: View/Groups/edit.ctp:18
+#: View/Groups/index.ctp:45
+#: View/Groups/view.ctp:33
+#: View/TrainingSessions/add.ctp:24
+#: View/TrainingSessions/admin_add.ctp:24
+#: View/TrainingSessions/admin_edit.ctp:26
+#: View/TrainingSessions/admin_index.ctp:59
+#: View/TrainingSessions/admin_view.ctp:63
+#: View/TrainingSessions/edit.ctp:26
+#: View/TrainingSessions/index.ctp:59
+#: View/TrainingSessions/view.ctp:63
+#: View/Users/add.ctp:18
+#: View/Users/edit.ctp:56
+#: View/Users/view.ctp:42
+msgid "List Users"
+msgstr ""
+
+#: View/Groups/add.ctp:17
+#: View/Groups/edit.ctp:19
+#: View/Groups/index.ctp:46
+#: View/Groups/view.ctp:34;76
+#: View/TrainingSessions/add.ctp:25
+#: View/TrainingSessions/admin_add.ctp:25
+#: View/TrainingSessions/admin_edit.ctp:27
+#: View/TrainingSessions/admin_index.ctp:60
+#: View/TrainingSessions/admin_view.ctp:64
+#: View/TrainingSessions/edit.ctp:27
+#: View/TrainingSessions/index.ctp:60
+#: View/TrainingSessions/view.ctp:64
+#: View/Users/index.ctp:41
+#: View/Users/view.ctp:43
+msgid "New User"
+msgstr ""
+
+#: View/Groups/edit.ctp:4
+#: View/Groups/view.ctp:29
+msgid "Edit Group"
+msgstr ""
+
+#: View/Groups/edit.ctp:16
+#: View/Groups/index.ctp:21
+#: View/Groups/view.ctp:67
+#: View/TrainingSessions/admin_edit.ctp:24
+#: View/TrainingSessions/admin_index.ctp:35
+#: View/TrainingSessions/admin_view.ctp:107
+#: View/TrainingSessions/edit.ctp:24
+#: View/TrainingSessions/index.ctp:35
+#: View/TrainingSessions/view.ctp:107
+#: View/Users/edit.ctp:55
+#: View/Users/index.ctp:30
+#: View/Users/view.ctp:74
+msgid "Delete"
+msgstr ""
+
+#: View/Groups/edit.ctp:16
+#: View/Groups/index.ctp:21
+#: View/Groups/view.ctp:30;67
+#: View/TrainingSessions/admin_edit.ctp:24
+#: View/TrainingSessions/admin_index.ctp:35
+#: View/TrainingSessions/admin_view.ctp:60;107
+#: View/TrainingSessions/edit.ctp:24
+#: View/TrainingSessions/index.ctp:35
+#: View/TrainingSessions/view.ctp:60;107
+#: View/Users/edit.ctp:55
+#: View/Users/index.ctp:30
+#: View/Users/view.ctp:41;74
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: View/Groups/index.ctp:2
+msgid "Groups"
+msgstr ""
+
+#: View/Groups/index.ctp:19
+#: View/Groups/view.ctp:65
+#: View/TrainingSessions/admin_index.ctp:33
+#: View/TrainingSessions/admin_view.ctp:105
+#: View/TrainingSessions/index.ctp:33
+#: View/TrainingSessions/view.ctp:105
+#: View/Users/index.ctp:28
+#: View/Users/view.ctp:72
+msgid "View"
+msgstr ""
+
+#: View/Groups/index.ctp:20
+#: View/Groups/view.ctp:66
+#: View/TrainingSessions/admin_index.ctp:34
+#: View/TrainingSessions/admin_view.ctp:106
+#: View/TrainingSessions/index.ctp:34
+#: View/TrainingSessions/view.ctp:106
+#: View/Users/index.ctp:29
+#: View/Users/view.ctp:73
+msgid "Edit"
+msgstr ""
+
+#: View/Groups/index.ctp:29
+#: View/TrainingSessions/admin_index.ctp:43
+#: View/TrainingSessions/index.ctp:43
+#: View/Users/index.ctp:66
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr ""
+
+#: View/Groups/index.ctp:35
+#: View/TrainingSessions/admin_index.ctp:49
+#: View/TrainingSessions/index.ctp:49
+#: View/Users/index.ctp:54
+msgid "previous"
+msgstr ""
+
+#: View/Groups/index.ctp:37
+#: View/TrainingSessions/admin_index.ctp:51
+#: View/TrainingSessions/index.ctp:51
+#: View/Users/index.ctp:58
+msgid "next"
+msgstr ""
+
+#: View/Groups/index.ctp:44
+#: View/Groups/view.ctp:32
+#: View/Users/add.ctp:20
+#: View/Users/edit.ctp:58
+#: View/Users/index.ctp:43
+#: View/Users/view.ctp:45
+msgid "New Group"
+msgstr ""
+
+#: View/Groups/view.ctp:2
+#: View/Users/view.ctp:9
+msgid "Group"
+msgstr ""
+
+#: View/Groups/view.ctp:4;42
+#: View/TrainingSessions/admin_view.ctp:4;74
+#: View/TrainingSessions/view.ctp:4;74
+#: View/Users/view.ctp:4;55
+msgid "Id"
+msgstr ""
+
+#: View/Groups/view.ctp:9;46
+msgid "Name"
+msgstr ""
+
+#: View/Groups/view.ctp:14;44
+#: View/Users/view.ctp:29;58
+msgid "Created"
+msgstr ""
+
+#: View/Groups/view.ctp:19;45
+#: View/Users/view.ctp:59
+msgid "Modified"
+msgstr ""
+
+#: View/Groups/view.ctp:30
+msgid "Delete Group"
+msgstr ""
+
+#: View/Groups/view.ctp:38
+msgid "Related Users"
+msgstr ""
+
+#: View/Groups/view.ctp:43
+msgid "Group Id"
+msgstr ""
+
+#: View/Groups/view.ctp:47
+#: View/Users/view.ctp:24
+msgid "Email"
+msgstr ""
+
+#: View/Groups/view.ctp:48
+msgid "Code"
+msgstr ""
+
+#: View/Groups/view.ctp:49
+#: View/Users/view.ctp:19
+msgid "Password"
+msgstr ""
+
+#: View/TrainingSessions/add.ctp:4
+msgid "Add Training Session"
+msgstr ""
+
+#: View/TrainingSessions/add.ctp:23
+#: View/TrainingSessions/admin_add.ctp:23
+#: View/TrainingSessions/admin_edit.ctp:25
+#: View/TrainingSessions/admin_view.ctp:61
+#: View/TrainingSessions/edit.ctp:25
+#: View/TrainingSessions/view.ctp:61
+msgid "List Training Sessions"
+msgstr ""
+
+#: View/TrainingSessions/add.ctp:26
+#: View/TrainingSessions/admin_add.ctp:26
+#: View/TrainingSessions/admin_edit.ctp:28
+#: View/TrainingSessions/admin_index.ctp:61
+#: View/TrainingSessions/admin_view.ctp:65
+#: View/TrainingSessions/edit.ctp:28
+#: View/TrainingSessions/index.ctp:61
+#: View/TrainingSessions/view.ctp:65
+msgid "List Trials"
+msgstr ""
+
+#: View/TrainingSessions/add.ctp:27
+#: View/TrainingSessions/admin_add.ctp:27
+#: View/TrainingSessions/admin_edit.ctp:29
+#: View/TrainingSessions/admin_index.ctp:62
+#: View/TrainingSessions/admin_view.ctp:66;116
+#: View/TrainingSessions/edit.ctp:29
+#: View/TrainingSessions/index.ctp:62
+#: View/TrainingSessions/view.ctp:66;116
+msgid "New Trial"
+msgstr ""
+
+#: View/TrainingSessions/admin_add.ctp:4
+msgid "Admin Add Training Session"
+msgstr ""
+
+#: View/TrainingSessions/admin_edit.ctp:4
+msgid "Admin Edit Training Session"
+msgstr ""
+
+#: View/TrainingSessions/admin_index.ctp:2
+#: View/TrainingSessions/index.ctp:2
+msgid "Training Sessions"
+msgstr ""
+
+#: View/TrainingSessions/admin_index.ctp:58
+#: View/TrainingSessions/admin_view.ctp:62
+#: View/TrainingSessions/index.ctp:58
+#: View/TrainingSessions/view.ctp:62
+msgid "New Training Session"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:2
+#: View/TrainingSessions/view.ctp:2
+msgid "Training Session"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:9
+#: View/TrainingSessions/view.ctp:9
+#: View/Users/view.ctp:2
+msgid "User"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:14;77
+#: View/TrainingSessions/view.ctp:14;77
+msgid "Number"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:19
+#: View/TrainingSessions/view.ctp:19
+msgid "Loaded"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:24
+#: View/TrainingSessions/view.ctp:24
+msgid "Loaded Unixtime"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:29
+#: View/TrainingSessions/view.ctp:29
+msgid "Began"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:34;78
+#: View/TrainingSessions/view.ctp:34;78
+msgid "Began Unixtime"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:39
+#: View/TrainingSessions/view.ctp:39
+msgid "Ended"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:44
+#: View/TrainingSessions/view.ctp:44
+msgid "Ended Unixtime"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:49
+#: View/TrainingSessions/view.ctp:49
+msgid "Condition"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:59
+#: View/TrainingSessions/edit.ctp:4
+#: View/TrainingSessions/view.ctp:59
+msgid "Edit Training Session"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:60
+#: View/TrainingSessions/view.ctp:60
+msgid "Delete Training Session"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:70
+#: View/TrainingSessions/view.ctp:70
+msgid "Related Trials"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:75
+#: View/TrainingSessions/view.ctp:75
+#: View/Users/view.ctp:57
+msgid "User Id"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:76
+#: View/TrainingSessions/view.ctp:76
+msgid "Session Id"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:79
+#: View/TrainingSessions/view.ctp:79
+msgid "Ocd Image Id"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:80
+#: View/TrainingSessions/view.ctp:80
+msgid "Neutral Image Id"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:81
+#: View/TrainingSessions/view.ctp:81
+msgid "Ocd On Top"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:82
+#: View/TrainingSessions/view.ctp:82
+msgid "Probe On Top"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:83
+#: View/TrainingSessions/view.ctp:83
+msgid "First Valid Response"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:84
+#: View/TrainingSessions/view.ctp:84
+msgid "First Reaction Time Since Trial Began"
+msgstr ""
+
+#: View/TrainingSessions/admin_view.ctp:85
+#: View/TrainingSessions/view.ctp:85
+msgid "First Reaction Time Since Probe Shown"
+msgstr ""
+
+#: View/Users/add.ctp:4
+msgid "Add User"
+msgstr ""
+
+#: View/Users/add.ctp:21
+#: View/Users/edit.ctp:59
+#: View/Users/index.ctp:44
+#: View/Users/view.ctp:46
+msgid "List Codedpapers"
+msgstr ""
+
+#: View/Users/add.ctp:22
+#: View/Users/edit.ctp:60
+#: View/Users/index.ctp:45
+#: View/Users/view.ctp:47;85
+msgid "New Codedpaper"
+msgstr ""
+
+#: View/Users/edit.ctp:2
+#: View/Users/view.ctp:40
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/index.ctp:2
+msgid "Users"
+msgstr ""
+
+#: View/Users/login.ctp:5
+msgid "Bitte geben Sie Ihre Email-Adresse und Ihr Passwort ein."
+msgstr ""
+
+#: View/Users/register.ctp:1
+msgid "Neuanmeldung"
+msgstr ""
+
+#: View/Users/view.ctp:14
+msgid "Username"
+msgstr ""
+
+#: View/Users/view.ctp:41
+msgid "Delete User"
+msgstr ""
+
+#: View/Users/view.ctp:51
+msgid "Related Codedpapers"
+msgstr ""
+
+#: View/Users/view.ctp:56
+msgid "Paper Id"
+msgstr ""
+
+#: Model/Trial.php:validation for field id;validation for field session_id;validation for field began_unixtime;validation for field ocd_image_id;validation for field neutral_image_id
+#: Model/User.php:validation for field group_id
+msgid "naturalnumber"
+msgstr ""
+
+#: Model/Trial.php:validation for field ocd_on_top;validation for field probe_on_top;validation for field first_valid_response
+msgid "boolean"
+msgstr ""
+
+#: Model/Trial.php:validation for field first_reaction_time_since_trial_began;validation for field first_reaction_time_since_probe_shown;validation for field fixation_duration;validation for field images_duration
+msgid "decimal"
+msgstr ""
+
+#: Model/Trial.php:validation for field currently_displayed
+#: Model/User.php:validation for field code
+msgid "alphanumeric"
+msgstr ""
+
+#: Model/User.php:validation for field id
+msgid "numeric"
+msgstr ""
+
+#: Model/User.php:validation for field created;validation for field modified
+msgid "datetime"
+msgstr ""
+
+#: Model/User.php:validation for field email
+msgid "Email address has to be valid."
+msgstr ""
+
+#: Model/User.php:validation for field email
+msgid "This email address is already registered."
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Password can't be empty."
+msgstr ""
+
+#: View/Errors/error400.ctp:21
+#: View/Errors/error500.ctp:21
+msgid "Error"
+msgstr ""
+
+#: View/Errors/error400.ctp:23
+msgid "The requested address %s was not found on this server."
+msgstr ""
+
+#: View/Errors/error500.ctp:22
+msgid "An Internal Error Has Occurred."
+msgstr ""
+
+#: View/Layouts/error.ctp:19
+msgid "CakePHP: the rapid development php framework"
+msgstr ""
+
+#: webroot/test.php:87
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+

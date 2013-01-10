@@ -1,20 +1,24 @@
-<h1>Training</h1>
-<p>Sie benötigen einen aktuellen Browser, um teilnehmen zu können.<br>Wir unterstützen Firefox, Chrome und Safari. Opera und Internet Explorer haben leider nicht alle nötigen Features.</p>
-<div id="trial_outer">
-	<div id="trial">
+<h1>Reaktionen auf Bilder</h1>
+<p>Herzlich Willkommen bei unserer Studie „Reaktionen auf Bilder“.<br>
+Vielen Dank, dass Sie teilnehmen wollen!<br>
+Bitte klicken Sie auf „Weiter“, um zu den Instruktionen zu gelangen.</p>
+
+<div id="session_outer">
+	<div id="session">
 		<div class="session_begin">
-			<button id="begin_session" class="btn btn-large btn-primary">Klicken Sie hier, um mit dem Training anzufangen.</button>
+			Sie benötigen einen aktuellen Browser, um teilnehmen zu können.<br>
+			Wir unterstützen Firefox, Chrome und Safari. Opera und Internet Explorer haben leider nicht alle nötigen Features.<br>
+			Sie benötigen Javascript, bzw. müssen JavaScript in Ihren Browser-Einstellungen erlauben.
 		</div>
 	</div>
+	<div id="trial"></div>
 </div>
 <?php $this->start('script'); ?>
 <script src="<?php echo $this->webroot; ?>js/jquery.fullscreen.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 /* TODO:
- * test images am anfang
- * periodically sync
- * feedback
+* feedback
 */
 
 
@@ -28,7 +32,7 @@ var condition = <?php
 ?>;
 var session_number = 1; // todo: dynamic
 var fixation_duration = 500; // how long fixations are displayed
-var img_duration = 500; // how long images are displayed. fixme: 500
+var img_duration = 500;
 var mistake_message_duration = 2000;
 
 // keys for user input "probe was at the top", ".. down". use keys that are usually located in the same place for your target group (i.e. not y/z, umlauts, commas brackets, arrow keys etc.), and note that this uses the keydown event, not the keypress event (which is better at understanding the keyboard mapping)
@@ -42,17 +46,27 @@ var neutral_imgs = [4, 5, 6];
 /*
 ---- INSTRUCTIONS, localisation
 */
-var session_tryout_instructions = 'Gleich erscheint ein Knopf, bitte klicken Sie darauf oder drücken Sie eine beliebige Taste, wenn Sie bereit sind, mit zehn Übungsaufgaben anzufangen.<br><br>In diesen zehn Übungsaufgaben wird Ihnen noch angezeigt, wenn Sie einen Fehler machen, später nicht mehr.<br><br>Drücken Sie "' + key_top + '" / "' + key_top.toLowerCase() + '", wenn der Punkt oben erscheint, und "' + key_bottom + '" / "' + key_bottom.toLowerCase() + '", wenn der Punkt unten erscheint.';
+var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen, und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy, möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook), etc. aus, damit Sie möglichst nicht gestört werden.<br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab.<br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 
-var session_test_instructions = 'Bitte klicken Sie auf den Knopf oder drücken Sie eine beliebige Taste, wenn Sie bereit sind mit dem richtigen Training anzufangen.<br><br>Drücken Sie "' + key_top + '" / "' + key_top.toLowerCase() + '", wenn der Punkt oben erscheint, und "' + key_bottom + '" / "' + key_bottom.toLowerCase() + '", wenn der Punkt unten erscheint.';
+var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte fixieren Sie dieses Kreuz am Anfang jedes Durchgangs, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough2 = 'Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten ein weißer Kreis auf dem Bildschirm.<br>Ihre Aufgabe ist es, auf die Position des Kreises (oben oder unten) zu reagieren, indem Sie die entsprechende Taste auf der Tastatur drücken.<br><br>Befindet sich der Kreis oben, drücken Sie bitte „' + key_top + '“, befindet er sich unten, drücken Sie bitte „' + key_bottom + '“.<br><br>Dabei ist es wichtig, dass Sie so schnell und genau wie möglich reagieren.<br><br>Im Beispiel unten wäre „' + key_top + '“ die richtige Antwort, da der Kreis sich oben befindet.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm und der nächste Durchgang beginnt.<br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet. (Hier bekommen Sie nach jeder Reaktion Feedback, ob Sie richtig oder falsch reagiert haben.)<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
+
+
+var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger ihrer rechten Hand auf den Buchstaben „' + key_top + '“ (für oben) und den ihrer linken Hand auf „' + key_bottom + '“ (für unten).<br>Ihre Finger sollten während der ganzen Aufgabe auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf die Position des Kreises reagieren können.<br>Wenn gleich der "Weiter"-Knopf erscheint, drücken Sie „' + key_top + '“ um anzufangen.';
+var begin_tryout_button = 'Drücken Sie „' + key_top + '“';
+
+var trial_test_instructions = 'Sehr gut, Sie haben die Übungsphase geschafft. Jetzt sind Sie bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: rechter Zeigefinger auf „' + key_top + '“ für oben und linker Zeigefinger auf „' + key_bottom + '“ für unten.<br><br>Es gibt ab jetzt keine Rückmeldungen mehr, ob Sie richtig oder falsch reagiert haben. Konzentrieren Sie sich einfach darauf, möglichst genau und schnell auf die Position des Kreises zu reagieren.<br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_top + '“ um jetzt anzufangen.</button>';
 
 var mistake_message = 'Falsche Antwort.';
-var session_end_message = 'Vielen Dank für Ihre heutige Teilnahme.';
+
+var session_end_message = 'Ende der Aufgabe. Sie haben es geschafft.<br><br>Vielen Dank für Ihre Teilnahme!';
 var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen.';
-var begin_tryout_button = 'Test-Training starten!';
-var begin_test_button = 'Training starten!';
 var session_fullscreenFail = 'Ihr Web-Browser scheint den Vollbildmodus nicht zu unterstützen. Ein alternativer Browser ist z.B. <a href="http://getfirefox.com">Firefox</a>.';
 var session_featureFail = 'Ihr Web-Browser unterstützt nötige Funktionen nciht. Ein alternativer Browser ist z.B. <a href="http://getfirefox.com">Firefox</a>.';
+var go_on_button_message = 'Weiter';
+var back_button_message = 'Zurück';
 
 /* BLOCKS */
 var ocd_block1 = repeatArray(shuffle(ocd_imgs), ocd_imgs.length *2 );
@@ -108,10 +122,253 @@ performance.now = (function() {
          function() { return new Date().getTime(); };
 })();
 
+
+$(document).ready(function () {
+	Session.preLoad(); // call it on domready to preload images
+	
+	$(document).one("fullscreenerror", Session.fullscreenFail);
+	$(document).on("fullscreenchange", function () {
+		if( $('#session_outer').fullScreen() == false || $('#session_outer').fullScreen() == null) { // if they have left fullscreenchange
+			Session.interrupt();
+		}
+	}); // only does something if fullscreen was left
+	
+	$('#session div.session_begin').empty();
+	$('#trial').hide();
+	$('#session div.session_begin').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').click(Session.featureDetection));
+	
+});
+
+
+window.Session = {
+	'db': { // object where we hierarchically store all the session-related db
+		'number': session_number,
+		'condition': condition,
+		'loaded': mysqldate( new Date() ),
+		'loaded_unixtime': new Date().getTime(),
+		'browser': navigator.appName || "Unknown browser",
+		'browser_version': navigator.userAgent || navigator.appVersion || "Unknown version",
+		'operating_system': navigator.platform || "Unknown OS",
+		'browser_language': navigator.language || "Unknown language",
+		'Trial': [] ,// array for all trials in this session
+	},
+	'interrupted': false,
+	'sequence_ocd': ocd_sequence,
+	'sequence_neutral': neutral_sequence,
+	'sequence_ocd_top': ocd_top_sequence,
+	'number_of_trials': number_of_trials,
+	'imgs': [],
+};
+
+Session.preLoad = (function() {
+	console.log('Session.preLoad');
+	
+	preload_these = ocd_imgs.concat(neutral_imgs);
+	var len = preload_these.length;
+    $(preload_these).each(function(index,img){
+		$('<img/>')[0].src = imgpath + img + ".jpg";
+    });
+});
+
+Session.featureDetection = (function () {
+	if(!($.support.ajax && $.support.boxModel && $.support.opacity)) {
+		Session.featureFail();
+	}
+	else {
+		Session.firstInstructions();
+	}
+});
+
+Session.firstInstructions = (function () {
+	$('#session div.session_begin').hide();
+	$('#session').append($('<div class="session_first_instructions">'+ session_first_instructions +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.goFullscreen)));
+});
+
+Session.goFullscreen = (function () {
+	if($('#session_outer').fullScreen() != null) { // supports full screen
+		$('#session_outer').fullScreen(true);
+		Session.preRender(); // pre render once button was clicked, runs session afterwards		
+	} else { // different browser needed
+		Session.fullscreenFail();
+	}
+});
+
+Session.preRender = (function() {
+	console.log('Session.preRender');
+	
+	for(i=0; i < Session.number_of_trials; i++) {
+		var toppath = imgpath + (Session.sequence_ocd_top[i] ?  Session.sequence_ocd[i] : Session.sequence_neutral[i] ) + ".jpg";
+		var botpath = imgpath + (Session.sequence_ocd_top[i] ?  Session.sequence_neutral[i] : Session.sequence_ocd[i] ) + ".jpg";
+		var imgdiv = $('<div class="trial_images" id="trial_images_'+i+'" style="display:none"><img class="top" src="' + toppath + '"><br></div>');
+		if(Session.number_of_trials-1 == i)
+			var botimg = $('<img class="bottom" src="'+ botpath + '">').one('load',Session.showWalkthrough1);
+		else
+			var botimg = $('<img class="bottom" src="'+ botpath + '">');
+		Session.imgs[i] = imgdiv.append(botimg);
+		$('#trial').append(Session.imgs);
+	}
+});
+
+Session.showWalkthrough1 = (function() {
+	$('#session div.session_first_instructions').hide();
+	$('#session div.session_walkthrough:visible').hide();
+	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough1 +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough2)));
+});
+
+Session.showWalkthrough2 = (function() {
+	$('#session div.session_walkthrough:visible').hide();
+	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough2 +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough3)));
+});
+Session.showWalkthrough3 = (function() {
+	$('#session div.session_walkthrough:visible').hide();
+	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough3 +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough4)));
+});
+Session.showWalkthrough4 = (function() {
+	$('#session div.session_walkthrough:visible').hide();
+	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough4 +'<br></div>').append( $('<button class="btn btn-large">' + back_button_message + '</button>').one('click', Session.showWalkthrough1) ).append( $('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTryoutInstructions) ) );
+});
+
+
+Session.showTryoutInstructions = (function() {
+	console.log('Session.showTryoutInstructions');
+	if(Session.interrupted == true) return;
+	
+	$('#trial').hide();
+	$('#session').show().empty();
+	
+	$('#session').append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br></div>'));
+	
+	Session.waitForNextStep = setTimeout(function () {
+		$('#session div.trial_instructions').append($('<button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>'));
+		$(document).on('keydown',function(e) {
+			if( String.fromCharCode( e.which )  == key_top)
+				Session.beginTryout();
+				$(document).off('keydown');
+		});
+	}, 6000); // wait for full-screen note to disappear, images to render
+});
+
+Session.beginTryout = (function() {
+	console.log('Session.beginTryout');
+	$('#trial').show();
+	Session.nextTrial();
+});
+
+Session.showTestInstructions = (function() {
+	console.log('Session.showTestInstructions');
+	
+	if(Session.interrupted == true) return;
+	$('#trial').hide();
+	$('#session').show().empty();
+	
+	
+	$('#session').append($('<div class="trial_instructions">'+ trial_test_instructions +'</div>'));
+	
+	$(document).on('keydown',function(e) {
+		if( String.fromCharCode( e.which )  == key_top)
+			Session.beginTryout();
+			$(document).off('keydown');
+	});
+});
+
+Session.beginTest = (function() {
+	console.log('Session.begin');
+	
+	Session.db.window_width = $(window).width();
+	Session.db.document_width = $(document).width(); // should be identical in full screen
+	Session.db.window_height =  $(window).height();
+	Session.db.document_height = $(document).height();
+	
+	$(window).on('keypress click',Reaction.logReaction); // log key strokes and clicks for the whole session, only attached once
+	Session.db.began = mysqldate( new Date() );
+	Session.db.began_unixtime = new Date().getTime();
+	Session.SessionBegan = performance.now();
+
+	$('#trial').show();
+	Session.nextTrial();
+});
+
+Session.nextTrial = (function() {
+	console.log('Session.nextTrial');
+	
+	if(Session.interrupted == true) return;
+	
+	if(Session.number_of_trials == Session.db.Trial.length) // last trial
+		Session.end();
+	else {
+		Trial.current = Session.db.Trial.length;
+		Session.db.Trial.push( {
+			'number': Trial.current,
+			'ocd_image_id': Session.sequence_ocd[Trial.current],
+			'neutral_image_id': Session.sequence_neutral[Trial.current],
+			'ocd_on_top': (Session.sequence_ocd_top[Trial.current] ) ? 1:0,
+			'Reaction': [],
+		});
+			
+		if(condition == 'bias_assessment' || condition || 'bias_control')
+			Session.db.Trial[Trial.current].probe_on_top = ( ! Math.round(Math.random()) ) ? 1 : 0; // ! to ensure it's a bool
+		else if (condition == 'bias_manipulation')
+			Session.db.Trial[Trial.current].probe_on_top = (! Session.db.Trial[Trial.current].ocd_on_top) ? 1 : 0;
+		
+		Trial.begin();
+	}
+});
+
+Session.end = (function() {
+	Session.db.ended = mysqldate( new Date() );
+	Session.db.ended_unixtime = new Date().getTime();
+	
+	console.log('Session.end');
+	var data = {TrainingSession: Session.db };
+	$.ajax('../TrainingSessions/ajaxAdd',{
+		data: data,
+		type: 'post',
+		cache: false,
+		complete: function (resp) {
+			console.log("Session.saved");
+			console.log(resp);
+		}
+	});
+	$(document).off("fullscreenchange"); // remove error message	
+	$('#trial').empty().hide();
+	$('#session').append($('<div class="session_end_message">' + session_end_message +'</div>')).show();
+	$('#session_outer').fullScreen(false); // leave fullscreen
+	$(window).off('keypress click',Reaction.logReaction); // stop log key strokes for the whole session
+	
+});
+
+Session.interrupt = (function() { // on leaving fullscreen
+	console.log('Session.interrupt');
+	clearTimeout(Session.waitForNextStep); // don't do next step
+	$(window).off('keydown'); // don't log valid responses anymore
+	$(window).off('keypress click',Reaction.logReaction); // stop log key strokes for the whole session
+	
+	Session.interrupted = true;
+	
+	Session.interruption = $('<div class="session_interruption">' + session_interruption + '</div>');
+	$('#trial').empty().hide();
+	$('#session').append(Session.interruption).show();
+});
+
+Session.fullscreenFail = (function() { // on leaving fullscreen
+	console.log('Session.fullscreenFail');
+	
+	Session.interrupt();
+	Session.fail = $('<div class="session_fail">' + session_fullscreenFail + '</div>');
+	$('#session').append(Session.fail).show();
+});
+
+Session.featureFail = (function() { // on leaving fullscreen
+	console.log('Session.featureFail');
+	
+	Session.interrupt();
+	Session.fail = $('<div class="session_fail">' + session_featureFail + '</div>');
+	$('#session').append(Session.fail).show();
+});
+
 window.Trial = {
 	'fixation': $('<div style="display:none" class="fixation">+</div>'),
-//	'img' : $('<div class="trial_images"><img class="top" src="' + imgpath + 'x.jpg"><br><img class="bottom" src="'+ imgpath + 'x.jpg"></div>'),
-	'probe': $('<div style="display:none" class="probe">x</div>'),
+	'probe': $('<div style="display:none" class="probe">●</div>'),
 	'mistake_message': $('<div style="display:none" class="mistake_message">' + mistake_message + '</div>'),
 	'CurrentlyDisplayed': 'nothing',
 };
@@ -119,7 +376,7 @@ window.Trial = {
 Trial.begin = (function() { // start a trial
 	console.log('Trial.begin');
 	Session.db.Trial[Trial.current].began_unixtime = new Date().getTime();
-	$('#trial div.session_instructions').remove();
+	$('#session').empty().hide();
 	$('#trial').append(Trial.fixation,Trial.probe,Trial.mistake_message);
 	Trial.showFixation();
 });
@@ -228,207 +485,6 @@ Reaction.logReaction = (function(e) { // simply log all keypresses during the se
 	});
 });
 
-window.Session = {
-	'db': { // object where we hierarchically store all the session-related db
-		'number': session_number,
-		'condition': condition,
-		'loaded': mysqldate( new Date() ),
-		'loaded_unixtime': new Date().getTime(),
-		'browser': navigator.userAgent,
-		'window_width': $(window).width(),
-		'document_width': $(document).width(), // should be identical in full screen
-		'window_height': $(window).height(),
-		'document_height': $(document).height(),
-		'Trial': [] ,// array for all trials in this session
-	},
-	'interrupted': false,
-	'sequence_ocd': ocd_sequence,
-	'sequence_neutral': neutral_sequence,
-	'sequence_ocd_top': ocd_top_sequence,
-	'number_of_trials': number_of_trials,
-	'imgs': [],
-};
-
-Session.preLoad = (function() {
-	console.log('Session.preLoad');
-	
-	preload_these = ocd_imgs.concat(neutral_imgs);
-	var len = preload_these.length;
-    $(preload_these).each(function(index,img){
-		$('<img/>')[0].src = imgpath + img + ".jpg";
-    });
-});
-
-Session.preRender = (function() {
-	console.log('Session.preRender');
-	
-	for(i=0; i < Session.number_of_trials; i++) {
-		var toppath = imgpath + (Session.sequence_ocd_top[i] ?  Session.sequence_ocd[i] : Session.sequence_neutral[i] ) + ".jpg";
-		var botpath = imgpath + (Session.sequence_ocd_top[i] ?  Session.sequence_neutral[i] : Session.sequence_ocd[i] ) + ".jpg";
-		var imgdiv = $('<div class="trial_images" id="trial_images_'+i+'" style="display:none"><img class="top" src="' + toppath + '"><br></div>');
-		if(Session.number_of_trials-1 == i)
-			var botimg = $('<img class="bottom" src="'+ botpath + '">').one('load',Session.showTryoutInstructions);
-		else
-			var botimg = $('<img class="bottom" src="'+ botpath + '">');
-		Session.imgs[i] = imgdiv.append(botimg);
-		$('#trial').append(Session.imgs);
-	}
-});
-
-Session.showTryoutInstructions = (function() {
-	console.log('Session.showTryoutInstructions');
-	
-	if(Session.interrupted == true) return;
-	
-	Session.db.began = mysqldate( new Date() );
-	Session.db.began_unixtime = new Date().getTime();
-	Session.SessionBegan = performance.now();
-	Session.instructions = $('<div class="session_instructions">'+ session_tryout_instructions +'</div>');
-	
-	$('#trial div.session_begin').remove();
-	
-	$('#trial').append(Session.instructions);
-	
-	Session.waitForNextStep = setTimeout(function () {
-		$('#trial').children('.session_instructions').append($('<br><button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>').one('click',Session.beginTryout));
-		$(document).one('keydown',Session.beginTryout);
-	}, 6000); // wait for full-screen note to disappear
-});
-
-Session.beginTryout = (function() {
-	console.log('Session.beginTryout');	
-	$(window).on('keypress click',Reaction.logReaction); // log key strokes for the whole session, only attached once
-	Session.nextTrial();
-});
-
-Session.showTestInstructions = (function() {
-	console.log('Session.showTestInstructions');
-	
-	if(Session.interrupted == true) return;
-	
-	Session.instructions = $('<div class="session_instructions">'+ session_test_instructions +'</div>');
-	
-	$('#trial div.session_begin').remove();
-	
-	$('#trial').append(Session.instructions);
-	
-	
-	$('#trial').children('.session_instructions').append($('<br><button id="begin_trial" class="btn btn btn-success">' + begin_test_button +'</button>').one('click',Session.beginTest));
-	$(document).one('keydown',Session.beginTest);	
-});
-
-Session.beginTest = (function() {
-	console.log('Session.begin');	
-	Session.nextTrial();
-});
-
-Session.nextTrial = (function() {
-	console.log('Session.nextTrial');
-	
-	if(Session.interrupted == true) return;
-	
-	if(Session.number_of_trials == Session.db.Trial.length) // last trial
-		Session.end();
-	else {
-		Trial.current = Session.db.Trial.length;
-		Session.db.Trial.push( {
-			'number': Trial.current,
-			'ocd_image_id': Session.sequence_ocd[Trial.current],
-			'neutral_image_id': Session.sequence_neutral[Trial.current],
-			'ocd_on_top': (Session.sequence_ocd_top[Trial.current] ) ? 1:0,
-			'Reaction': [],
-			});
-			
-		if(condition == 'bias_assessment' || condition || 'bias_control')
-			Session.db.Trial[Trial.current].probe_on_top = ( ! Math.round(Math.random()) ) ? 1 : 0; // ! to ensure it's a bool
-		else if (condition == 'bias_manipulation')
-			Session.db.Trial[Trial.current].probe_on_top = (! Session.db.Trial[Trial.current].ocd_on_top) ? 1 : 0;
-		
-		Trial.begin();
-	}
-});
-//fixme: 11 trials, sollten 12 sein
-Session.end = (function() {
-	Session.db.ended = mysqldate( new Date() );
-	Session.db.ended_unixtime = new Date().getTime();
-	
-	console.log('Session.end');
-	var data = {TrainingSession: Session.db };
-	$.ajax('../TrainingSessions/ajaxAdd',{
-		data: data,
-		type: 'post',
-		cache: false,
-		complete: function (resp) {
-			console.log("Session.saved");
-			console.log(resp);
-		}
-	});
-	$(document).off("fullscreenchange"); // remove error message	
-	Session.end_message = $('<div class="session_end_message">' + session_end_message +'</div>');
-	$('#trial').empty();
-	$('#trial').append(Session.end_message);
-	$('#trial_outer').fullScreen(false); // leave fullscreen
-	$(window).off('keypress click',Reaction.logReaction); // stop log key strokes for the whole session
-	
-});
-
-Session.interrupt = (function() { // on leaving fullscreen
-	console.log('Session.interrupt');
-	clearTimeout(Session.waitForNextStep); // don't do next step
-	$(window).off('keydown'); // don't log valid responses anymore
-	$(window).off('keypress click',Reaction.logReaction); // stop log key strokes for the whole session
-	
-	Session.interrupted = true;
-	
-	Session.interruption = $('<div class="session_interruption">' + session_interruption + '</div>');
-	$('#trial').empty();
-	$('#trial').append(Session.interruption);
-});
-
-Session.fullscreenFail = (function() { // on leaving fullscreen
-	console.log('Session.fullscreenFail');
-	
-	Session.interrupt();
-	Session.fail = $('<div class="session_fail">' + session_fullscreenFail + '</div>');
-	$('#trial').empty();
-	$('#trial').append(Session.fail);
-});
-
-Session.featureFail = (function() { // on leaving fullscreen
-	console.log('Session.featureFail');
-	
-	Session.interrupt();
-	Session.fail = $('<div class="session_fail">' + session_featureFail + '</div>');
-	$('#trial').empty();
-	$('#trial').append(Session.fail);
-});
-
-$(document).ready(function () {
-	Session.preLoad(); // call it on domready to load
-	
-	$(document).one("fullscreenerror", Session.fullscreenFail);
-	$(document).on("fullscreenchange", function () {
-		if( $('#trial_outer').fullScreen() == false || $('#trial_outer').fullScreen() == null) { // if they have left fullscreenchange
-			Session.interrupt();
-		}
-	}); // only does something if fullscreen was left
-	
-	$('#begin_session').click(function () {
-		if(!($.support.ajax && $.support.boxModel && $.support.opacity)) {
-			Session.featureFail();
-		}
-		else if($('#trial_outer').fullScreen() != null) { // supports full screen
-			$('#trial_outer').fullScreen(true);
-			
-			Session.preRender(); // pre render once button was clicked, runs session afterwards
-			
-		} else { // different browser needed
-			Session.fullscreenFail();
-		}
-		
-	});
-	
-});
 //]]>
 </script>
 <?php $this->end(); ?>

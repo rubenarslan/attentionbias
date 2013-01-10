@@ -4,34 +4,53 @@
    Author's custom styles
    ========================================================================== */
 
-.fixation {
-	font-size:2cm;
-	width:2cm;
-	height:2cm;
-	overflow:hidden;
-}
-#trial_outer {
+#session_outer {
 	display:table;
-	background-color:white;
+	background-color:black;
 	width:100%;
 	height:100%;  
 }
-
-
+#session {
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	background-color:black;
+	font:Verdana;
+	color:white;
+}
 #trial {
 	display:table-cell;
 	vertical-align:middle;
 	text-align:center;
-	background-color:white;
+	background-color:black;
+	font:Verdana;
+	color:white;
 }
 #trial>div {
 	margin-left:auto;
 	margin-right:auto;
 }
 
-.session_instructions {
-	font-size:0.5cm;
-	width:8cm;
+.session_begin, .session_first_instructions, .session_interruption, .session_featurefail, .session_fullscreenFail {
+	font-size:14pt;
+	text-align:left;
+}
+.session_interruption, .session_featurefail, .session_fullscreenFail {
+	color:red;
+}
+.session_walkthrough, .session_instructions, .trial_instructions {
+	font-size:16pt;
+	width:70%;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+.fixation {
+	font:Verdana;
+	font-size:2cm;
+	width:2cm;
+	height:2cm;
+	overflow:hidden;
 }
 
 .trial_images img {
@@ -42,6 +61,7 @@
 	margin-bottom:1cm;
 }
 .probe {
+	font:Verdana;
 	font-size:0.5cm;
 	margin-top:10cm;
 	width:14cm;
