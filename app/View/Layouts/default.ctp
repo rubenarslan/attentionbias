@@ -53,7 +53,7 @@
 							<li><?php echo $this->Html->link('Registrierung', '/users/register', array('class'=>'')); ?></li>
 							<?php }?>
                             <li><a href="#about">Informationen</a></li>
-                            <li><a href="mailto:zwangPSYCHOLOGIE@hu-berlin.de">Kontakt</a></li>
+                            <li><a href="mailto:<?=Configure::read('ContactEmail') ?>">Kontakt</a></li>
 							<li>
 						<?php
 						if(AuthComponent::user() === NULL) {
