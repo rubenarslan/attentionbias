@@ -62,7 +62,7 @@ class AppController extends Controller {
 	        $this->Auth->loginRedirect = array('controller' => 'Trials', 'action' => 'train');
 	}
 	public function isAuthorized($user = null, $request = null) {
-		$admin = $user['Group']['name']==='admin' OR $user['Group']['name']==='manager';
+		$admin = $user['Group']['name']==='admin';
 		if($admin) return $admin; # admins can do anything 
 	}
 }

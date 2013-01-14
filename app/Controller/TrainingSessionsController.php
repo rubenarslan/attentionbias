@@ -8,13 +8,10 @@ App::uses('AppController', 'Controller');
 class TrainingSessionsController extends AppController {
 
 	function isAuthorized($user = null, $request = null) {	
-		$admin = parent::isAuthorized($user); # allow admins to do anything
-		if($admin) return true;
-
 		$req_action = $this->request->params['action'];
 		if(in_array($req_action, array('ajaxAdd'))) return true; # viewing and adding is allowed to all registered users
 
-		$session_id = $this->request->params['pass'][0];
+/*		$session_id = $this->request->params['pass'][0];
 		$this->TrainingSession->id = $session_id;
 		if (!$this->TrainingSession->exists()) {
 		    throw new NotFoundException('Invalid training session.');
@@ -31,7 +28,8 @@ class TrainingSessionsController extends AppController {
 				return true;
 			}
 		}
-		return false;
+		*/
+		return parent::isAuthorized($user); # allow admins to do anything	
 	}
 /**
  * index method

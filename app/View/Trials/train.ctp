@@ -56,6 +56,10 @@ var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, e
 
 var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger ihrer rechten Hand auf den Buchstaben „' + key_top + '“ (für oben) und den ihrer linken Hand auf „' + key_bottom + '“ (für unten).<br>Ihre Finger sollten während der ganzen Aufgabe auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf die Position des Kreises reagieren können.<br>Wenn gleich der "Weiter"-Knopf erscheint, drücken Sie „' + key_top + '“ um anzufangen.';
 var begin_tryout_button = 'Drücken Sie „' + key_top + '“';
+var fast_and_right_feedback = 'Gut gemacht';
+var slow_and_wrong_feedback = 'Zu langsam und zu viele Fehler.';
+var slow_and_right_feedback = 'Zu langsam.';
+var fast_and_wrong_feedback = 'Zu viele Fehler.';
 
 var trial_test_instructions = 'Sehr gut, Sie haben die Übungsphase geschafft. Jetzt sind Sie bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: rechter Zeigefinger auf „' + key_top + '“ für oben und linker Zeigefinger auf „' + key_bottom + '“ für unten.<br><br>Es gibt ab jetzt keine Rückmeldungen mehr, ob Sie richtig oder falsch reagiert haben. Konzentrieren Sie sich einfach darauf, möglichst genau und schnell auf die Position des Kreises zu reagieren.<br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_top + '“ um jetzt anzufangen.</button>';
 
@@ -236,22 +240,43 @@ Session.showTryoutInstructions = (function() {
 	$('#trial').hide();
 	$('#session').show().empty();
 	
-	$('#session').append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br></div>'));
-	
-	Session.waitForNextStep = setTimeout(function () {
-		$('#session div.trial_instructions').append($('<button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>'));
-		$(document).on('keydown',function(e) {
-			if( String.fromCharCode( e.which )  == key_top)
-				Session.beginTryout();
-				$(document).off('keydown');
-		});
-	}, 6000); // wait for full-screen note to disappear, images to render
+	$('#session').append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br></div>').append($('<button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>')));
+	$(document).on('keydown',function(e) {
+		if( String.fromCharCode( e.which )  == key_top)
+			Session.beginTryout();
+			$(document).off('keydown');
+	});
 });
 
 Session.beginTryout = (function() {
 	console.log('Session.beginTryout');
 	$('#trial').show();
 	Session.nextTrial();
+});
+
+Session.showTryoutFeedback = (function() {
+	console.log('Session.showTryoutFeedback');
+	// % correct
+	// mean RT
+	// 4 FBs: Too slow & too wrong, too slow (but right), too wrong (but fast), everything dandy
+	var RTsum = 0; var Csum = 0;
+	for(i=0;i<number_of_test_trials;i++) {
+		RTsum += Session.db.Trial[i].first_reaction_time_since_probe_shown;
+		Csum += (Session.db.Trial[i].probe_on_top == Session.db.Trial[i].first_valid_response) ? 1 : 0;
+	}
+	var toowrong = false; var tooslow = false;
+	if(Csum < number_of_test_trials - 1) toowrong = true;
+	if(RTsum/number_of_test_trials > 300) tooslow = true;
+	
+	var tryout_feedback = fast_and_right_feedback;
+	if(tooslow && toowrong) tryout_feedback = slow_and_wrong_feedback;
+	else if(tooslow) tryout_feedback = slow_and_right_feedback;
+	else if(toowrong) tryout_feedback = fast_and_wrong_feedback;
+	
+	tryout_feedback = tryout_feedback + "<br><br>" + Csum + "/" + number_of_test_trials + " richtig.<br><br>" + "Durchschnittliche Reaktionszeit: " + Math.round(RTsum/number_of_test_trials) + " Millisekunden"; 
+	
+	$('#session').append($('<div class="trial_instructions">'+ tryout_feedback +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTestInstructions) )).show();
+		
 });
 
 Session.showTestInstructions = (function() {
@@ -347,7 +372,7 @@ Session.interrupt = (function() { // on leaving fullscreen
 	
 	Session.interruption = $('<div class="session_interruption">' + session_interruption + '</div>');
 	$('#trial').empty().hide();
-	$('#session').append(Session.interruption).show();
+	$('#session').empty().append(Session.interruption).show();
 });
 
 Session.fullscreenFail = (function() { // on leaving fullscreen
@@ -461,7 +486,7 @@ Trial.end = (function() { // log valid responses
 	if(Trial.current != number_of_test_trials - 1)
 		Session.nextTrial(); // trigger
 	else
-		Session.showTestInstructions();
+		Session.showTryoutFeedback();
 });
 
 

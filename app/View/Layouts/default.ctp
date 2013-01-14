@@ -45,10 +45,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">Zwangsstörung-Studie</a>
+                    <?php echo $this->Html->link('Zwangsstörung-Studie', '/', array('class' => 'brand')); ?>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><?php echo $this->Html->link('Startseite', '/'); ?></li>
 							<?php
 							if(AuthComponent::user() === NULL) { ?>
 							<li><?php echo $this->Html->link('Registrierung', '/users/register', array('class'=>'')); ?></li>
