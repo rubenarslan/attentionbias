@@ -88,6 +88,8 @@ var ocd_top_sequence = ocd_top_block1.concat(ocd_top_block2);
 
 var number_of_trials = ocd_sequence.length; // includes test trials, so increase it accordingly
 var number_of_test_trials = 10;
+var can_be_wrong = 1; // number of test trials that can be wrong without triggering neg. feedback
+var sufficiently_fast_reaction_time = 500; // if the subject's mean RT in the test trials is smaller than this: neg. feedback
 
 function repeatArray(arr, count) {
   var ln = arr.length;
@@ -266,8 +268,8 @@ Session.showTryoutFeedback = (function() {
 		Csum += (Session.db.Trial[i].probe_on_top == Session.db.Trial[i].first_valid_response) ? 1 : 0;
 	}
 	var toowrong = false; var tooslow = false;
-	if(Csum < number_of_test_trials - 1) toowrong = true;
-	if(RTsum/number_of_test_trials > 300) tooslow = true;
+	if(Csum < number_of_test_trials - can_be_wrong) toowrong = true;
+	if(RTsum/number_of_test_trials > sufficiently_fast_reaction_time) tooslow = true;
 	
 	var tryout_feedback = fast_and_right_feedback;
 	if(tooslow && toowrong) tryout_feedback = slow_and_wrong_feedback;
