@@ -65,8 +65,8 @@ var trial_test_instructions = 'Sehr gut, Sie haben die Übungsphase geschafft. J
 
 var mistake_message = 'Falsche Antwort.';
 
-var session_end_message = 'Ende der Aufgabe. Sie haben es geschafft.<br><br>Vielen Dank für Ihre Teilnahme!';
-var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen.';
+var session_end_message = 'Ende der Aufgabe. Sie haben es geschafft.<br><br>Vielen Dank für Ihre Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :-)';
+var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen und verlassen Sie nicht den Test. Bitte schließen Sie vor dem Test Programme, die Sie während des Tests ablenken könnten (durch Töne oder indem sie Sie zwingen, das Test-Fenster zu verlassen).';
 var session_fullscreenFail = 'Ihr Web-Browser scheint den Vollbildmodus nicht zu unterstützen. Ein alternativer Browser ist z.B. <a href="http://getfirefox.com">Firefox</a>.';
 var session_featureFail = 'Ihr Web-Browser unterstützt nötige Funktionen nciht. Ein alternativer Browser ist z.B. <a href="http://getfirefox.com">Firefox</a>.';
 var go_on_button_message = 'Weiter';
@@ -250,6 +250,7 @@ Session.showTryoutInstructions = (function() {
 
 Session.beginTryout = (function() {
 	console.log('Session.beginTryout');
+	$(window).blur(Session.interrupt);
 	$('#trial').show();
 	Session.nextTrial();
 });
@@ -367,6 +368,8 @@ Session.interrupt = (function() { // on leaving fullscreen
 	clearTimeout(Session.waitForNextStep); // don't do next step
 	$(window).off('keydown'); // don't log valid responses anymore
 	$(window).off('keypress click',Reaction.logReaction); // stop log key strokes for the whole session
+	$(document).off("fullscreenchange"); // remove error message	
+	$('#session_outer').fullScreen(false); // leave fullscreen
 	
 	Session.interrupted = true;
 	
