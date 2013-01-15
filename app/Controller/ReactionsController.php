@@ -7,12 +7,9 @@ class TrialsController extends AppController {
 
 		return parent::isAuthorized($user); # allow admins to do anything
 	}
-	public function train() {
-		
-	}
 	function admin_export($exportformat='CSV')
 		{
-			$toExport = $this->Trial->find('all');
+			$toExport = $this->Reaction->find('all');
 
 		    $this->set(compact('toExport','exportformat'));
 			if($exportformat=='excel') $this->layout = 'export_xls';

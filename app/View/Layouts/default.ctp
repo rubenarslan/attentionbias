@@ -53,6 +53,7 @@
 							<li><?php echo $this->Html->link('Registrierung', '/users/register', array('class'=>'')); ?></li>
 							<?php }?>
                             <li><a href="#about">Informationen</a></li>
+                            <li><?php echo $this->Html->link('Trainieren', '/trials/train', array('class'=>'')); ?></li>
                             <li><a href="mailto:<?=Configure::read('ContactEmail') ?>">Kontakt</a></li>
 							<li>
 						<?php
@@ -82,11 +83,36 @@
 								'class' => 'btn',
 								'div' => false,
 							)); 
+							echo "</li>";
 						}
-						else { ?>
-							<?php echo $this->Html->link("Logout ".AuthComponent::user('email'), '/users/logout'); ?>
-						<?php } ?>
-						</li>
+						else {
+							echo $this->Html->link("Logout ".AuthComponent::user('email'), '/users/logout'). "</li>";
+							if(AuthComponent::user('Group.name')==='admin') {
+								?>
+						  <li class="dropdown">
+						    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						      Admin
+						      <b class="caret"></b>
+						    </a>
+						    <ul class="dropdown-menu">
+								<li><?=$this->Html->link("Show users",   '/admin/users/index'); ?></li>
+								<li class="divider"></li>
+								<li><?=$this->Html->link("Export Trials as CSV",     '/admin/trials/export/CSV'); ?></li>
+								<li><?=$this->Html->link("Export Trials as TSV",     '/admin/trials/export/TSV'); ?></li>
+								<li><?=$this->Html->link("Export Trials as Excel",   '/admin/trials/export/excel'); ?></li>
+								<li class="divider"></li>                             
+								<li><?=$this->Html->link("Export Sessions as CSV",   '/admin/trainingSessions/export/CSV'); ?></li>
+								<li><?=$this->Html->link("Export Sessions as TSV",   '/admin/trainingSessions/export/TSV'); ?></li>
+								<li><?=$this->Html->link("Export Sessions as Excel", '/admin/trainingSessions/export/excel'); ?></li>
+								<li class="divider"></li>                             
+								<li><?=$this->Html->link("Export Reactions as CSV",  '/admin/reactions/export/CSV'); ?></li>
+								<li><?=$this->Html->link("Export Reactions as TSV",  '/admin/reactions/export/TSV'); ?></li>
+								<li><?=$this->Html->link("Export Reactions as Excel",'/admin/reactions/export/excel'); ?></li>
+						    </ul>
+						  </li>
+								<?php
+							}
+					 	} ?>
 						</ul>
                     </div><!--/.nav-collapse -->
                 </div>

@@ -11,25 +11,7 @@ class TrainingSessionsController extends AppController {
 		$req_action = $this->request->params['action'];
 		if(in_array($req_action, array('ajaxAdd'))) return true; # viewing and adding is allowed to all registered users
 
-/*		$session_id = $this->request->params['pass'][0];
-		$this->TrainingSession->id = $session_id;
-		if (!$this->TrainingSession->exists()) {
-		    throw new NotFoundException('Invalid training session.');
-		}
-		else {
-			$allowed = $this->TrainingSession->find('first',array(
-				"recursive" => -1,
-				"conditions" => array(
-					'user_id' => $this->Auth->user('id'),
-					'id' => $session_id
-					)
-				));
-			if( $allowed['Codedpaper']['user_id'] == $this->Auth->user('id')) { # is this the creator of the coded paper
-				return true;
-			}
-		}
-		*/
-		return parent::isAuthorized($user); # allow admins to do anything	
+		return parent::isAuthorized($user, $request); # allow admins to do anything	
 	}
 /**
  * index method
@@ -78,6 +60,17 @@ class TrainingSessionsController extends AppController {
 				echo 'Not your session.';
 			}
 		}
+	}
+	function admin_export($exportformat='CSV')
+		{
+			$toExport = $this->TrainingSession->find('all');
+
+		    $this->set(compact('toExport','exportformat'));
+			if($exportformat=='excel') $this->layout = 'export_xls';
+			else { 
+				$this->layout = null;
+		    	$this->autoLayout = false;
+			}
 	}
 
 	public function add() {

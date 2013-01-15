@@ -4,7 +4,7 @@ header ("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
 header ("Cache-Control: no-cache, must-revalidate");
 header ("Pragma: no-cache");
 header ("Content-type: application/vnd.ms-excel");
-header ("Content-Disposition: attachment; filename=\"".date('Ymdhis').".joinedCodedpapers.xls" );
+header ("Content-Disposition: attachment; filename=\"".date('Ymdhis').".".$title_for_layout.".xls" );
 header ("Content-Description: Generated Report" );
 ?>
-<?php echo $content_for_layout ?> 
+<?php echo $content_for_layout ?>

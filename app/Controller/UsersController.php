@@ -19,6 +19,7 @@ class UsersController extends AppController {
 	public function logout() {
 	    $this->redirect($this->Auth->logout());
 	}
+	
     public function register() {
         if ($this->request->is('post')) {
             $this->User->create();
