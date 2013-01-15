@@ -101,16 +101,16 @@ function repeatArray(arr, count) {
 }
 
 function shuffle ( myArray ) {
-  var i = myArray.length;
-  if ( i == 0 ) return false;
-  while ( --i ) {
-     var j = Math.floor( Math.random() * ( i + 1 ) );
-     var tempi = myArray[i];
-     var tempj = myArray[j];
-     myArray[i] = tempj;
-     myArray[j] = tempi;
-   }
- return myArray;
+	var i = myArray.length;
+	if ( i == 0 ) return false;
+	while ( --i ) {
+		var j = Math.floor( Math.random() * ( i + 1 ) );
+		var tempi = myArray[i];
+		var tempj = myArray[j];
+		myArray[i] = tempj;
+		myArray[j] = tempi;
+	}
+	return myArray;
 }
 function mysqldate (myDate) {
 	var myDate_string = myDate.toISOString();
@@ -124,8 +124,7 @@ performance.now = (function() {
          performance.mozNow    ||
          performance.msNow     ||
          performance.oNow      ||
-         performance.webkitNow ||
-         function() { return new Date().getTime(); };
+         performance.webkitNow
 })();
 
 
@@ -177,7 +176,7 @@ Session.preLoad = (function() {
 });
 
 Session.featureDetection = (function () {
-	if(!($.support.ajax && $.support.boxModel && $.support.opacity)) {
+	if(!($.support.ajax && $.support.boxModel && $.support.opacity && performance.now)) {
 		Session.featureFail();
 	}
 	else {
@@ -187,7 +186,7 @@ Session.featureDetection = (function () {
 
 Session.firstInstructions = (function () {
 	$('#session div.session_begin').hide();
-	$('#session').append($('<div class="session_first_instructions">'+ session_first_instructions +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.goFullscreen)));
+	$('#session').append($('<div class="session_first_instructions">'+ session_first_instructions +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.goFullscreen)));
 });
 
 Session.goFullscreen = (function () {
@@ -218,22 +217,21 @@ Session.preRender = (function() {
 Session.showWalkthrough1 = (function() {
 	$('#session div.session_first_instructions').hide();
 	$('#session div.session_walkthrough:visible').hide();
-	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough1 +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough2)));
+	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough1 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough2)));
 });
 
 Session.showWalkthrough2 = (function() {
 	$('#session div.session_walkthrough:visible').hide();
-	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough2 +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough3)));
+	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough2 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough3)));
 });
 Session.showWalkthrough3 = (function() {
 	$('#session div.session_walkthrough:visible').hide();
-	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough3 +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough4)));
+	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough3 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough4)));
 });
 Session.showWalkthrough4 = (function() {
 	$('#session div.session_walkthrough:visible').hide();
-	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough4 +'<br></div>').append( $('<button class="btn btn-large">' + back_button_message + '</button>').one('click', Session.showWalkthrough1) ).append( $('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTryoutInstructions) ) );
+	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough4 +'<br><br></div>').append( $('<button class="btn btn-large">' + back_button_message + '</button>').one('click', Session.showWalkthrough1) ).append( $('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTryoutInstructions) ) );
 });
-
 
 Session.showTryoutInstructions = (function() {
 	console.log('Session.showTryoutInstructions');
@@ -242,7 +240,7 @@ Session.showTryoutInstructions = (function() {
 	$('#trial').hide();
 	$('#session').show().empty();
 	
-	$('#session').append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br></div>').append($('<button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>')));
+	$('#session').append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br><br></div>').append($('<button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>')));
 	$(document).on('keydown',function(e) {
 		if( String.fromCharCode( e.which )  == key_top)
 			Session.beginTryout();
@@ -278,7 +276,7 @@ Session.showTryoutFeedback = (function() {
 	
 	tryout_feedback = tryout_feedback + "<br><br>" + Csum + "/" + number_of_test_trials + " richtig.<br><br>" + "Durchschnittliche Reaktionszeit: " + Math.round(RTsum/number_of_test_trials) + " Millisekunden"; 
 	
-	$('#session').append($('<div class="trial_instructions">'+ tryout_feedback +'<br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTestInstructions) )).show();
+	$('#session').append($('<div class="trial_instructions">'+ tryout_feedback +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTestInstructions) )).show();
 		
 });
 

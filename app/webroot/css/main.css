@@ -41,7 +41,7 @@
 .session_walkthrough, .session_instructions, .trial_instructions {
 	font-size:16pt;
 	width:70%;
-	text-align:center;
+	text-align:left;
 	margin-left:auto;
 	margin-right:auto;
 }
