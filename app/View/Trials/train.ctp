@@ -292,7 +292,7 @@ Session.showTestInstructions = (function() {
 	
 	$(document).on('keydown',function(e) {
 		if( String.fromCharCode( e.which )  == key_top)
-			Session.beginTryout();
+			Session.beginTest();
 			$(document).off('keydown');
 	});
 });
@@ -339,6 +339,7 @@ Session.nextTrial = (function() {
 		Trial.begin();
 	}
 });
+//SELECT AVG(fixation_duration),STDDEV(fixation_duration),AVG(images_duration),STDDEV(images_duration) FROM trials 	 WHERE 1
 
 Session.end = (function() {
 	Session.db.ended = mysqldate( new Date() );
@@ -356,6 +357,7 @@ Session.end = (function() {
 		}
 	});
 	$(document).off("fullscreenchange"); // remove error message	
+	$(window).off("blur"); // remove error message	
 	$('#trial').empty().hide();
 	$('#session').append($('<div class="session_end_message">' + session_end_message +'</div>')).show();
 	$('#session_outer').fullScreen(false); // leave fullscreen
@@ -424,23 +426,28 @@ Trial.showImages = (function() {
 	console.log('Trial.showImages');
 	
 	$('#trial div.fixation').hide();
+	$(window).one('MozAfterPaint', function () {
+		Trial.FixationHidden = performance.now();
+	});
 	$('#trial_images_'+Trial.current).show();
 	Trial.ImagesShown = performance.now();
 
 	Trial.CurrentlyDisplayed = 'images';
-	
-	
+
 	Session.waitForNextStep = setTimeout(Trial.showProbe, img_duration);
 });
 
 Trial.showProbe = (function() {
 	console.log('Trial.showProbe');
-	
+
+	$(window).one('MozAfterPaint', function () {
+		Trial.ImagesHidden = performance.now();
+	});
 	$('#trial_images_'+Trial.current).hide();
+	Trial.ProbeShown = performance.now();
 							// is the probe on top or not?
 	$('#trial div.probe').toggleClass('probe_on_top',!! Session.db.Trial[Trial.current].probe_on_top).show(); // !! to ensure it's cast as a bool
 
-	Trial.ProbeShown = performance.now();
 	Trial.CurrentlyDisplayed = 'probe';
 	$(window).on('keydown',Trial.response);
 });
@@ -485,6 +492,7 @@ Trial.showMistakeMessage = (function() { // log valid responses
 
 Trial.end = (function() { // log valid responses
 	Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesShown - Trial.FixationShown;
+	Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesHidden - Trial.FixationHidden;
 	Session.db.Trial[Trial.current].images_duration = Trial.ProbeShown - Trial.ImagesShown;
 	if(Trial.current != number_of_test_trials - 1)
 		Session.nextTrial(); // trigger
@@ -512,7 +520,6 @@ Reaction.logReaction = (function(e) { // simply log all keypresses during the se
 		'currently_displayed': Trial.CurrentlyDisplayed
 	});
 });
-
 //]]>
 </script>
 <?php $this->end(); ?>
