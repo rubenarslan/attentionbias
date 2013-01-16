@@ -17,11 +17,6 @@ Bitte klicken Sie auf „Weiter“, um zu den Instruktionen zu gelangen.</p>
 <script src="<?php echo $this->webroot; ?>js/jquery.fullscreen.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-/* TODO:
-* feedback
-*/
-
-
 /*
 --------- CONFIGURATION
  */
@@ -46,12 +41,12 @@ var neutral_imgs = [4, 5, 6];
 /*
 ---- INSTRUCTIONS, localisation
 */
-var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen, und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy, möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook), etc. aus, damit Sie möglichst nicht gestört werden.<br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab.<br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen, und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy, möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook) etc. aus, damit Sie möglichst nicht gestört werden.<br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab.<br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 
-var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte fixieren Sie dieses Kreuz am Anfang jedes Durchgangs, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 var session_walkthrough2 = 'Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
-var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten ein weißer Kreis auf dem Bildschirm.<br>Ihre Aufgabe ist es, auf die Position des Kreises (oben oder unten) zu reagieren, indem Sie die entsprechende Taste auf der Tastatur drücken.<br><br>Befindet sich der Kreis oben, drücken Sie bitte „' + key_top + '“, befindet er sich unten, drücken Sie bitte „' + key_bottom + '“.<br><br>Dabei ist es wichtig, dass Sie so schnell und genau wie möglich reagieren.<br><br>Im Beispiel unten wäre „' + key_top + '“ die richtige Antwort, da der Kreis sich oben befindet.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
-var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm und der nächste Durchgang beginnt.<br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet. (Hier bekommen Sie nach jeder Reaktion Feedback, ob Sie richtig oder falsch reagiert haben.)<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
+var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten ein weißer Kreis auf dem Bildschirm.<br>Ihre Aufgabe ist es, auf die Position des Kreises (oben oder unten) zu reagieren, indem Sie die entsprechende Taste auf der Tastatur drücken.<br><br>Befindet sich der Kreis oben, drücken Sie bitte „' + key_top + '“. Befindet sich der Kreis unten, drücken Sie bitte „' + key_bottom + '“.<br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich auf die Position des Kreises reagieren.<br><br>Im gezeigten Beispiel wäre „' + key_top + '“ die richtige Antwort, da der Kreis sich oben befindet.<br> Als Eselsbrücke können Sie sich merken „' + key_top + '“ wie der Anfangsbuchstabe von „oben“ und „' + key_bottom + '“ wie eine Spitze, die nach „unten“ zeigt“. <br> Außerdem liegt „' + key_top + '“ weiter oben auf der Tastatur und „' + key_bottom + '“ weiter unten.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm, das Sie anschauen sollen, und der nächste Durchgang beginnt.<br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet. (Hier bekommen Sie nach jeder Reaktion Feedback, ob Sie richtig oder falsch reagiert haben.)<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
 
 
 var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger ihrer rechten Hand auf den Buchstaben „' + key_top + '“ (für oben) und den ihrer linken Hand auf „' + key_bottom + '“ (für unten).<br>Ihre Finger sollten während der ganzen Aufgabe auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf die Position des Kreises reagieren können.<br>Wenn gleich der "Weiter"-Knopf erscheint, drücken Sie „' + key_top + '“ um anzufangen.';
@@ -65,7 +60,7 @@ var trial_test_instructions = 'Sehr gut, Sie haben die Übungsphase geschafft. J
 
 var mistake_message = 'Falsche Antwort.';
 
-var session_end_message = 'Ende der Aufgabe. Sie haben es geschafft.<br><br>Vielen Dank für Ihre Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :-)';
+var session_end_message = 'Ende der Aufgabe. Sie haben es geschafft.<br><br>Vielen Dank für Ihre Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :)';
 var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen und verlassen Sie nicht den Test. Bitte schließen Sie vor dem Test Programme, die Sie während des Tests ablenken könnten (durch Töne oder indem sie Sie zwingen, das Test-Fenster zu verlassen).';
 var session_fullscreenFail = 'Ihr Web-Browser scheint den Vollbildmodus nicht zu unterstützen. Ein alternativer Browser ist z.B. <a href="http://getfirefox.com">Firefox</a>.';
 var session_featureFail = 'Ihr Web-Browser unterstützt nötige Funktionen nciht. Ein alternativer Browser ist z.B. <a href="http://getfirefox.com">Firefox</a>.';
@@ -81,7 +76,7 @@ var ocd_block2 = repeatArray(shuffle(ocd_imgs), ocd_imgs.length *2 );
 var neutral_block2 = repeatArray(shuffle(neutral_imgs), ocd_imgs.length *2 );
 var ocd_top_block2 = shuffle(repeatArray([false,true], ocd_imgs.length));
 ocd_top_block2 = ocd_top_block2.concat( $.makeArray( $(ocd_top_block2).map(function(m) { return !m; }) ) );
-
+ // todo: shuffle pairs
 var ocd_sequence = ocd_block1.concat(ocd_block2);
 var neutral_sequence = neutral_block1.concat(neutral_block2);
 var ocd_top_sequence = ocd_top_block1.concat(ocd_top_block2);
@@ -127,6 +122,20 @@ performance.now = (function() {
          performance.webkitNow
 })();
 
+(function($){  
+ $.fn.makeVisible = function() {  
+    return this.css('visibility','visible');
+ };  
+})(jQuery);
+(function($){  
+ $.fn.makeInvisible = function() {  
+    return this.css('visibility','hidden');
+ };  
+})(jQuery);
+
+/* ====================================
+   SESSION LOGIC
+   ==================================== */
 
 $(document).ready(function () {
 	Session.preLoad(); // call it on domready to preload images
@@ -139,7 +148,7 @@ $(document).ready(function () {
 	}); // only does something if fullscreen was left
 	
 	$('#session div.session_begin').empty();
-	$('#trial').hide();
+	$('#trial').makeInvisible();
 	$('#session div.session_begin').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').click(Session.featureDetection));
 	
 });
@@ -168,11 +177,33 @@ window.Session = {
 Session.preLoad = (function() {
 	console.log('Session.preLoad');
 	
+	var swidth = screen.width;
+	var sheight = screen.height;
+	var available_sheights = [600,720,768,800,900,1024,1200,1440];
+	var chosen_height = available_sheights.sort(function (a, b) {
+		if(b - sheight < 0 && a - sheight < 0) // can't use either
+			return 0;
+		if(b - sheight < 0)
+			return -1;
+		if(a - sheight < 0) // can't use this screen width
+			return 1; // b is better
+		// we only get here if both A and B are smaller than SH
+		if(a - sheight < b - sheight)
+			return -1; // a is a closer fit
+		if(a - sheight > b - sheight)
+			return 1; // b is a closer fit
+		// no 0 case, the values can't be equally close
+	})[0]; // take the first one
+	imgpath += chosen_height + "/";
+	$('#trial').addClass('sh' + chosen_height);
+	
 	preload_these = ocd_imgs.concat(neutral_imgs);
 	var len = preload_these.length;
     $(preload_these).each(function(index,img){
 		$('<img/>')[0].src = imgpath + img + ".jpg";
     });
+	$('<img/>')[0].src = imgpath + "fixation.png";
+	$('<img/>')[0].src = imgpath + "probe.png";
 });
 
 Session.featureDetection = (function () {
@@ -185,12 +216,14 @@ Session.featureDetection = (function () {
 });
 
 Session.firstInstructions = (function () {
-	$('#session div.session_begin').hide();
+	$('#session div.session_begin').makeInvisible();
 	$('#session').append($('<div class="session_first_instructions">'+ session_first_instructions +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.goFullscreen)));
 });
 
 Session.goFullscreen = (function () {
 	if($('#session_outer').fullScreen() != null) { // supports full screen
+		$('#trial').addClass('fullscreen');
+		$('#session').addClass('fullscreen');
 		$('#session_outer').fullScreen(true);
 		Session.preRender(); // pre render once button was clicked, runs session afterwards		
 	} else { // different browser needed
@@ -204,32 +237,31 @@ Session.preRender = (function() {
 	for(i=0; i < Session.number_of_trials; i++) {
 		var toppath = imgpath + (Session.sequence_ocd_top[i] ?  Session.sequence_ocd[i] : Session.sequence_neutral[i] ) + ".jpg";
 		var botpath = imgpath + (Session.sequence_ocd_top[i] ?  Session.sequence_neutral[i] : Session.sequence_ocd[i] ) + ".jpg";
-		var imgdiv = $('<div class="trial_images" id="trial_images_'+i+'" style="display:none"><img class="top" src="' + toppath + '"><br></div>');
-		if(Session.number_of_trials-1 == i)
-			var botimg = $('<img class="bottom" src="'+ botpath + '">').one('load',Session.showWalkthrough1);
-		else
-			var botimg = $('<img class="bottom" src="'+ botpath + '">');
-		Session.imgs[i] = imgdiv.append(botimg);
-		$('#trial').append(Session.imgs);
+		var imgdiv = $('<div class="trial_images" id="trial_images_'+i+'" style="visibility:hidden"><img class="top" src="' + toppath + '"><img class="bottom" src="'+ botpath + '"></div>');
+		Session.imgs[i] = imgdiv;
 	}
+		$('#trial').append(Trial.fixation,Trial.probe,Trial.mistake_message);
+		$('#probe').append($('<img src="' +imgpath+ 'probe.png'  + '">'));
+		$('#fixation').append($('<img src="' +imgpath+ 'fixation.png'  + '">').one('load',Session.showWalkthrough1));
+		$('#trial').append(Session.imgs);
 });
 
 Session.showWalkthrough1 = (function() {
-	$('#session div.session_first_instructions').hide();
-	$('#session div.session_walkthrough:visible').hide();
+	$('#session div.session_first_instructions').makeInvisible();
+	$('#session div.session_walkthrough:visible').makeInvisible();
 	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough1 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough2)));
 });
 
 Session.showWalkthrough2 = (function() {
-	$('#session div.session_walkthrough:visible').hide();
+	$('#session div.session_walkthrough:visible').makeInvisible();
 	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough2 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough3)));
 });
 Session.showWalkthrough3 = (function() {
-	$('#session div.session_walkthrough:visible').hide();
+	$('#session div.session_walkthrough:visible').makeInvisible();
 	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough3 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough4)));
 });
 Session.showWalkthrough4 = (function() {
-	$('#session div.session_walkthrough:visible').hide();
+	$('#session div.session_walkthrough:visible').makeInvisible();
 	$('#session').append($('<div class="session_walkthrough">'+ session_walkthrough4 +'<br><br></div>').append( $('<button class="btn btn-large">' + back_button_message + '</button>').one('click', Session.showWalkthrough1) ).append( $('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTryoutInstructions) ) );
 });
 
@@ -237,8 +269,8 @@ Session.showTryoutInstructions = (function() {
 	console.log('Session.showTryoutInstructions');
 	if(Session.interrupted == true) return;
 	
-	$('#trial').hide();
-	$('#session').show().empty();
+	$('#trial').makeInvisible();
+	$('#session').makeVisible().empty();
 	
 	$('#session').append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br><br></div>').append($('<button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>')));
 	$(document).on('keydown',function(e) {
@@ -250,8 +282,9 @@ Session.showTryoutInstructions = (function() {
 
 Session.beginTryout = (function() {
 	console.log('Session.beginTryout');
-	$(window).blur(Session.interrupt);
-	$('#trial').show();
+	$('#session').makeInvisible();
+//	$(window).blur(Session.interrupt); // todo: remove
+	$('#trial').makeVisible();
 	Session.nextTrial();
 });
 
@@ -275,8 +308,9 @@ Session.showTryoutFeedback = (function() {
 	else if(toowrong) tryout_feedback = fast_and_wrong_feedback;
 	
 	tryout_feedback = tryout_feedback + "<br><br>" + Csum + "/" + number_of_test_trials + " richtig.<br><br>" + "Durchschnittliche Reaktionszeit: " + Math.round(RTsum/number_of_test_trials) + " Millisekunden"; 
-	
-	$('#session').append($('<div class="trial_instructions">'+ tryout_feedback +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTestInstructions) )).show();
+
+	$('#trial').makeInvisible();
+	$('#session').append($('<div class="trial_instructions">'+ tryout_feedback +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTestInstructions) )).makeVisible();
 		
 });
 
@@ -284,8 +318,8 @@ Session.showTestInstructions = (function() {
 	console.log('Session.showTestInstructions');
 	
 	if(Session.interrupted == true) return;
-	$('#trial').hide();
-	$('#session').show().empty();
+	$('#trial').makeInvisible();
+	$('#session').makeVisible().empty();
 	
 	
 	$('#session').append($('<div class="trial_instructions">'+ trial_test_instructions +'</div>'));
@@ -310,7 +344,8 @@ Session.beginTest = (function() {
 	Session.db.began_unixtime = new Date().getTime();
 	Session.SessionBegan = performance.now();
 
-	$('#trial').show();
+	$('#session').makeInvisible();
+	$('#trial').makeVisible();
 	Session.nextTrial();
 });
 
@@ -357,9 +392,12 @@ Session.end = (function() {
 		}
 	});
 	$(document).off("fullscreenchange"); // remove error message	
-	$(window).off("blur"); // remove error message	
-	$('#trial').empty().hide();
-	$('#session').append($('<div class="session_end_message">' + session_end_message +'</div>')).show();
+	$(window).off("blur"); // remove error message
+	$('#trial').removeClass('fullscreen');
+	$('#session').removeClass('fullscreen');
+	
+	$('#trial').empty().makeInvisible();
+	$('#session').append($('<div class="session_end_message">' + session_end_message +'</div>')).makeVisible();
 	$('#session_outer').fullScreen(false); // leave fullscreen
 	$(window).off('keypress click',Reaction.logReaction); // stop log key strokes for the whole session
 	
@@ -372,12 +410,14 @@ Session.interrupt = (function() { // on leaving fullscreen
 	$(window).off('keypress click',Reaction.logReaction); // stop log key strokes for the whole session
 	$(document).off("fullscreenchange"); // remove error message	
 	$('#session_outer').fullScreen(false); // leave fullscreen
+	$('#trial').removeClass('fullscreen');
+	$('#session').removeClass('fullscreen');
 	
 	Session.interrupted = true;
 	
 	Session.interruption = $('<div class="session_interruption">' + session_interruption + '</div>');
-	$('#trial').empty().hide();
-	$('#session').empty().append(Session.interruption).show();
+	$('#trial').empty().makeInvisible();
+	$('#session').empty().append(Session.interruption).makeVisible();
 });
 
 Session.fullscreenFail = (function() { // on leaving fullscreen
@@ -385,7 +425,7 @@ Session.fullscreenFail = (function() { // on leaving fullscreen
 	
 	Session.interrupt();
 	Session.fail = $('<div class="session_fail">' + session_fullscreenFail + '</div>');
-	$('#session').append(Session.fail).show();
+	$('#session').append(Session.fail).makeVisible();
 });
 
 Session.featureFail = (function() { // on leaving fullscreen
@@ -393,28 +433,31 @@ Session.featureFail = (function() { // on leaving fullscreen
 	
 	Session.interrupt();
 	Session.fail = $('<div class="session_fail">' + session_featureFail + '</div>');
-	$('#session').append(Session.fail).show();
+	$('#session').append(Session.fail).makeVisible();
 });
 
+/* ====================================
+   TRIAL LOGIC
+   ==================================== */
+
 window.Trial = {
-	'fixation': $('<div style="display:none" class="fixation">+</div>'),
-	'probe': $('<div style="display:none" class="probe">●</div>'),
-	'mistake_message': $('<div style="display:none" class="mistake_message">' + mistake_message + '</div>'),
+	'fixation': $('<div style="visibility:hidden" id="fixation"></div>'),
+	'probe': $('<div style="visibility:hidden" id="probe"></div>'),
+	'mistake_message': $('<div style="visibility:hidden" class="mistake_message">' + mistake_message + '</div>'),
 	'CurrentlyDisplayed': 'nothing',
 };
 
 Trial.begin = (function() { // start a trial
 	console.log('Trial.begin');
 	Session.db.Trial[Trial.current].began_unixtime = new Date().getTime();
-	$('#session').empty().hide();
-	$('#trial').append(Trial.fixation,Trial.probe,Trial.mistake_message);
+	$('#session').empty().makeInvisible();
 	Trial.showFixation();
 });
 
 Trial.showFixation = (function() { 
 	console.log('Trial.showFixation');
 	
-	$('#trial div.fixation').show();
+	$('#trial div#fixation').makeVisible();
 	Trial.FixationShown = performance.now();
 	
 	Trial.CurrentlyDisplayed = 'fixation';
@@ -425,11 +468,13 @@ Trial.showFixation = (function() {
 Trial.showImages = (function() { 
 	console.log('Trial.showImages');
 	
-	$('#trial div.fixation').hide();
+	$('#trial div#fixation').makeInvisible();
 	$(window).one('MozAfterPaint', function () {
 		Trial.FixationHidden = performance.now();
 	});
-	$('#trial_images_'+Trial.current).show();
+	window.console.markTimeline("before making images visible");
+	$('#trial_images_'+Trial.current).makeVisible();
+	window.console.markTimeline("after making images visible");
 	Trial.ImagesShown = performance.now();
 
 	Trial.CurrentlyDisplayed = 'images';
@@ -443,10 +488,12 @@ Trial.showProbe = (function() {
 	$(window).one('MozAfterPaint', function () {
 		Trial.ImagesHidden = performance.now();
 	});
-	$('#trial_images_'+Trial.current).hide();
+	window.console.markTimeline("before making images INvisible");
+	$('#trial_images_'+Trial.current).makeInvisible();
+	window.console.markTimeline("after making images INvisible");
 	Trial.ProbeShown = performance.now();
 							// is the probe on top or not?
-	$('#trial div.probe').toggleClass('probe_on_top',!! Session.db.Trial[Trial.current].probe_on_top).show(); // !! to ensure it's cast as a bool
+	$('#trial div#probe').toggleClass('probe_on_top',!! Session.db.Trial[Trial.current].probe_on_top).makeVisible(); // !! to ensure it's cast as a bool
 
 	Trial.CurrentlyDisplayed = 'probe';
 	$(window).on('keydown',Trial.response);
@@ -465,7 +512,7 @@ Trial.response = (function(e) { // log valid responses
 		Session.db.Trial[Trial.current].first_valid_response = (key == key_top) ? 1 : 0; // bool: pressed top, false = pressed bottom
 		$(window).off('keydown',Trial.response); // just one valid response per trial
 		
-		$('#trial div.probe').hide();
+		$('#trial div#probe').makeInvisible();
 		
 		
 		if(Trial.current > number_of_test_trials - 1) // for non test trials
@@ -483,9 +530,9 @@ Trial.response = (function(e) { // log valid responses
 
 
 Trial.showMistakeMessage = (function() { // log valid responses
-	$('#trial div.mistake_message').show();
+	$('#trial div.mistake_message').makeVisible();
 	Session.waitForNextStep = setTimeout(function() {
-		$('#trial div.mistake_message').hide();
+		$('#trial div.mistake_message').makeInvisible();
 		Trial.end()
 	}, mistake_message_duration);
 });

@@ -3,34 +3,33 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+#flashMessage {
+	color: #3a87ad;
+	font-weight:bold;
+}
 
+/* ==========================================================================
+   Styles for attention training session
+   ========================================================================== */
 #session_outer {
-	display:table;
-	background-color:black;
+	display:block;
 	width:100%;
-	height:100%;  
+	height:100%;
 }
-#session {
-	display:table-cell;
-	vertical-align:middle;
-	text-align:center;
+#session,#trial {
+	color:black;
+	background-color:white;
+}
+#session.fullscreen,#trial.fullscreen	{
 	background-color:black;
 	font:Verdana;
 	color:white;
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
 }
-#trial {
-	display:table-cell;
-	vertical-align:middle;
-	text-align:center;
-	background-color:black;
-	font:Verdana;
-	color:white;
-}
-#trial>div {
-	margin-left:auto;
-	margin-right:auto;
-}
-
 .session_begin, .session_first_instructions, .session_interruption, .session_featurefail, .session_fullscreenFail {
 	font-size:14pt;
 	text-align:left;
@@ -40,42 +39,314 @@
 }
 .session_walkthrough, .session_instructions, .trial_instructions {
 	font-size:16pt;
-	width:70%;
 	text-align:left;
-	margin-left:auto;
-	margin-right:auto;
-}
-.fixation {
-	font:Verdana;
-	font-size:2cm;
-	width:2cm;
-	height:2cm;
-	overflow:hidden;
+	position:absolute;
+	width:70%;
+	left:15%;
+	height:50%;
+	top:25%;
 }
 
-.trial_images img {
-	width:14cm;
-	height:8cm;
-}
-.trial_images img.top {
-	margin-bottom:1cm;
-}
-.probe {
-	font:Verdana;
-	font-size:0.5cm;
-	margin-top:10cm;
-	width:14cm;
-	text-align:center;
-}
-.probe.probe_on_top {
-	margin-top:-4cm;
-}
+/* ==========================================================================
+   General Styles for attention training trials
+   ========================================================================== */
 .mistake_message {
+	position:absolute;
+	width:30%;
+	height:10%;
+	left:35%;
+	top:45%;
+	text-align:center;
+	font:Verdana;
+	font-size:160%;
 	color:red;
 	font-weight:bold;
 }
+#trial #fixation img {
+	position:absolute;
+	left:50%;
+}
+#trial .trial_images img.top {
+	top:15px;
+}
+#trial .trial_images img {
+	display:block;
+	position:absolute;
+	left:50%;
+}
+#trial #probe img {
+	display:block;
+	position:absolute;
+	left:50%;
+}
+/* ==========================================================================
+   Screen resolution (and image-size) specific styles for trials
+   ========================================================================== 
+Units: 
+SH Screen height
+IH Image height: (SH - OS) / 2.08
+GH Gap height (= Fixation height): 0.08 * IH
+PS Probe size = 0.5 * GH = 0.04 * IH
+FS Fixation size = GH
+OS Offset from screen (top + bottom) = 30px
 
-#flashMessage {
-	color: #3a87ad;
-	font-weight:bold;
+Somewhat common screen heights (very similar ones rounded down):
+600,720,768,800,900,1024,1200,1440
+corresponding image heights
+274,332,355,370,418, 478, 562, 677
+corresponding fixation cross sizes
+ 22, 27, 28, 30, 33,  38,  45,  54
+corresponding probe sizes
+ 11, 13, 14, 15, 16,  19,  22,  27
+*/
+
+/* ==========================
+   Screen height 1440
+   ========================== 
+(1440-30)/2.08 = 677
+IW (1 + 1/3) * 677 = 903
+IH 677
+GH 677 * 0.08 = 54
+PS = 54/2 = 27
+*/
+#trial.sh1440 .trial_images img {
+	margin-left:-451px;
+	width:903px;
+	height:677px;
+}
+#trial.sh1440 .trial_images img.bottom {
+	top:746px; /* offset of lower image = offset of upper image + image height + gap height */
+}
+#trial.sh1440 #fixation img {
+	margin-left:-27px; /* half its width (to center) */
+	width:54px;
+	height:54px;
+	top:692px;
+}
+#trial.sh1440 #probe img {
+	margin-left:-14px;
+	width:27px;
+	height:27px;
+	top:1085px;
+}
+#trial.sh1440 #probe.probe_on_top {
+	top:353px;
+}
+
+/* ==========================
+   Screen height 1200
+   ========================== 
+IH (1200-30)/2.08 = 562
+IW (1 + 1/3) * 562 = 749
+GH 562 * 0.08 = 45
+PS = 22
+*/
+#trial.sh1200 .trial_images img {
+	margin-left:-374px; /* IW / 2 */
+	width:749px;
+	height:562px;
+}
+#trial.sh1200 .trial_images img.bottom {
+	top:622px; /* 15px + IH + GH */
+}
+#trial.sh1200 #fixation img {
+	margin-left:-22px; /* half its width (to center) */
+	width:45px;
+	height:45px;
+	top:577px; /* 15px + IH */
+}
+#trial.sh1200 #probe img {
+	margin-left:-11px;
+	width: 22px;
+	height:22px;
+	top:903px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh1200 #probe.probe_on_top img {
+	top:296px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 1024
+   ========================== 
+IH (1024-30)/2.08 = 478
+IW (1 + 1/3) * 478 = 637
+GH 478 * 0.08 = 38
+PS = 19
+*/
+#trial.sh1024 .trial_images img {
+	margin-left:-318px; /* IW / 2 */
+	width:637px;
+	height:478px;
+}
+#trial.sh1024 .trial_images img.bottom {
+	top:531px; /* 15px + IH + GH */
+}
+#trial.sh1024 #fixation img {
+	margin-left:-19px; /* half its width (to center) */
+	width:38px;
+	height:38px;
+	top:493px; /* 15px + IH */
+}
+#trial.sh1024 #probe img {
+	margin-left:-9px;
+	width: 19px;
+	height:19px;
+	top:770px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh1024 #probe.probe_on_top img {
+	top:254px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 900
+   ========================== 
+IH (900-30)/2.08  = 418
+IW (1 + 1/3) * 418 = 557
+GH 418 * 0.08 = 33
+PS = 17
+*/
+#trial.sh900 .trial_images img {
+	margin-left:-278px;
+	width:557px;
+	height:418px;
+}
+#trial.sh900 .trial_images img.bottom {
+	top:605px; /* 15px + IH + GH */
+}
+#trial.sh900 #fixation img {
+	margin-left:-17px; /* half its width (to center) */
+	width:33px;
+	height:33px;
+	top:572px; /* 15px + IH */
+}
+#trial.sh900 #probe img {
+	margin-left:-9px;
+	width:17px;
+	height:17px;
+	top:883px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh900 #probe.probe_on_top img {
+	top:293px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 800
+   ========================== 
+IH (800-30)/2.08 = 370
+IW (1 + 1/3) * 370 = 493
+GH 370 * 0.08 = 30
+PS = 15
+*/
+#trial.sh800 .trial_images img {
+	margin-left:-246px;
+	width:493px;
+	height:370px;
+}
+#trial.sh800 .trial_images img.bottom {
+	top:415px; /* 15px + IH + GH */
+}
+#trial.sh800 #fixation img {
+	margin-left:-15px; /* half its width (to center) */
+	width:30px;
+	height:30px;
+	top:385px; /* 15px + IH */
+}
+#trial.sh800 #probe img {
+	margin-left:-7px;
+	width:15px;
+	height:15px;
+	top:600px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh800 #probe.probe_on_top img {
+	top:200px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 768
+   ========================== 
+IH (768-30)/2.08 = 355
+IW (1 + 1/3) * 355 = 473
+GH 355 * 0.08 = 28.4
+PS = 14
+*/
+#trial.sh768 .trial_images img {
+	margin-left:-236px;
+	width:473px;
+	height:355px;
+	top:398px; /* 15px + IH + GH */
+}
+#trial.sh768 #fixation img {
+	margin-left:-14px; /* half its width (to center) */
+	width:28px;
+	height:28px;
+	top:370px; /* 15px + IH */
+}
+#trial.sh768 #probe img {
+	margin-left:-7px;
+	width:14px;
+	height:14px;
+	top:575px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh768 #probe.probe_on_top img {
+	top:192px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 720
+   ========================== 
+IH (720-30)/2.08 = 332
+IW (1 + 1/3) * 332 = 443
+GH 332 * 0.08 = 27
+PS = 13
+*/
+#trial.sh720 .trial_images img {
+	margin-left:-221px;
+	width:443px;
+	height:332px;
+	top:374px; /* 15px + IH + GH */
+}
+#trial.sh720 #fixation img {
+	margin-left:-13px; /* half its width (to center) */
+	width:27px;
+	height:27px;
+	top:347px; /* 15px + IH */
+}
+#trial.sh720 #probe img {
+	margin-left:-6px;
+	width:13px;
+	height:13px;
+	top:540px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh720 #probe.probe_on_top img {
+	top:181px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 600
+   ========================== 
+IH (600-30)/2.08 = 274
+IW (1 + 1/3) * 274 = 365
+GH 274 * 0.08 = 22
+PS = 11
+*/
+#trial.sh600 .trial_images img {
+	margin-left:-182px;
+	width:365px;
+	height:274px;
+	top:311px; /* 15px + IH + GH */
+}
+#trial.sh600 #fixation img {
+	margin-left:-11px; /* half its width (to center) */
+	width:22px;
+	height:22px;
+	top:289px; /* 15px + IH */
+}
+#trial.sh600 #probe img {
+	margin-left:-5px;
+	width:11px;
+	height:11px;
+	top:448px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh600 #probe.probe_on_top img {
+	top:152px; /* 15 px + 0.5*IH */
 }
