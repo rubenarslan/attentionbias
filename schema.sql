@@ -35,6 +35,12 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`users` (
   `code` VARCHAR(255) NULL ,
   `password` VARCHAR(255) NULL ,
   `condition` VARCHAR(45) NULL ,
+  `am18` TINYINT(1) NULL ,
+  `data_agree` TINYINT(1) NULL ,
+  `participate_agree` TINYINT(1) NULL ,
+  `birthdate` DATE NULL ,
+  `firstname` VARCHAR(255) NULL ,
+  `lastname` VARCHAR(255) NULL ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `fk_users_groups1`
     FOREIGN KEY (`group_id` )
