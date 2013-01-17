@@ -114,6 +114,54 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'firstname' => array(
+			'alphanumeric' => array(
+				'rule' => array('alphanumeric'),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'lastname' => array(
+			'alphanumeric' => array(
+				'rule' => array('alphanumeric'),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'birthdate' => array(
+			'date' => array(
+				'rule' => array('date'),
+				'message' => "Bitte geben Sie ein gültiges Geburtsdatum ein.",
+				'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'am18' => array(
+	        'rule'    => array('comparison', '==', 1),
+			'message' => "Sie müssen mindestens 18 sein, um teilzunehmen.",
+			'allowEmpty' => false,
+			'required' => true,
+		),
+		'data_agree' => array(
+	        'rule'    => array('comparison', '==', 1),
+			'message' => "Sie müssen der Verwendung Ihrer Daten zustimmen.",
+			'allowEmpty' => false,
+			'required' => true,
+		),
+		'participate_agree' => array(
+	        'rule'    => array('comparison', '==', 1),
+			'message' => "Sie müssen den Teilnahmebedingungen zustimmen.",
+			'allowEmpty' => false,
+			'required' => true,
+		),
 		'password' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),

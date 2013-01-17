@@ -6,7 +6,7 @@ body {
     padding-bottom: 40px;
 }
 
-#flashMessage {
+#flashMessage,.error-message {
 	color: #3a87ad;
 	font-weight:bold;
 }
@@ -19,6 +19,28 @@ body {
 h2.nav {
 	color:black;
 }
+.navbar .nav {
+	clear:both;
+}
+.control-group.controls-checkbox input[type=checkbox] {
+	margin-top:-3px;
+	margin-left: -30px;
+	margin-right: 17px;
+}
+.control-group.controls-checkbox label {
+	display:inline;
+	width:330px;
+}
+div.control-group div.date div.controls select[name*=day] {
+	width:60px;
+}
+div.control-group div.date div.controls select[name*=month] {
+	width:120px;
+}
+div.control-group div.date div.controls select[name*=year] {
+	width:80px;
+}
+
 
 /* ==========================================================================
    Styles for attention training session
