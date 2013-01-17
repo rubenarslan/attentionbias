@@ -56,7 +56,7 @@
 						<?php
 						if(AuthComponent::user() === NULL) {
 							echo $this->Form->create('User', array(
-								'class' => 'navbar-form pull-right',
+								'class' => 'navbar-form',
 								'action' => "login"	
 							));
 					    	echo $this->Form->input('email', array(
@@ -72,13 +72,13 @@
 								'class'=>'span2', 
 								'style' => 'margin-right:5px',
 					        	'placeholder' => 'Passwort',
-								'div' => false,
+								'div' => array('class' => 'pull-left'),
 								'label' => false,
 					        ));
 							echo $this->Form->end(array(
 								'label' => 'Anmelden',
 								'class' => 'btn',
-								'div' => false,
+								'div' => array('class' => 'pull-left'),
 							)); 
 							echo "</li>";
 						}
