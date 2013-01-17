@@ -37,8 +37,8 @@ var key_top = 'O'; // have to be uppercase here (user input is recognised either
 var key_bottom = 'V';
 
 // image ids, that also double as file names (could easily be changed)
-var ocd_imgs = [1, 2, 3];
-var neutral_imgs = [4, 5, 6];
+var ocd_imgs = [1, 2, 3, 4];
+var neutral_imgs = [5, 6, 7, 8];
 
 /*
 ---- INSTRUCTIONS, localisation
@@ -70,15 +70,39 @@ var go_on_button_message = 'Weiter';
 var back_button_message = 'Zurück';
 
 /* BLOCKS */
-var ocd_block1 = repeatArray(shuffle(ocd_imgs), ocd_imgs.length *2 );
-var neutral_block1 = repeatArray(shuffle(neutral_imgs), ocd_imgs.length *2 ); // shuffle them once, repeat
+var ocd_block1 = shuffle(ocd_imgs);
+var neutral_block1 = shuffle(neutral_imgs); // shuffle them once, repeat
 var ocd_top_block1 = shuffle(repeatArray([false,true], ocd_imgs.length)); // make array of positions, shuffle
-ocd_top_block1 = ocd_top_block1.concat( $.makeArray( $(ocd_top_block1).map(function(m) { return !m; }) ) );  // inverse and concatenate
-var ocd_block2 = repeatArray(shuffle(ocd_imgs), ocd_imgs.length *2 );
-var neutral_block2 = repeatArray(shuffle(neutral_imgs), ocd_imgs.length *2 );
-var ocd_top_block2 = shuffle(repeatArray([false,true], ocd_imgs.length));
-ocd_top_block2 = ocd_top_block2.concat( $.makeArray( $(ocd_top_block2).map(function(m) { return !m; }) ) );
- // todo: shuffle pairs
+ocd_top_block1R = $.makeArray( $(ocd_top_block1).map(function(m) { return !m; }) );
+
+var n = ocd_block1.length;
+var randomIndices = [];
+for (var i=0; i<n; i++) {
+   randomIndices[i] = i;
+}
+randomIndices = shuffle(randomIndices);
+function sortByArray(toSort,byArray) {
+	var n = byArray.length;
+	var sortedArray = [];
+	for (var i=0; i < n; i++) {
+    	sortedArray[i] = toSort[byArray[i]];
+	}
+	return sortedArray;
+}
+ocd_block1 = ocd_block1.concat(sortByArray(ocd_block1,randomIndices));
+neutral_block1 = neutral_block1.concat(sortByArray(neutral_block1,randomIndices));
+ocd_top_block1 = ocd_top_block1.concat(sortByArray(ocd_top_block1R,randomIndices));
+
+var ocd_block2 = shuffle(ocd_imgs);
+var neutral_block2 = shuffle(neutral_imgs); // shuffle them once, repeat
+var ocd_top_block2 = shuffle(repeatArray([false,true], ocd_imgs.length)); // make array of positions, shuffle
+ocd_top_block2R = $.makeArray( $(ocd_top_block2).map(function(m) { return !m; }) );
+
+randomIndices = shuffle(randomIndices); // new pair shuffle
+ocd_block2 = ocd_block2.concat(sortByArray(ocd_block2,randomIndices));
+neutral_block2 = neutral_block2.concat(sortByArray(neutral_block2,randomIndices));
+ocd_top_block2 = ocd_top_block2.concat(sortByArray(ocd_top_block2R,randomIndices));
+
 var ocd_sequence = ocd_block1.concat(ocd_block2);
 var neutral_sequence = neutral_block1.concat(neutral_block2);
 var ocd_top_sequence = ocd_top_block1.concat(ocd_top_block2);
@@ -285,7 +309,7 @@ Session.showTryoutInstructions = (function() {
 Session.beginTryout = (function() {
 	console.log('Session.beginTryout');
 	$('#session').makeInvisible();
-//	$(window).blur(Session.interrupt); // todo: remove
+	$(window).blur(Session.interrupt);
 	$('#trial').makeVisible();
 	Session.nextTrial();
 });
@@ -553,7 +577,6 @@ Trial.end = (function() { // log valid responses
 window.Reaction = {};
 Reaction.logReaction = (function(e) { // simply log all keypresses during the session
 	console.log('Reaction.logReaction');
-	// fixme: fullscreened elm in window with navbars isn't what we want, but it doesn't affect the fullscreen API 
 	
 	var valid_response_time = performance.now(); // same time for both time indices
 	if(e.which > 3) key = String.fromCharCode( e.which );
