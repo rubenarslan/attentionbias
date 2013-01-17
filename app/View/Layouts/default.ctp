@@ -112,7 +112,7 @@
 					 	} ?>
 					
 						</ul>
-						<div class="menulogo pull-right" ><img src="<?php echo $this->webroot; ?>/img/husiegel_menu.png" width="150" height="150"></div>
+						<div class="menulogo pull-right" ><img src="<?php echo $this->webroot; ?>img/husiegel_menu.png" width="150" height="150"></div>
 						
                     </div><!--/.nav-collapse -->
                 </div>
