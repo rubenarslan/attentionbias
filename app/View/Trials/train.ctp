@@ -1,17 +1,19 @@
-<h1>Reaktionen auf Bilder</h1>
-<p>Herzlich Willkommen bei unserer Studie „Reaktionen auf Bilder“.<br>
-Vielen Dank, dass Sie teilnehmen wollen!<br>
-Bitte klicken Sie auf „Weiter“, um zu den Instruktionen zu gelangen.</p>
+<div class="span10">
+	<h1>Reaktionen auf Bilder</h1>
+	<p>Herzlich Willkommen bei unserer Studie „Reaktionen auf Bilder“.<br>
+	Vielen Dank, dass Sie teilnehmen wollen!<br>
+	Bitte klicken Sie auf „Weiter“, um zu den Instruktionen zu gelangen.</p>
 
-<div id="session_outer">
-	<div id="session">
-		<div class="session_begin">
-			Sie benötigen einen aktuellen Browser, um teilnehmen zu können.<br>
-			Wir unterstützen Firefox, Chrome und Safari. Opera und Internet Explorer haben leider nicht alle nötigen Features.<br>
-			Sie benötigen Javascript, bzw. müssen JavaScript in Ihren Browser-Einstellungen erlauben.
+	<div id="session_outer">
+		<div id="session">
+			<div class="session_begin">
+				Sie benötigen einen aktuellen Browser, um teilnehmen zu können.<br>
+				Wir unterstützen Firefox, Chrome und Safari. Opera und Internet Explorer haben leider nicht alle nötigen Features.<br>
+				Sie benötigen Javascript, bzw. müssen JavaScript in Ihren Browser-Einstellungen erlauben.
+			</div>
 		</div>
+		<div id="trial"></div>
 	</div>
-	<div id="trial"></div>
 </div>
 <?php $this->start('script'); ?>
 <script src="<?php echo $this->webroot; ?>js/jquery.fullscreen.js"></script>

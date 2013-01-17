@@ -1,11 +1,23 @@
-
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body {
+    padding-top: 90px;
+    padding-bottom: 40px;
+}
+
 #flashMessage {
 	color: #3a87ad;
 	font-weight:bold;
+}
+.nav-withlogo {
+	height:80px;
+}
+.menulogo {
+	margin-top:-40px;
+}
+h2.nav {
+	color:black;
 }
 
 /* ==========================================================================

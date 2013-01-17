@@ -8,18 +8,12 @@
 <?php 		echo $this->Html->meta('icon');?>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>
-			<?php echo $title_for_layout; ?>
+			<?php echo $this->fetch('title'); ?>
 		</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }
-        </style>
         <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/bootstrap-responsive.min.css">
         <script src="<?php echo $this->webroot; ?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<?php
@@ -37,24 +31,25 @@
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner nav-withlogo">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <?php echo $this->Html->link('Zwangsstörung-Studie', '/', array('class' => 'brand')); ?>
+					<h2 class="nav">Online-Therapie bei Zwangsstörung</h2>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
 							<?php
 							if(AuthComponent::user() === NULL) { ?>
-							<li><?php echo $this->Html->link('Registrierung', '/users/register', array('class'=>'')); ?></li>
+							<li <?=($this->request->url==='users/register') ? 'class="active"': '' ;?>><?php echo $this->Html->link('Registrierung', '/users/register'); ?></li>
 							<?php }?>
-                            <li><a href="#about">Informationen</a></li>
-                            <li><?php echo $this->Html->link('Trainieren', '/trials/train', array('class'=>'')); ?></li>
-                            <li><a href="mailto:<?=Configure::read('ContactEmail') ?>">Kontakt</a></li>
+							<li <?=($this->request->url===false) ? 'class="active"': '' ;?>><?php echo $this->Html->link('Willkommen', '/'); ?></li>
+                            <li <?=($this->request->url==='pages/study') ? 'class="active"': '' ;?>><?php echo $this->Html->link('Studie', '/pages/study'); ?></li>
+                            <li <?=($this->request->url==='trials/train') ? 'class="active"': '' ;?>><?php echo $this->Html->link('Trainieren', '/trials/train', array('class'=>'')); ?></li>
+                            <li <?=($this->request->url==='pages/contact') ? 'class="active"': '' ;?>><?php echo $this->Html->link('Kontakt', '/pages/contact'); ?></li>
 							<li>
 						<?php
 						if(AuthComponent::user() === NULL) {
@@ -113,24 +108,28 @@
 								<?php
 							}
 					 	} ?>
+					
 						</ul>
+						<div class="menulogo pull-right" ><img src="<?php echo $this->webroot; ?>/img/husiegel_menu.png" width="150" height="150"></div>
+						
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container clearfix">
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
+        </div> <!-- /container -->
 
-            <hr>
 
-            <footer>
+            <footer class="span12">
+	            <hr>
+	
                 <p>&copy; Humboldt-Universität zu Berlin 2012</p>
             </footer>
 
-        </div> <!-- /container -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo $this->webroot; ?>js/vendor/jquery-1.8.3.js"><\/script>')</script>
 
@@ -148,6 +147,7 @@
         </script>
 		<?php echo $this->element('sql_dump');
 		debug($this->data);
+		debug($this->request->url);
 		pr($this->validationErrors);
 ?>
 

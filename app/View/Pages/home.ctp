@@ -1,25 +1,22 @@
-<!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit">
-    <h1>Online-Therapie bei Zwangsstörung</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+<?php
+$this->assign('title', 'Willkommen');
+?><div class="hero-unit span9">
+    <h2>Zwangsstörung/ Zwangserkrankung</h2>
+    <p>Viele Menschen befolgen in ihrem Leben bestimmte Rituale, wie z.B. immer zur gleichen Zeit morgens aufzustehen und einen Kaffee zu trinken um pünktlich zur Arbeit zu kommen oder etwa Begrüßungsrituale. Diese “Alltagszwänge” sind völlig normale Angewohnheiten und für ein geregeltes Alltagsleben sogar nützlich. Eine Zwangsstörung hingehen ist sehr belastend und zeitraubend und behindert damit das alltägliche Leben massiv. Das Hauptkennzeichen der Zwangsstörung sind Zwangsgedanken und/oder Zwangshandlungen; meist tritt beides gemeinsam auf. Bei den Zwangsgedanken handelt es sich um wiederkehrende, aufdringliche Gedanken, Ideen, Impulse oder Bilder.<br>
+	Häufige Inhalte der Zwangsgedanken sind Aggression, Sexualität, Religion, Ordnung oder Angst und Ekel vor Infektionen. Betroffene berichten, dass diese Gedanken immer wieder in gleicher Weise auftreten und dass sie sich trotz großer Anstrengung nicht dagegen wehren können.<br>
+	Oft erzeugen Zwangsgedanken den Drang, bestimmte Dinge zu tun. Gibt man dem Drang nach und führt die Handlung aus, spricht man von einer Zwangshandlung. Zwangshandlungen können kurzfristig ein Gefühl der Erleichterung verschaffen, werden langfristig jedoch als belastend erlebt. Ein typischer Zwangsgedanke ist die Furcht vor Kontamination mit Bakterien, die dann zum Beispiel die Zwangshandlung Händewaschen auslösen kann. Viele Zwangserkrankte empfinden ihre Zwangsgedanken und Zwangshandlungen als übertrieben oder sogar sinnlos. Damit einher gehen oft Gefühle von Angst, Scham, Schuld und Selbstzweifel sowie ein starker Leidensdruck.</p>
 </div>
+
 
 <!-- Example row of columns -->
 <div class="row">
-    <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
+    <div class="span4 offset1">
+        <h3>An wen richtet sich die Studie?</h3>
+        <p>Die Studie richtet sich an Menschen, die unter einer Zwangsstörung leiden. Wenn Sie finden, dass die vorangegange Beschreibung der Zwangsstörung zu Ihnen passt, könnte sich eine Teilnahme an unserer Studie für Sie lohnen. Sie können sich anmelden, wenn Sie zwischen 18 und 65 Jahre alt sind und sich aktuell nicht in Psychotherapie befinden.</p>
     </div>
-    <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
+    <div class="span5">
+        <h3>Ziel der Studie</h3>
+        <p>Das Ziel der Studie ist es, die Wirkung eines innovativen, internetbasierten Aufmerksamkeitstrainings für Zwangserkrankte zu überprüfen. Wir wollen damit einen Beitrag zur Erforschung und Verbesserung der Behandlung leisten.<br>
+		Internetbasierte Therapieangebote könnten in Zukunft vielen Menschen helfen, da sie auch Betroffene erreichen, die aufgrund langer Wartelisten keinen Therapieplatz finden oder bei denen die Hemmschwelle zu groß ist, einen Therapeuten aufzusuchen. Ihr enormes Potential liegt darin, dass sie ohne großen Aufwand von Zuhause durchgeführt werden können und den Zugang zu Behandlungsmethoden für sehr viele Menschen ermöglichen.</p>
    </div>
-    <div class="span4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn" href="#">View details &raquo;</a></p>
-    </div>
 </div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<style type="text/css" media="screen">
+		#session_outer {
+			display:block;
+			width:100%;
+			height:100%;
+		}
+		#session,#trial {
+			color:blue;
+			background-color:white;
+		}
+		#session.fullscreen,#trial.fullscreen	{
+			background-color:gray;
+			font:Verdana;
+			color:white;
+			position:absolute;
+			left:0;
+			top:0;
+			width:100%;
+			height:100%;
+		}
+		.trial_images {
+		}
+		.trial_images img.top {
+			top:15px;
+		}
+		.trial_images img {
+			display:block;
+			position:absolute;
+			left:50%;
+			margin-left:-250px;
+			width:500px;
+			height:375px;
+			top:410px;
+		}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+	<script>window.jQuery || document.write('<script src="file:///Applications/MAMP/htdocs/zwang/app/webroot/js/vendor/jquery-1.8.3.js"><\/script>')</script>
+	<script src="file:///Applications/MAMP/htdocs/zwang/app/webroot/js/jquery.fullscreen.js"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+	$(window).click(function() {
+		console.log($('#session_outer'));
+		$('#session_outer').fullScreen(true);
+	});
+	//]]>
+	</script>
+</head>
+<body>
+	<div id="session_outer">
+		<div id="trial" class="fullscreen">
+			<div class="trial_images">
+				<img class="top" src="file:///Applications/MAMP/htdocs/zwang/app/webroot/img/training/500/1.jpg"><br>
+				<img src="file:///Applications/MAMP/htdocs/zwang/app/webroot/img/training/500/1.jpg">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
