@@ -11,7 +11,9 @@ $this->assign('title', 'Kontakt');
 
 	<h4>Email-Kontakt</h4>
 
-	<p><a href="mailto:<?=Configure::read('ContactEmail') ?>"><?=Configure::read('ContactEmail') ?></a></p>
+	<p>Sie können sich jederzeit per Email an <a href="mailto:<?=Configure::read('ContactEmail') ?>"><?=Configure::read('ContactEmail') ?></a> wenden.<br>
+	Wir beantworten Ihre Email so schnell wie möglich, das heißt in maximal 1-2 Werktagen.
+	</p>
 
 
 	<h4>Sitz</h4>

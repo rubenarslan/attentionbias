@@ -2,10 +2,15 @@
    Author's custom styles
    ========================================================================== */
 body {
-    padding-top: 90px;
     padding-bottom: 40px;
 }
-
+div.hero-unit {
+  	font-size: 16px;
+	line-height: 22px;
+}
+div.maincontent {
+	padding-top:20px;
+}
 #flashMessage,.error-message {
 	color: #3a87ad;
 	font-weight:bold;
@@ -85,7 +90,7 @@ div.control-group div.date div.controls select[name*=year] {
 /* ==========================================================================
    General Styles for attention training trials
    ========================================================================== */
-.mistake_message {
+div#trial div.mistake_message {
 	position:absolute;
 	width:30%;
 	height:10%;
@@ -97,19 +102,19 @@ div.control-group div.date div.controls select[name*=year] {
 	color:red;
 	font-weight:bold;
 }
-#trial #fixation img {
+div#trial div#fixation img {
 	position:absolute;
 	left:50%;
 }
-#trial .trial_images img.top {
-	top:15px;
+div#trial div.trial_images img.top {
+	top:15px !important;
 }
-#trial .trial_images img {
+div#trial div.trial_images img {
 	display:block;
 	position:absolute;
 	left:50%;
 }
-#trial #probe img {
+div#trial div#probe img {
 	display:block;
 	position:absolute;
 	left:50%;

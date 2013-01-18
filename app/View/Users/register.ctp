@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', 'Kontakt');
+?>
 <div class="span10">
 
 	<h1><?php echo __('Anmeldung zur Studie'); ?></h1>
