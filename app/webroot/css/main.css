@@ -251,22 +251,22 @@ PS = 17
 	height:418px;
 }
 #trial.sh900 .trial_images img.bottom {
-	top:605px; /* 15px + IH + GH */
+	top:466px; /* 15px + IH + GH */
 }
 #trial.sh900 #fixation img {
 	margin-left:-17px; /* half its width (to center) */
 	width:33px;
 	height:33px;
-	top:572px; /* 15px + IH */
+	top:433px; /* 15px + IH */
 }
 #trial.sh900 #probe img {
 	margin-left:-9px;
 	width:17px;
 	height:17px;
-	top:883px; /* 15 px + IH + GH + 0.5*IH */
+	top:675px; /* 15 px + IH + GH + 0.5*IH */
 }
 #trial.sh900 #probe.probe_on_top img {
-	top:293px; /* 15 px + 0.5*IH */
+	top:224px; /* 15 px + 0.5*IH */
 }
 
 /* ==========================
