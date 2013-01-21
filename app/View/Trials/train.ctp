@@ -612,7 +612,10 @@ Trial.showMistakeMessage = (function() { // log valid responses
 
 Trial.end = (function() { // log valid responses
 	Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesShown - Trial.FixationShown;
-	Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesHidden - Trial.FixationHidden;
+	
+	if(Trial.ImagesHidden)
+		Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesHidden - Trial.FixationHidden;
+		// fixme: remove mozafterpaint code completely when live
 	Session.db.Trial[Trial.current].images_duration = Trial.ProbeShown - Trial.ImagesShown;
 	if(Trial.current != number_of_test_trials - 1)
 		Session.nextTrial(); // trigger
