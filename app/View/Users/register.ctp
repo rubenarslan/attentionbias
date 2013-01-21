@@ -78,7 +78,7 @@ $this->assign('title', 'Kontakt');
 			'div' => array('class' => 'span4 controls'), 
 			'type' => 'checkbox',
 			'value'=> 1,
-			'label' => array('text' => 'Ich erkläre mich freiwillig bereit, an der genannten Untersuchung teilzunehmen. Ich bin über Wesen, Bedeutung und  Tragweite der Untersuchung aufgeklärt worden.<br>Ich habe die Information zum Zweck der Untersuchung und den '.$this->Html->link('Aufklärungsbogen', '/pages/study').'  gelesen und verstanden. Ich bin darauf aufmerksam gemacht worden, dass die Teilnahme jederzeit von  beiden Seiten ohne Angabe von Gründen widerrufen werden kann, ohne dass mir daraus Nachteile entstehen. Die laufende Untersuchung kann jederzeit unterbrochen werden.', 'escape' => false),
+			'label' => array('text' => 'Ich erkläre mich freiwillig bereit, an der genannten Untersuchung teilzunehmen. Ich bin über Wesen, Bedeutung und  Tragweite der Untersuchung aufgeklärt worden.<br>Ich habe die Information zum '.$this->Html->link('Zweck der Untersuchung', '/').' und den '.$this->Html->link('Aufklärungsbogen', '/pages/study').'  gelesen und verstanden. Ich bin darauf aufmerksam gemacht worden, dass die Teilnahme jederzeit von  beiden Seiten ohne Angabe von Gründen widerrufen werden kann, ohne dass mir daraus Nachteile entstehen. Die laufende Untersuchung kann jederzeit unterbrochen werden.', 'escape' => false),
 		));
 		    ?>
 		</div>
@@ -89,7 +89,7 @@ $this->assign('title', 'Kontakt');
 			'div' => array('class' => 'span4 controls'), 
 			'type' => 'checkbox',
 			'value'=> 1,
-			'label' => 'Ich erkläre mich damit einverstanden, dass die im Rahmen dieser Studie erhobenen Daten wie in der Teilnehmerinformation beschrieben aufgezeichnet, verarbeitet, und in anonymisierter Form veröffentlicht werden.',
+			'label' => 'Ich erkläre mich damit einverstanden, dass die im Rahmen dieser Studie erhobenen Daten wie im '.$this->Html->link('Aufklärungsbogen', '/pages/study#datenschutz').' beschrieben aufgezeichnet, verarbeitet, und in anonymisierter Form veröffentlicht werden.',
 		));
 		    ?>
 		</div>

@@ -4,6 +4,23 @@
 body {
     padding-bottom: 40px;
 }
+@media (min-width: 940px) { 
+	header.study-header {
+		background-image:url(../img/Study_header_big.png);
+		height:193px;
+	}
+}
+header.study-header {
+	/*width:940px;*/
+	width:100%;
+	background-repeat:no-repeat;
+	background-position:40px 5px;
+	padding-top:5px;
+	padding-bottom:10px;
+}
+#study_nav {
+	box-shadow:none !important;
+}
 div.hero-unit {
   	font-size: 16px;
 	line-height: 22px;
@@ -15,18 +32,17 @@ div.maincontent {
 	color: #3a87ad;
 	font-weight:bold;
 }
-.nav-withlogo {
-	height:80px;
-}
-.menulogo {
-	margin-top:-40px;
-}
 h2.nav {
 	color:black;
 }
-
-.navbar .nav {
-	clear:both;
+.navbar .brand {
+	padding:0;
+}
+@media (min-width: 940px) { 
+	.navbar .brand {
+		padding:0;
+		display:none;
+	}
 }
 .control-group.controls-checkbox input[type=checkbox] {
 	margin-top:-3px;
@@ -70,6 +86,11 @@ div.control-group div.date div.controls select[name*=year] {
 	width:100%;
 	height:100%;
 }
+#trial.fullscreen {
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjbQg61aAAAADUlEQVQYV2P4//8/IwAI/QL/+TZZdwAAAABJRU5ErkJggg=='),
+    url(../img/blank.cur),
+    none !important;
+}
 .session_begin, .session_first_instructions, .session_interruption, .session_featurefail, .session_fullscreenFail {
 	font-size:14pt;
 	text-align:left;
@@ -88,9 +109,57 @@ div.control-group div.date div.controls select[name*=year] {
 }
 
 /* ==========================================================================
+   Study description styles
+   ========================================================================== */
+
+.atp-affix-sidenav {
+    background-color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    margin: 30px 0 0;
+    padding: 0;
+}
+.atp-sidenav-container {
+	width:200px;
+}
+.atp-affix-sidenav.affix {
+	top:70px;
+}
+.atp-affix-sidenav .icon-chevron-right {
+	float: right;
+	margin-right: -6px;
+	margin-top: 2px;
+	opacity: 0.25;
+}
+.atp-affix-sidenav > li > a {
+    border: 1px solid #E5E5E5;
+    display: block;
+    margin: 0 0 -1px;
+    padding: 8px 14px;
+}
+.atp-affix-sidenav > li:first-child > a {
+    border-radius: 6px 6px 0 0;
+}
+.atp-affix-sidenav > li.sub > a{
+    font-size:13px;
+	padding-left:28px;
+}
+.atp-affix-sidenav > li:last-child > a {
+    border-radius: 0 0 6px 6px;
+}
+.atp-affix-sidenav > .active > a {
+    border: 0 none;
+    box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1) inset, -1px 0 0 rgba(0, 0, 0, 0.1) inset;
+    padding: 9px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+/* ==========================================================================
    General Styles for attention training trials
    ========================================================================== */
-div#trial div.mistake_message {
+div#trial div#mistake_message {
 	position:absolute;
 	width:30%;
 	height:10%;
