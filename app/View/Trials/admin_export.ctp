@@ -4,6 +4,11 @@ function d($field) {
 	if(is_bool($field)) return $field ? 1 : 0;
 	else return h($field);
 }
+for($i=0;$i<count($toExport);$i++) {
+	foreach($toExport[$i][$title_for_layout] AS $var => $val ) {
+		$toExport[$i][$title_for_layout][$var] = d($val);
+	}
+}
 
 if($exportformat!='excel') {
 	if($exportformat=='TSV') {
@@ -48,7 +53,7 @@ if($exportformat!='excel') {
 				<?php 
 				foreach($TS[$title_for_layout] AS $field_content):
 				?>
-				<td><?=d($field_content); ?></td>
+				<td><?=$field_content; ?></td>
 				<?php endforeach; ?>
 			</tr>
 		<?php endforeach; ?>
