@@ -3,7 +3,7 @@ $this->assign('title', 'Studie');
 ?>
 <div class="row">
 <div class="atp-sidenav-container span">
-	<ul class="nav nav-list atp-affix-sidenav" data-spy="affix-top">
+	<ul class="nav nav-list atp-affix-sidenav" data-spy="affix" data-offset-top="233">
 		<li class="active"><a href="#programm"><i class="icon-chevron-right"></i>Programm</a></li>
 		<li><a href="#wirkung"><i class="icon-chevron-right"></i>Wirkung</a></li>
 		<li><a href="#ablauf"><i class="icon-chevron-right"></i>Ablauf</a></li>
