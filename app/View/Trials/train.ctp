@@ -152,6 +152,54 @@ performance.now = (function() {
          performance.oNow      ||
          performance.webkitNow
 })();
+// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+ 
+// requestAnimationFrame polyfill by Erik Möller
+// fixes from Paul Irish and Tino Zijdel
+ 
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] 
+                                   || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+ //removed setTimeout fallback
+}());
+
+/**
+Drop in replace functions for setTimeout() & setInterval() that 
+make use of requestAnimationFrame() for performance where available
+http://www.joelambert.co.uk
+ 
+Copyright 2011, Joe Lambert.
+Free to use under the MIT license.
+http://www.opensource.org/licenses/mit-license.php
+*/
+/**
+ * Behaves the same as setTimeout except uses requestAnimationFrame() where possible for better performance
+ * @param {function} fn The callback function
+ * @param {int} delay The delay in milliseconds
+ */
+
+
+window.requestTimeout = function(fn, delay) {
+	var start = performance.now(),
+		handle = new Object();
+		
+	function loop(){
+		var current = performance.now(),
+			delta = current - start;
+			
+		delta >= delay ? fn.call() : handle.value = window.requestAnimationFrame(loop);
+	};
+	
+	handle.value = window.requestAnimationFrame(loop);
+	return handle;
+};
+
 
 // shorthands for hiding/showing without reflow
 (function($){ 
@@ -245,7 +293,7 @@ Session.preLoad = (function() {
 });
 
 Session.featureDetection = (function () {
-	if(!($.support.ajax && $.support.boxModel && performance.now)) {
+	if(!($.support.ajax && $.support.boxModel && performance.now && window.requestAnimationFrame && window.cancelAnimationFrame)) {
 		Session.featureFail();
 	}
 	else {
@@ -437,7 +485,7 @@ Session.end = (function() {
 
 Session.interrupt = (function() { // on leaving fullscreen
 	console.log('Session.interrupt');
-	clearTimeout(Session.waitForNextStep); // don't do next step
+	window.cancelAnimationFrame(Session.waitForNextStep); // don't do next step
 	$(window).off('keydown'); // don't log valid responses anymore
 	$(window).off('keypress click',Reaction.logReaction); // stop log key strokes for the whole session
 	$(document).off("fullscreenchange"); // remove error message	
@@ -486,7 +534,7 @@ Trial.showFixation = (function() {
 	
 	Trial.CurrentlyDisplayed = 'fixation';
 	
-	Session.waitForNextStep = setTimeout(Trial.showImages, fixation_duration);
+	Session.waitForNextStep = requestTimeout(Trial.showImages, fixation_duration);
 });
 
 Trial.showImages = (function() { 
@@ -502,7 +550,7 @@ Trial.showImages = (function() {
 
 	Trial.CurrentlyDisplayed = 'images';
  
-	Session.waitForNextStep = setTimeout(Trial.showProbe, img_duration);
+	Session.waitForNextStep = window.requestTimeout(Trial.showProbe, img_duration);
 });
 
 Trial.showProbe = (function() {
@@ -556,7 +604,7 @@ Trial.response = (function(e) { // log valid responses
 
 Trial.showMistakeMessage = (function() { // log valid responses
 	$mistake_message.makeVisible();
-	Session.waitForNextStep = setTimeout(function() {
+	Session.waitForNextStep = window.requestTimeout(function() {
 		$mistake_message.makeInvisible();
 		Trial.end()
 	}, mistake_message_duration);
