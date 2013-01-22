@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-<?php 		echo $this->Html->meta('icon');?>
+<?php echo $this->Html->meta('icon');?>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>
 			<?php echo $this->fetch('title'); ?>
@@ -24,24 +24,28 @@
 			echo $this->fetch('css');
 		?>
     </head>
-    <body>
+    <body data-spy="scroll" data-offset="233">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 
+		<header class="study-header">
+			
+		</header>
         <div class="navbar navbar-static-top">
-            <div class="navbar-inner nav-withlogo">
+            <div class="navbar-inner" id="study_nav">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-					<h2 class="nav">Online-Therapie bei Zwangsstörung</h2>
+
+					<?php  echo $this->Html->link('<img src="'. $this->webroot. 'img/ATP_Logo_brand.png" width="90" height="40">', '/', array('class' => 'brand', 'escape' => false)); ?>
                     <div class="nav-collapse collapse">
-                        <ul class="nav">
+                        <ul class="nav nav-tabs">
 							<li <?=($this->request->url===false) ? 'class="active"': '' ;?>><?php echo $this->Html->link('Willkommen', '/'); ?></li>
                             <li <?=($this->request->url==='pages/study') ? 'class="active"': '' ;?>><?php echo $this->Html->link('Studie', '/pages/study'); ?></li>
 
@@ -111,9 +115,7 @@
 							}
 					 	} ?>
 					
-						</ul>
-						<div class="menulogo pull-right" ><img src="<?php echo $this->webroot; ?>img/husiegel_menu.png" width="150" height="150"></div>
-						
+						</ul>						
                     </div><!--/.nav-collapse -->
                 </div>
             </div>
@@ -141,12 +143,7 @@
         <script src="<?php echo $this->webroot; ?>js/main.js"></script>
 <?php 		echo $this->fetch('script'); ?>
 
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+
 		<?php echo $this->element('sql_dump');
 		debug($this->data);
 		debug($this->request->url);
