@@ -7,6 +7,7 @@ App::uses('AppModel', 'Model');
  * @property ActiveTrial $ActiveTrial
  */
 class Reaction extends AppModel {
+    public $actsAs = array('Containable');
 
 /**
  * Display field

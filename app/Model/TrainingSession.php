@@ -7,12 +7,13 @@ App::uses('AppModel', 'Model');
  * @property session_id $Trial
  */
 class TrainingSession extends AppModel {
-
+	 public $actsAs = array('Containable');
 /**
  * Display field
  *
  * @var string
  */
+
 	public $displayField = 'number';
 
 

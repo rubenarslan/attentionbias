@@ -2,8 +2,23 @@
 $this->assign('title', 'Aufmerksamkeitstrainingsprogramm');
 ?>
 <div class="span10">
-	<p>Hier gelangen Sie zu Ihrem persönlichen Trainingsbereich.<br>
-	Bitte klicken Sie auf „Weiter“ um mit dem Training anzufangen.</p>
+	<?php
+if(count($progress)>1) {
+	echo "<h4>Ihr Fortschritt</h4>";
+	echo '<div class="row"><p class="span5">';
+	$dataseturl = '&amp;chd='.'t:' . implode(',',$progress);
+	if(max($progress)!=0) $dataseturl .= '&amp;chds=0,'.max($progress);
+	echo '<img src="http://chart.apis.google.com/chart?chs=500x100&amp;chm=B,0,0,0,0&amp;chco=0077CC&amp;cht=ls&amp;chxt=x,y&amp;chxr='
+	.'1,'. min($progress) . ',' . max($progress) .'|'.
+	'0,'. count($progress) . ',0'
+	.$dataseturl . '" alt="Graph Ihres Fortschritt" title="Ihr Fortschritt. Ihre neuesten Ergebnisse stehen rechts, die Zahlen auf der x-Achse zeigen die Trainingssitzungen an." />';
+	echo '</p>';
+echo "<p class='span4'>Die Zahlen auf der x-Achse (horizontal) zeigen die Trainingssitzungen an (Ihre neuesten Ergebnisse stehen also rechts), auf der y-Achse (vertikal) sind Ihre durchschnittlichen Reaktionszeiten in Millisekunden abgetragen.</p></div>";
+}
+
+	?>
+	<h4>Hier gelangen Sie zu Ihrem persönlichen Trainingsbereich.</h4>
+	<p>	Bitte klicken Sie auf „Weiter“ um mit dem Training anzufangen.</p>
 	
 	<div id="session_outer">
 		<div id="session">
@@ -20,7 +35,8 @@ $this->assign('title', 'Aufmerksamkeitstrainingsprogramm');
 		</div>
 	</div>
 </div>	
-<?php $this->start('script'); ?>
+<?php
+$this->start('script'); ?>
 <script src="<?php echo $this->webroot; ?>js/jquery.fullscreen.js"></script>
 <script type="text/javascript">
 //<![CDATA[
@@ -29,10 +45,7 @@ $this->assign('title', 'Aufmerksamkeitstrainingsprogramm');
 --------- CONFIGURATION
  */
 var imgpath = "<?php echo $this->webroot; ?>" + "img/training/";
-var condition = <?php 
-	echo "'bias_manipulation'"; 
-	# todo: set condition 
-?>;
+var condition = "<?=$condition?>";
 var session_number = 1; // todo: dynamic
 var fixation_duration = 500; // how long fixations are displayed
 var img_duration = 500;

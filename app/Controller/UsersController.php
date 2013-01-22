@@ -24,6 +24,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
 			$this->request->data['User']['group_id'] = 2; # set to user group
+			$this->request->data['User']['condition'] = (mt_rand(0,1)===1) ? 'bias_manipulation' : 'bias_control'; # randomly choose condition
             if ($this->User->save($this->request->data)) {
 			 	$id = $this->User->id;
 			    $this->request->data['User'] = array_merge($this->request->data['User'], array('id' => $id));
@@ -139,7 +140,16 @@ class UsersController extends AppController {
  */
 	public function admin_index() {
 		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
+		$paginate = $this->paginate();
+		$user_ids = Set::extract('/User/id',$paginate);
+		$progress = $this->User->TrainingSession->Trial->getProgress($user_ids);
+		$p2 = array();
+		foreach($paginate AS $k=>$v) {
+			if(isset($progress[$v['User']['id']])) $v['User']['progress'] = $progress[$v['User']['id']];
+			else $v['User']['progress'] = array();
+			$p2[$k] = $v;
+		}
+		$this->set('users',$p2);
 	}
 
 /**

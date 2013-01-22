@@ -9,6 +9,7 @@ App::uses('AppModel', 'Model');
  * @property Trial $Trial
  */
 class User extends AppModel {
+	 public $actsAs = array('Containable');
 	 public $components = array(
 			'Session',
 			'Security', # the one addition

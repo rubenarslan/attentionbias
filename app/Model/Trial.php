@@ -7,6 +7,7 @@ App::uses('AppModel', 'Model');
  * @property Session $Session
  */
 class Trial extends AppModel {
+	 public $actsAs = array('Containable');
 
 /**
  * Display field
@@ -189,5 +190,21 @@ class Trial extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	public function getProgress($users) {
+		$this->virtualFields = array('average_reaction_time' => 'AVG(Trial.first_reaction_time_since_probe_shown)');
+		return $this->find('list', array(
+			'fields' => array('Trial.session_id','average_reaction_time','TrainingSession.user_id'),
+			'group' => 'Trial.session_id',
+			'order' => 'Trial.session_id',
+			'conditions' => array('Trial.first_valid_response = Trial.probe_on_top', 'TrainingSession.user_id IS NOT NULL'),
+			'contain' => array(
+				'TrainingSession' => array(
+					'conditions' => array('TrainingSession.user_id' => $users )
+					)
+				),
+			'recursive' => 1,
+			)
+		);
+	}
 	
 }

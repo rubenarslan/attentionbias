@@ -1,16 +1,16 @@
 <div class="users index">
 	<h2><?php echo __('Users'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table class="table">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('group_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('lastname','Name'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('code'); ?></th>
-			<th><?php echo $this->Paginator->sort('password'); ?></th>
 			<th><?php echo $this->Paginator->sort('condition'); ?></th>
+			<th><?php echo h('Progress'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
@@ -22,11 +22,23 @@
 		</td>
 		<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['firstname'])." ".h($user['User']['lastname']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['code']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['condition']); ?>&nbsp;</td>
+		<td><?php 
+		$progress = $user['User']['progress'];
+		if(count($progress)>1) {
+			$dataseturl = '&amp;chd='.'t:' . implode(',',$progress);
+			if(max($progress)!=0) $dataseturl .= '&amp;chds=0,'.max($progress);
+			echo '<img src="http://chart.apis.google.com/chart?chs=300x70&amp;chm=B,0,0,0,0&amp;chco=0077CC&amp;cht=ls&amp;chxt=x,y&amp;chxr='
+			.'1,'. min($progress) . ',' . max($progress) .'|'.
+			'0,'. count($progress) . ',0'
+			.$dataseturl . '" alt="Graph Ihres Fortschritt" title="Ihr Fortschritt. Ihre neuesten Ergebnisse stehen rechts, die Zahlen auf der x-Achse zeigen die Trainingssitzungen an." />';
+		} elseif (count($progress)==1) {
+			echo 'just 1 Session, AVG '. round(current($progress));
+		}
+		 ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
