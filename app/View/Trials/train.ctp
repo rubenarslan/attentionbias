@@ -17,6 +17,10 @@ echo "<p class='span4'>Die Zahlen auf der x-Achse (horizontal) zeigen die Traini
 }
 
 	?>
+	<?php
+	if(!$hadLastSession):
+	?>
+	
 	<h4>Hier gelangen Sie zu Ihrem persönlichen Trainingsbereich.</h4>
 	<p>	Bitte klicken Sie auf „Weiter“ um mit dem Training anzufangen.</p>
 	
@@ -34,6 +38,14 @@ echo "<p class='span4'>Die Zahlen auf der x-Achse (horizontal) zeigen die Traini
 			<div style="visibility:hidden" id="mistake_message">Falsche Antwort</div>
 		</div>
 	</div>
+	<?php 
+	else: ?>
+	<h4>Das Training beendet.</h4>
+	<p>Vielen Dank für Ihre Teilnahme!</p>
+	
+	<?php
+	endif;
+	?>
 </div>	
 <?php
 $this->start('script'); ?>

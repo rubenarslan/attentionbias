@@ -196,7 +196,11 @@ class Trial extends AppModel {
 			'fields' => array('Trial.session_id','average_reaction_time','TrainingSession.user_id'),
 			'group' => 'Trial.session_id',
 			'order' => 'Trial.session_id',
-			'conditions' => array('Trial.first_valid_response = Trial.probe_on_top', 'TrainingSession.user_id IS NOT NULL'),
+			'conditions' => array(
+				'Trial.first_valid_response = Trial.probe_on_top', 
+				'Trial.number <' => 10,
+				'TrainingSession.user_id IS NOT NULL'
+				),
 			'contain' => array(
 				'TrainingSession' => array(
 					'conditions' => array('TrainingSession.user_id' => $users )
