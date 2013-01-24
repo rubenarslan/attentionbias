@@ -18,13 +18,13 @@ $this->assign('title', 'Studie');
 
 <section id="programm">
 	<h3>Das Programm ATP</h3>
-	<p>Das Aufmerksamkeitstrainings-Programm (ATP) ist ein einfaches Programm, das Sie bei sich zu Hause am Computer durchführen können. Eine Trainingseinheit dauert etwa 10 bis 15 Minuten. Dabei werden Ihnen Bilder gezeigt, die sie möglicherweise an Ihre Zwänge erinnern (z.B. einen tropfenden Wasserhahn) oder aber neutral sind (z.B. eine Blume). Ihre Aufgabe ist es, ähnlich wie bei einem Computerspiel, neben der Bildbetrachtung auf bestimmte Zeichen auf dem Bildschirm zu reagieren. Die genaue Anleitung für das Programm erhalten Sie, wenn Sie sich entschließen teilzunehmen.</p>
+	<p>Das Aufmerksamkeitstrainings-Programm (ATP) ist ein einfaches Programm, das Sie bei sich zu Hause am Computer durchführen können. Eine Trainingseinheit dauert etwa 10 bis 15 Minuten. Dabei werden Ihnen Bilder gezeigt, die Sie möglicherweise an Ihre Zwänge erinnern (z.B. einen tropfenden Wasserhahn) oder aber neutral sind (z.B. eine Blume). Ihre Aufgabe ist es, ähnlich wie bei einem Computerspiel, neben der Bildbetrachtung auf bestimmte Zeichen auf dem Bildschirm zu reagieren. Die genaue Anleitung für das Programm erhalten Sie, wenn Sie sich entschließen teilzunehmen.</p>
 </section>
 
 <section id="wirkung">
 	<h4>Wirkung</h4>
 
-	<p>Bisherige Forschungsergebnisse weisen darauf hin, dass Menschen mit einer Zwangserkrankung ihre Aufmerksamkeitanders ausrichten, als Menschen ohne Zwangserkrankung. Jemand mit einem Kontrollzwang nimmt z.B. einen tropfenden Wasserhahn im Hintergrund sehr viel schneller und stärker wahr als jemand ohne Kontrollzwang. Wissenschaftler_Innen nehmen an, dass solche Aufmerksamkeitsprozesse eine wichtige Rolle für die Entstehung der Zwangsstörung spielen. Ein relativ neuer Behandlungsansatz ist es deshalb, diese Aufmerksamkeitsprozesse neu zu trainieren. Dafür setzt man - wie in unserer Studie - einfache Computerprogramme ein.</p>
+	<p>Bisherige Forschungsergebnisse weisen darauf hin, dass Menschen mit einer Zwangserkrankung ihre Aufmerksamkeit anders ausrichten, als Menschen ohne Zwangserkrankung. Jemand mit einem Kontrollzwang nimmt z.B. einen tropfenden Wasserhahn im Hintergrund sehr viel schneller und stärker wahr als jemand ohne Kontrollzwang. Wissenschaftler_Innen nehmen an, dass solche Aufmerksamkeitsprozesse eine wichtige Rolle für die Entstehung der Zwangsstörung spielen. Ein relativ neuer Behandlungsansatz ist es deshalb, diese Aufmerksamkeitsprozesse neu zu trainieren. Dafür setzt man - wie in unserer Studie - einfache Computerprogramme ein.</p>
 
 	<p>Für die Behandlung verschiedener Angststörungen wurden diese Programme bereits überprüft - mit zum Teil vielversprechenden Erfolgen. In einer Studie der Florida State Universität (USA) konnte eine Vielzahl von Teilnehmer_Innen mit starken Ängsten vor sozialen Situationen diese deutlich reduzieren. Das gleiche Ergebnis konnte auch für andere Ängste erzielt werden.</p>
 
@@ -66,7 +66,7 @@ $this->assign('title', 'Studie');
 	Einwilligungserklärung vermerkt und bei der Studienleitung getrennt von den anderen
 	Daten aufbewahrt. Alle anderen Daten werden in anonymisierter Form erhoben,
 	unter einem Zifferncode gespeichert und computergestützt ausgewertet. Diagnostik
-	und Erhebung werden online durchgeführt. Nur autorisierte Mitarbeiter/innen der
+	und Erhebung werden online durchgeführt. Nur autorisierte Mitarbeiter_Innen der
 	Studie haben Zugang zu den erhobenen Daten. Persönliche Daten werden nicht an
 	Außenstehende weitergegeben. Die Daten werden am Institut für Psychologie der
 	Humboldt-Universität zu Berlin allein zu Forschungszwecken verwendet.</p>

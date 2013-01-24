@@ -77,28 +77,28 @@ var neutral_imgs = [5, 6, 7, 8];
 /*
 ---- INSTRUCTIONS, localisation
 */
-var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen, und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy, möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook) etc. aus, damit Sie möglichst nicht gestört werden.<br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab.<br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen, und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy, möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook etc.) aus, damit Sie nicht gestört werden.<br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab. Wenn Sie auf "Weiter" klicken, beginnt nun der Vollbildmodus. Klicken Sie bitte auf "Erlauben" und setzen ein Häkchen bei "Entscheidung für hu-berlin.de merken", damit Sie den Vollbildmodus nicht bei jedem Training neu erlauben müssen. Brechen Sie den Vollbildmodus während des Trainings nicht ab, da sonst auch die Trainingseinheit unterbrochen wird. Der Vollbildmodus wird nach dem Training automatisch beendet. <br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 
-var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs konzentriert auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 var session_walkthrough2 = 'Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
-var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten ein weißer Kreis auf dem Bildschirm.<br>Ihre Aufgabe ist es, auf die Position des Kreises (oben oder unten) zu reagieren, indem Sie die entsprechende Taste auf der Tastatur drücken.<br><br>Befindet sich der Kreis oben, drücken Sie bitte „' + key_probe1 + '“. Befindet sich der Kreis unten, drücken Sie bitte „' + key_probe2 + '“.<br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich auf die Position des Kreises reagieren.<br><br>Im gezeigten Beispiel wäre „' + key_probe1 + '“ die richtige Antwort, da der Kreis sich oben befindet.<br> Als Eselsbrücke können Sie sich merken „' + key_probe1 + '“ wie der Anfangsbuchstabe von „oben“ und „' + key_probe2 + '“ wie eine Spitze, die nach „unten“ zeigt“. <br> Außerdem liegt „' + key_probe1 + '“ weiter oben auf der Tastatur und „' + key_probe2 + '“ weiter unten.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
-var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm, das Sie anschauen sollen, und der nächste Durchgang beginnt.<br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet (falls Sie Fehler machen, wird Ihnen das angezeigt, nach richtigen Reaktionen geht es sofort weiter).<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
+var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten der Buchstabe „' + key_probe1 + '“ oder „' + key_probe2 + '“ auf dem Bildschirm.<br>Ihre Aufgabe ist es, so schnell wie möglich zu entscheiden, um welchen der beiden Buchstaben es sich handelt, indem Sie die entsprechende Taste auf Ihrer Tastatur drücken. Die Position des Buchstabens spielt dabei keine Rolle. <br><br>Erscheint oben oder unten auf dem Bildschirm ein „' + key_probe1 + '“ so drücken Sie bitte immer „' + key_probe1 + '“ auf Ihrer Tastatur , wenn ein „' + key_probe2 + '“ erscheint, drücken Sie bitte immer „' + key_probe2 + '“. <br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich reagieren.<br><br>Im gezeigten Beispiel wäre „' + key_probe1 + '“ die richtige Antwort, da „' + key_probe1 + '“ auf dem Bildschirm zu sehen ist. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm, das Sie bitte konzentriert anschauen und der nächste Durchgang beginnt. <br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet (falls Sie Fehler machen, wird Ihnen das rückgemeldet, nach richtigen Reaktionen geht es ohne Rückmeldung sofort weiter).<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
 
 
-var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger ihrer rechten Hand auf den Buchstaben „' + key_probe1 + '“ (für oben) und den ihrer linken Hand auf „' + key_probe2 + '“ (für unten).<br>Ihre Finger sollten während der ganzen Aufgabe auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf die Position des Kreises reagieren können.<br>Wenn gleich der "Weiter"-Knopf erscheint, drücken Sie „' + key_probe1 + '“ um anzufangen.';
+var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger Ihrer linken Hand auf den Buchstaben „' + key_probe1 + '“ und den Ihrer rechten Hand auf „' + key_probe2 + '“. <br>Ihre Finger sollen während der ganzen Trainingseinheit auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf den gezeigten Buchstaben reagieren können.<br><br>'; 
 var begin_tryout_button = 'Drücken Sie „' + key_probe1 + '“';
-var fast_and_right_feedback = 'Gut gemacht';
-var slow_and_wrong_feedback = 'Zu langsam und zu viele Fehler.';
-var slow_and_right_feedback = 'Zu langsam.';
-var fast_and_wrong_feedback = 'Zu viele Fehler.';
+var fast_and_right_feedback = 'Sehr gut! Sie haben in der Übungsphase schnell und genau reagiert. Weiter so!';
+var slow_and_wrong_feedback = 'Gut, die Übungsphase ist geschafft! Bitte versuchen Sie nun noch schneller und genauer zu reagieren.';
+var slow_and_right_feedback = 'Sehr gut, Sie haben in der Übungsphase keine Fehler gemacht. Bitte versuchen Sie im folgenden Teil aber noch schneller zu reagieren.';
+var fast_and_wrong_feedback = 'Gut, Ihre Reaktionsgeschwindigkeit war sehr hoch. Bitte versuchen Sie aber im folgenden Teil noch weniger Fehler zu machen.';
 
-var trial_test_instructions = 'Sehr gut, Sie haben die Übungsphase geschafft. Jetzt sind Sie bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: rechter Zeigefinger auf „' + key_probe1 + '“ für oben und linker Zeigefinger auf „' + key_probe2 + '“ für unten.<br><br>Es gibt ab jetzt keine Rückmeldungen mehr, ob Sie richtig oder falsch reagiert haben. Konzentrieren Sie sich einfach darauf, möglichst genau und schnell auf die Position des Kreises zu reagieren.<br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_probe1 + '“ um jetzt anzufangen.</button>';
+var trial_test_instructions = 'Nun haben Sie die Übungsphase geschafft und sind bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: linker Zeigefinger auf „' + key_probe1 + '“ und rechter Zeigefinger auf „' + key_probe2 + '“. <br><br>Es gibt ab jetzt keine Rückmeldung mehr, wenn Sie die falsche Taste drücken. Konzentrieren Sie sich bitte einfach darauf, möglichst genau und schnell durch Tastendruck auf den gezeigten Buchstaben zu reagieren. <br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_probe1 + '“ um jetzt anzufangen.</button>'; 
 
 
-var session_end_message = 'Ende der Aufgabe. Sie haben es geschafft.<br><br>Vielen Dank für Ihre Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :)';
-var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen und verlassen Sie nicht den Test. Bitte schließen Sie vor dem Test Programme, die Sie während des Tests ablenken könnten (durch Töne oder indem sie Sie zwingen, das Test-Fenster zu verlassen).';
-var session_fullscreenFail = 'Ihr Web-Browser scheint den Vollbildmodus nicht zu unterstützen. Ein alternativer Browser ist z.B. <a href="http://getfirefox.com">Firefox</a>.';
-var session_featureFail = 'Ihr Web-Browser unterstützt nötige Funktionen nicht. Vielleicht müssen Sie Ihren Browser nur aktualisieren (falls sie Firefox, Safari oder Chrome benutzen). Falls Sie Opera, Internet Explorer oder einen anderen Browser, der nicht alle benötigten Funktionen hat benutzen, ist ein alternativer Browser z.B. <a href="http://getfirefox.com">Firefox</a>.';
+var session_end_message = 'Ende der Trainingseinheit. Sie haben es geschafft.<br><br>Vielen Dank für Ihre heutige Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :)';
+var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen und verlassen Sie nicht den Test. Bitte schließen Sie vor dem Test Programme, die Sie während des Tests ablenken könnten (durch Töne oder indem sie Sie zwingen, das Test-Fenster zu verlassen). Um Ihre Trainingseinheit jetzt von vorne anzufangen, drücken Sie in der Menüleiste oben auf "Trainieren".';
+var session_fullscreenFail = 'Ihr Web-Browser scheint den Vollbildmodus nicht zu unterstützen. Ein alternativer Browser ist z.B. Firefox. Dieser Browser ist kostenlos und Sie können ihn einfach <a href="http://getfirefox.com">hier herunterladen</a>. Bitte folgen Sie zum herunterladen und installieren den Anweisungen auf der Seite';
+var session_featureFail = 'Ihr Web-Browser unterstützt nötige Funktionen nicht. <br>Benutzen Sie Firefox, Safari oder Chrome? Dann müssen Sie Ihren Browser vielleicht nur aktualisieren. <br>Benutzen Sie Opera, Internet Explorer oder einen anderen Browser? Dann benötigen Sie für die Teilnahme einen anderen Browser, der alle nötigen Funktionen unterstützt. Ein alternativer Browser ist z.B. Firefox. Dieser Browser ist kostenlos und Sie können ihn einfach hier herunterladen <a href="http://getfirefox.com">Firefox</a>. Bitte folgen Sie zum herunterladen und installieren den Anweisungen auf der Seite';
 var go_on_button_message = 'Weiter';
 var back_button_message = 'Zurück';
 
@@ -215,15 +215,13 @@ http://www.opensource.org/licenses/mit-license.php
 
 window.requestTimeout = function(fn, delay) {
 	var start = performance.now(),
-		handle = new Object();
-		
+	    handle = new Object();
 	function loop(){
 		var current = performance.now(),
 			delta = current - start;
-			
+		
 		delta >= delay ? fn.call() : handle.value = window.requestAnimationFrame(loop);
 	};
-	
 	handle.value = window.requestAnimationFrame(loop);
 	return handle;
 };
@@ -316,9 +314,9 @@ Session.preLoad = (function() {
 	
 	preload_these = ocd_imgs.concat(neutral_imgs);
 	var len = preload_these.length;
-    $(preload_these).each(function(index,img){
-		$('<img/>')[0].src = imgpath + img + ".jpg";
-    });
+	    $(preload_these).each(function(index,img){
+			$('<img/>')[0].src = imgpath + img + ".jpg";
+	    });
 	$('<img/>')[0].src = imgpath + "fixation.png";
 	$('<img/>')[0].src = imgpath + "probe1.png";
 	$('<img/>')[0].src = imgpath + "probe2.png";
@@ -390,7 +388,7 @@ Session.showTryoutInstructions = (function() {
 	if(Session.interrupted == true) return;
 	
 	$trial.makeInvisible();
-	$session.empty().append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br><br></div>').append($('<button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>'))).makeVisible();
+	$session.empty().append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br><br></div>').append($('<button id="begin_trial" class="btn btn btn-primary">' + begin_tryout_button +'</button>'))).makeVisible();
 	
 	$(document).on('keydown',function(e) {
 		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1)
@@ -542,14 +540,15 @@ Session.fullscreenFail = (function() { // on leaving fullscreen
 	console.log('Session.fullscreenFail');
 	
 	Session.interrupt();
-	$session.append($('<div class="session_fail">' + session_fullscreenFail + '</div>')).makeVisible();
+	$session.empty().append($('<div class="session_fail">' + session_fullscreenFail + '</div>')).makeVisible();
 });
 
 Session.featureFail = (function() { // on leaving fullscreen
 	console.log('Session.featureFail');
 	
 	Session.interrupt();
-	$session.append($('<div class="session_fail">' + session_featureFail + '</div>')).makeVisible();
+	
+	$session.empty().append($('<div class="session_fail">' + session_featureFail + '</div>')).makeVisible();
 });
 
 /* ====================================
