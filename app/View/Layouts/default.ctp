@@ -87,7 +87,7 @@
 							echo "</li>";
 						}
 						else {
-							echo $this->Html->link("Logout ".AuthComponent::user('email'), '/users/logout'). "</li>";
+							echo $this->Html->link("Logout ". AuthComponent::user('email'), '/users/logout'). "</li>";
 							if(AuthComponent::user('Group.name')==='admin') {
 								?>
 						  <li class="dropdown">
@@ -144,9 +144,9 @@
 <?php 		echo $this->fetch('script'); ?>
 
 
-		<?php echo $this->element('sql_dump');
+		<?php
+		echo $this->element('sql_dump');
 		debug($this->data);
-		debug($this->request->url);
 		pr($this->validationErrors);
 ?>
 

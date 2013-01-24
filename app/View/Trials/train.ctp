@@ -34,7 +34,10 @@ echo "<p class='span4'>Die Zahlen auf der x-Achse (horizontal) zeigen die Traini
 		</div>
 		<div id="trial">
 			<div style="visibility:hidden" id="fixation"></div>
-			<div style="visibility:hidden" id="probe"></div>
+			<div style="visibility:hidden" id="probe1_top" class="probe_top"></div>
+			<div style="visibility:hidden" id="probe1_bottom" class="probe"></div>
+			<div style="visibility:hidden" id="probe2_top" class="probe_top"></div>
+			<div style="visibility:hidden" id="probe2_bottom" class="probe"></div>
 			<div style="visibility:hidden" id="mistake_message">Falsche Antwort</div>
 		</div>
 	</div>
@@ -64,8 +67,8 @@ var img_duration = 500;
 var mistake_message_duration = 2000;
 
 // keys for user input "probe was at the top", ".. down". use keys that are usually located in the same place for your target group (i.e. not y/z, umlauts, commas brackets, arrow keys etc.), and note that this uses the keydown event, not the keypress event (which is better at understanding the keyboard mapping)
-var key_top = 'O'; // have to be uppercase here (user input is recognised either way)
-var key_bottom = 'V';
+var key_probe1 = 'R'; // have to be uppercase here (user input is recognised either way)
+var key_probe2 = 'P';
 
 // image ids, that also double as file names (could easily be changed)
 var ocd_imgs = [1, 2, 3, 4];
@@ -78,18 +81,18 @@ var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten 
 
 var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 var session_walkthrough2 = 'Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
-var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten ein weißer Kreis auf dem Bildschirm.<br>Ihre Aufgabe ist es, auf die Position des Kreises (oben oder unten) zu reagieren, indem Sie die entsprechende Taste auf der Tastatur drücken.<br><br>Befindet sich der Kreis oben, drücken Sie bitte „' + key_top + '“. Befindet sich der Kreis unten, drücken Sie bitte „' + key_bottom + '“.<br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich auf die Position des Kreises reagieren.<br><br>Im gezeigten Beispiel wäre „' + key_top + '“ die richtige Antwort, da der Kreis sich oben befindet.<br> Als Eselsbrücke können Sie sich merken „' + key_top + '“ wie der Anfangsbuchstabe von „oben“ und „' + key_bottom + '“ wie eine Spitze, die nach „unten“ zeigt“. <br> Außerdem liegt „' + key_top + '“ weiter oben auf der Tastatur und „' + key_bottom + '“ weiter unten.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten ein weißer Kreis auf dem Bildschirm.<br>Ihre Aufgabe ist es, auf die Position des Kreises (oben oder unten) zu reagieren, indem Sie die entsprechende Taste auf der Tastatur drücken.<br><br>Befindet sich der Kreis oben, drücken Sie bitte „' + key_probe1 + '“. Befindet sich der Kreis unten, drücken Sie bitte „' + key_probe2 + '“.<br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich auf die Position des Kreises reagieren.<br><br>Im gezeigten Beispiel wäre „' + key_probe1 + '“ die richtige Antwort, da der Kreis sich oben befindet.<br> Als Eselsbrücke können Sie sich merken „' + key_probe1 + '“ wie der Anfangsbuchstabe von „oben“ und „' + key_probe2 + '“ wie eine Spitze, die nach „unten“ zeigt“. <br> Außerdem liegt „' + key_probe1 + '“ weiter oben auf der Tastatur und „' + key_probe2 + '“ weiter unten.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm, das Sie anschauen sollen, und der nächste Durchgang beginnt.<br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet (falls Sie Fehler machen, wird Ihnen das angezeigt, nach richtigen Reaktionen geht es sofort weiter).<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
 
 
-var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger ihrer rechten Hand auf den Buchstaben „' + key_top + '“ (für oben) und den ihrer linken Hand auf „' + key_bottom + '“ (für unten).<br>Ihre Finger sollten während der ganzen Aufgabe auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf die Position des Kreises reagieren können.<br>Wenn gleich der "Weiter"-Knopf erscheint, drücken Sie „' + key_top + '“ um anzufangen.';
-var begin_tryout_button = 'Drücken Sie „' + key_top + '“';
+var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger ihrer rechten Hand auf den Buchstaben „' + key_probe1 + '“ (für oben) und den ihrer linken Hand auf „' + key_probe2 + '“ (für unten).<br>Ihre Finger sollten während der ganzen Aufgabe auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf die Position des Kreises reagieren können.<br>Wenn gleich der "Weiter"-Knopf erscheint, drücken Sie „' + key_probe1 + '“ um anzufangen.';
+var begin_tryout_button = 'Drücken Sie „' + key_probe1 + '“';
 var fast_and_right_feedback = 'Gut gemacht';
 var slow_and_wrong_feedback = 'Zu langsam und zu viele Fehler.';
 var slow_and_right_feedback = 'Zu langsam.';
 var fast_and_wrong_feedback = 'Zu viele Fehler.';
 
-var trial_test_instructions = 'Sehr gut, Sie haben die Übungsphase geschafft. Jetzt sind Sie bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: rechter Zeigefinger auf „' + key_top + '“ für oben und linker Zeigefinger auf „' + key_bottom + '“ für unten.<br><br>Es gibt ab jetzt keine Rückmeldungen mehr, ob Sie richtig oder falsch reagiert haben. Konzentrieren Sie sich einfach darauf, möglichst genau und schnell auf die Position des Kreises zu reagieren.<br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_top + '“ um jetzt anzufangen.</button>';
+var trial_test_instructions = 'Sehr gut, Sie haben die Übungsphase geschafft. Jetzt sind Sie bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: rechter Zeigefinger auf „' + key_probe1 + '“ für oben und linker Zeigefinger auf „' + key_probe2 + '“ für unten.<br><br>Es gibt ab jetzt keine Rückmeldungen mehr, ob Sie richtig oder falsch reagiert haben. Konzentrieren Sie sich einfach darauf, möglichst genau und schnell auf die Position des Kreises zu reagieren.<br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_probe1 + '“ um jetzt anzufangen.</button>';
 
 
 var session_end_message = 'Ende der Aufgabe. Sie haben es geschafft.<br><br>Vielen Dank für Ihre Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :)';
@@ -247,7 +250,10 @@ $(document).ready(function () {
 	$trial = $('#trial');
 	$session = $('#session');
 	$fixation = $('#fixation');
-	$probe = $('#probe');
+	$probe1_top = $('#probe1_top');
+	$probe1_bottom = $('#probe1_bottom');
+	$probe2_top = $('#probe2_top');
+	$probe2_bottom = $('#probe2_bottom');
 	$mistake_message = $('#mistake_message');
 	
 	Session.preLoad(); // call it on domready to preload images
@@ -314,7 +320,8 @@ Session.preLoad = (function() {
 		$('<img/>')[0].src = imgpath + img + ".jpg";
     });
 	$('<img/>')[0].src = imgpath + "fixation.png";
-	$('<img/>')[0].src = imgpath + "probe.png";
+	$('<img/>')[0].src = imgpath + "probe1.png";
+	$('<img/>')[0].src = imgpath + "probe2.png";
 });
 
 Session.featureDetection = (function () {
@@ -351,10 +358,13 @@ Session.preRender = (function() {
 		var imgdiv = $('<div class="trial_images" id="trial_images_'+i+'" style="visibility:hidden"><img class="top" src="' + toppath + '"><img class="bottom" src="'+ botpath + '"></div>');
 		Session.imgs[i] = imgdiv;
 	}
-		$probe.append($('<img src="' +imgpath+ 'probe.png'  + '">'));
+		$probe1_top.append($('<img src="' +imgpath+ 'probe1.png'  + '">'));
+		$probe1_bottom.append($('<img src="' +imgpath+ 'probe1.png'  + '">'));
+		$probe2_top.append($('<img src="' +imgpath+ 'probe2.png'  + '">'));
+		$probe2_bottom.append($('<img src="' +imgpath+ 'probe2.png'  + '">'));
 		$fixation.append($('<img src="' +imgpath+ 'fixation.png'  + '">').one('load',Session.showWalkthrough1));
 		$trial.append(Session.imgs);
-});
+}); // fixme: doesn't work in firefox 16, weiter-button in preRender doesn't work.
 
 Session.showWalkthrough1 = (function() {
 	$('#session div.session_first_instructions').makeInvisible();
@@ -383,7 +393,7 @@ Session.showTryoutInstructions = (function() {
 	$session.empty().append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br><br></div>').append($('<button id="begin_trial" class="btn btn btn-success">' + begin_tryout_button +'</button>'))).makeVisible();
 	
 	$(document).on('keydown',function(e) {
-		if( String.fromCharCode( e.which )  == key_top)
+		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1)
 			Session.beginTryout();
 			$(document).off('keydown');
 	});
@@ -392,7 +402,7 @@ Session.showTryoutInstructions = (function() {
 
 Session.beginTryout = (function() {
 	console.log('Session.beginTryout');
-	$(window).blur(Session.interrupt);
+//	$(window).blur(Session.interrupt);
 
 	$session.makeInvisible();
 	$trial.makeVisible();
@@ -407,7 +417,7 @@ Session.showTryoutFeedback = (function() {
 	var RTsum = 0; var Csum = 0;
 	for(i=0;i<number_of_test_trials;i++) {
 		RTsum += Session.db.Trial[i].first_reaction_time_since_probe_shown;
-		Csum += (Session.db.Trial[i].probe_on_top == Session.db.Trial[i].first_valid_response) ? 1 : 0;
+		Csum += (Session.db.Trial[i].stimulus_1 == Session.db.Trial[i].responded_1) ? 1 : 0;
 	}
 	var toowrong = false; var tooslow = false;
 	if(Csum < number_of_test_trials - can_be_wrong) toowrong = true;
@@ -433,7 +443,7 @@ Session.showTestInstructions = (function() {
 	$session.empty().append($('<div class="trial_instructions">'+ trial_test_instructions +'</div>')).makeVisible();
 	
 	$(document).on('keydown',function(e) {
-		if( String.fromCharCode( e.which )  == key_top)
+		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1)
 			Session.beginTest();
 			$(document).off('keydown');
 	});
@@ -471,13 +481,19 @@ Session.nextTrial = (function() {
 			'ocd_image_id': Session.sequence_ocd[Trial.current],
 			'neutral_image_id': Session.sequence_neutral[Trial.current],
 			'ocd_on_top': (Session.sequence_ocd_top[Trial.current] ) ? 1:0,
+			'stimulus_1': ( ! Math.round(Math.random()) ) ? 1 : 0,
 			'Reaction': [],
 		});
-			
+					
 		if(condition == 'bias_assessment' || condition || 'bias_control')
 			Session.db.Trial[Trial.current].probe_on_top = ( ! Math.round(Math.random()) ) ? 1 : 0; // ! to ensure it's a bool
 		else if (condition == 'bias_manipulation')
 			Session.db.Trial[Trial.current].probe_on_top = ! Session.db.Trial[Trial.current].ocd_on_top;
+		
+		var position = (Session.db.Trial[Trial.current].probe_on_top) ? 'top' : 'bottom';// is the probe on top or not?
+		var stimulus = (Session.db.Trial[Trial.current].stimulus_1) ? '1' : '2'; // which probe is it?
+		Trial.CurrentProbe = '$probe'+stimulus+"_"+position;
+		
 		
 		Trial.begin();
 	}
@@ -587,10 +603,10 @@ Trial.showProbe = (function() {
 	Session.imgs[Trial.current].makeInvisible();
 	if(console.markTimeline) console.markTimeline("images INvisible");
 	Trial.ProbeShown = performance.now();
-							// is the probe on top or not?
-	$probe.toggleClass('probe_on_top',!! Session.db.Trial[Trial.current].probe_on_top).makeVisible(); // !! to ensure it's cast as a bool
+	
+	window[Trial.CurrentProbe].makeVisible();
 
-	Trial.CurrentlyDisplayed = 'probe';
+	Trial.CurrentlyDisplayed = Trial.CurrentProbe;
 	$(window).on('keydown',Trial.response);
 });
 
@@ -601,23 +617,22 @@ Trial.response = (function(e) { // log valid responses
 	console.log('Trial.response');
 	
 	var valid_response_time = performance.now(); // same time for both time indices
-	var key = String.fromCharCode( e.which );
-	key = key.toUpperCase();
-	if(key == key_top || key == key_bottom) { // if it's valid input
+	var key = String.fromCharCode( e.which ).toUpperCase();
+	if(key == key_probe1 || key == key_probe2) { // if it's valid input
 		Session.db.Trial[Trial.current].first_reaction_time_since_trial_began = valid_response_time - Trial.FixationShown;
 		Session.db.Trial[Trial.current].first_reaction_time_since_probe_shown = valid_response_time - Trial.ProbeShown;
-		Session.db.Trial[Trial.current].first_valid_response = (key == key_top) ? 1 : 0; // bool: pressed top, false = pressed bottom
+		Session.db.Trial[Trial.current].responded_1 = (key == key_probe1) ? 1 : 0; // bool: pressed top, false = pressed bottom
 		
 		$(window).off('keydown',Trial.response); // just one valid response per trial
 		
-		$probe.makeInvisible();
+		window[Trial.CurrentProbe].makeInvisible();
 		
 		
 		if(Trial.current > number_of_test_trials - 1) // for non test trials
 			Trial.end();
 		else {
-			if( Session.db.Trial[Trial.current].probe_on_top !=
-				Session.db.Trial[Trial.current].first_valid_response)
+			if( Session.db.Trial[Trial.current].stimulus_1 !=
+				Session.db.Trial[Trial.current].responded_1)
 				Trial.showMistakeMessage(); // incorrect trials get reprimanded
 			else {
 				Trial.end();

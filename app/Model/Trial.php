@@ -197,7 +197,7 @@ class Trial extends AppModel {
 			'group' => 'Trial.session_id',
 			'order' => 'Trial.session_id',
 			'conditions' => array(
-				'Trial.first_valid_response = Trial.probe_on_top', 
+				'Trial.responded_1 = Trial.stimulus_1', 
 				'Trial.number <' => 10,
 				'TrainingSession.user_id IS NOT NULL'
 				),

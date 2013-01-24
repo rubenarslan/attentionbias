@@ -7,16 +7,18 @@ body {
 @media (min-width: 940px) { 
 	header.study-header {
 		background-image:url(../img/Study_header_big.png);
-		height:193px;
+		height:208px;
+	}
+}
+@media (min-width: 1170px) {
+	header.study-header {
+		margin-left:-230px;
 	}
 }
 header.study-header {
 	/*width:940px;*/
-	width:100%;
 	background-repeat:no-repeat;
-	background-position:40px 5px;
-	padding-top:5px;
-	padding-bottom:10px;
+	background-position:center 5px;
 }
 #study_nav {
 	box-shadow:none !important;
@@ -194,7 +196,7 @@ div#trial div.trial_images img {
 	position:absolute;
 	left:50%;
 }
-div#trial div#probe img {
+div#trial div[class*=probe] img {
 	display:block;
 	position:absolute;
 	left:50%;
@@ -243,13 +245,14 @@ PS = 54/2 = 27
 	height:54px;
 	top:692px;
 }
-#trial.sh1440 #probe img {
-	margin-left:-14px;
-	width:27px;
-	height:27px;
+#trial.sh1440 div[class*=probe] img {
+	margin-left:-27px; /* half its width (to center) */
+	margin-top:-27px; /* half its width (to center) */
+	width:54px;
+	height:54px;
 	top:1085px;
 }
-#trial.sh1440 #probe.probe_on_top {
+#trial.sh1440 div.probe_top img {
 	top:353px;
 }
 
@@ -275,13 +278,14 @@ PS = 22
 	height:45px;
 	top:577px; /* 15px + IH */
 }
-#trial.sh1200 #probe img {
-	margin-left:-11px;
-	width: 22px;
-	height:22px;
+#trial.sh1200 div[class*=probe] img {
+	margin-left:-22px; /* half its width (to center) */
+	margin-top:-22px; /* half its width (to center) */
+	width:45px;
+	height:45px;
 	top:903px; /* 15 px + IH + GH + 0.5*IH */
 }
-#trial.sh1200 #probe.probe_on_top img {
+#trial.sh1200 div.probe_top img {
 	top:296px; /* 15 px + 0.5*IH */
 }
 
@@ -307,13 +311,14 @@ PS = 19
 	height:38px;
 	top:493px; /* 15px + IH */
 }
-#trial.sh1024 #probe img {
-	margin-left:-9px;
-	width: 19px;
-	height:19px;
+#trial.sh1024 div[class*=probe] img {
+	margin-left:-19px; /* half its width (to center) */
+	margin-top: -19px;
+	width:38px;
+	height:38px;
 	top:770px; /* 15 px + IH + GH + 0.5*IH */
 }
-#trial.sh1024 #probe.probe_on_top img {
+#trial.sh1024 div.probe_top img {
 	top:254px; /* 15 px + 0.5*IH */
 }
 
@@ -339,13 +344,14 @@ PS = 17
 	height:33px;
 	top:433px; /* 15px + IH */
 }
-#trial.sh900 #probe img {
-	margin-left:-9px;
-	width:17px;
-	height:17px;
+#trial.sh900 div[class*=probe] img {
+	margin-left:-17px; /* half its width (to center) */
+	margin-top:-17px; /* half its width (to center) */
+	width:33px;
+	height:33px;
 	top:675px; /* 15 px + IH + GH + 0.5*IH */
 }
-#trial.sh900 #probe.probe_on_top img {
+#trial.sh900 div.probe_top img {
 	top:224px; /* 15 px + 0.5*IH */
 }
 
@@ -371,13 +377,14 @@ PS = 15
 	height:30px;
 	top:385px; /* 15px + IH */
 }
-#trial.sh800 #probe img {
-	margin-left:-7px;
-	width:15px;
-	height:15px;
+#trial.sh800 div[class*=probe] img {
+	margin-left:-15px; /* half its width (to center) */
+	margin-top:-15px; /* half its width (to center) */
+	width:30px;
+	height:30px;
 	top:600px; /* 15 px + IH + GH + 0.5*IH */
 }
-#trial.sh800 #probe.probe_on_top img {
+#trial.sh800 div.probe_top img {
 	top:200px; /* 15 px + 0.5*IH */
 }
 
@@ -401,13 +408,14 @@ PS = 14
 	height:28px;
 	top:370px; /* 15px + IH */
 }
-#trial.sh768 #probe img {
-	margin-left:-7px;
-	width:14px;
-	height:14px;
+#trial.sh768 div[class*=probe] img {
+	margin-left:-14px; /* half its width (to center) */
+	margin-top:-14px; /* half its width (to center) */
+	width:28px;
+	height:28px;
 	top:575px; /* 15 px + IH + GH + 0.5*IH */
 }
-#trial.sh768 #probe.probe_on_top img {
+#trial.sh768 div.probe_top img {
 	top:192px; /* 15 px + 0.5*IH */
 }
 
@@ -431,13 +439,14 @@ PS = 13
 	height:27px;
 	top:347px; /* 15px + IH */
 }
-#trial.sh720 #probe img {
-	margin-left:-6px;
-	width:13px;
-	height:13px;
+#trial.sh720 div[class*=probe] img {
+	margin-left:-13px; /* half its width (to center) */
+	margin-top:-13px; /* half its width (to center) */
+	width:27px;
+	height:27px;
 	top:540px; /* 15 px + IH + GH + 0.5*IH */
 }
-#trial.sh720 #probe.probe_on_top img {
+#trial.sh720 div.probe_top img {
 	top:181px; /* 15 px + 0.5*IH */
 }
 
@@ -461,12 +470,13 @@ PS = 11
 	height:22px;
 	top:289px; /* 15px + IH */
 }
-#trial.sh600 #probe img {
-	margin-left:-5px;
-	width:11px;
-	height:11px;
+#trial.sh600 div[class*=probe] img {
+	margin-left:-11px; /* half its width (to center) */
+	margin-top:-11px; /* half its width (to center) */
+	width:22px;
+	height:22px;
 	top:448px; /* 15 px + IH + GH + 0.5*IH */
 }
-#trial.sh600 #probe.probe_on_top img {
+#trial.sh600 div.probe_top img {
 	top:152px; /* 15 px + 0.5*IH */
 }

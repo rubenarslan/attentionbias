@@ -2,7 +2,7 @@
 $this->assign('title', 'Willkommen');
 ?>
 <div class="hero-unit span9">
-	<h3>Willkommen zum Aufmerksamkeitstrainingsprogramm (ATP) gegen Zwänge! Wir freuen uns, dass Sie sich für unsere Studie interessieren.</h3>
+	<h3>Willkommen zum Aufmerksamkeitstrainings-Programm (ATP) gegen Zwänge! Wir freuen uns, dass Sie sich für unsere Studie interessieren.</h3>
 	<p>Im folgenden finden Sie alle Informationen zu der Studie und Ihrer möglichen Teilnahme. Wenn Sie weitere Fragen haben, können Sie uns jederzeit <?=$this->Html->link('eine Email schreiben', '/pages/contact'); ?>.</p>
 </div>
 

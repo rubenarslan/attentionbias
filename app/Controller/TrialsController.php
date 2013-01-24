@@ -21,7 +21,11 @@ class TrialsController extends AppController {
 			'limit' => 1,
 			"recursive" => -1,
 			)
-		)[0]['minimum_end_reached'];
+		);
+		if(empty($minimum_end_reached))
+			$minimum_end_reached = 0;
+		else
+			$minimum_end_reached = $minimum_end_reached[0]['minimum_end_reached'];
 		if($minimum_end_reached AND $prevSessions > 8) {
 			$lastSession = true; 
 			$hadLastSession = (2 === $this->Trial->TrainingSession->find('count', array(
