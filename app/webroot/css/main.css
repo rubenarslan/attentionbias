@@ -152,11 +152,11 @@ div.control-group div.date div.controls select[name*=year] {
     url(../img/blank.cur),
     none !important;
 }
-.session_begin, .session_first_instructions, .session_interruption, .session_featurefail, .session_fullscreenFail {
+.session_begin, .session_first_instructions, .session_interruption, .session_featurefail, .session_fullscreenFail,.session_saveFail {
 	font-size:14pt;
 	text-align:left;
 }
-.session_interruption, .session_featurefail, .session_fullscreenFail {
+.session_interruption, .session_featureFail, .session_fullscreenFail,.session_saveFail {
 	color:red;
 }
 .session_walkthrough, .session_instructions, .trial_instructions {
@@ -200,6 +200,11 @@ div#trial div[class*=probe] img {
 	display:block;
 	position:absolute;
 	left:50%;
+}
+
+img[src*=instructions] {
+	border:4px solid white;
+	margin:auto auto;
 }
 /* ==========================================================================
    Screen resolution (and image-size) specific styles for trials
@@ -265,8 +270,8 @@ GH 562 * 0.08 = 45
 PS = 22
 */
 #trial.sh1200 .trial_images img {
-	margin-left:-374px; /* IW / 2 */
-	width:749px;
+	margin-left:-375px; /* IW / 2 */
+	width:750px;
 	height:562px;
 }
 #trial.sh1200 .trial_images img.bottom {

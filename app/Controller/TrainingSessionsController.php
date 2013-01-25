@@ -50,14 +50,13 @@ class TrainingSessionsController extends AppController {
 			if(!isset($this->request->data['TrainingSession']['user_id']))
 				$this->request->data['TrainingSession']['user_id'] = $this->Auth->user('id');
 			if( $this->request->data['TrainingSession']['user_id'] == $this->Auth->user('id')) { # is the 	creator of the training session the logged in user.
-				debug($this->request->data);
 				if ($this->TrainingSession->saveAssociated($this->request->data,array("deep" => TRUE) ) ) {
-					echo 'The training session has been saved';
+					echo __('Gespeichert.');
 				} else {
-					echo 'The training session could not be saved. Please, try again.';
+					echo __('Ihre Trainingssitzung konnte nicht gespeichert werden. Kontaktieren Sie bitte die Studienleitung.');
 				}
 			} else {
-				echo 'Not your session.';
+				echo __('Haben Sie versucht, den Account zu wechseln, während Sie trainiert haben? Falls dieses Problem unerwartet auftritt, kontaktieren Sie die Studienleitung.');
 			}
 		}
 	}

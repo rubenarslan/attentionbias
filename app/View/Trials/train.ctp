@@ -59,7 +59,7 @@ $this->start('script'); ?>
 /*
 --------- CONFIGURATION
  */
-var imgpath = "<?php echo $this->webroot; ?>" + "img/training/";
+var imgpath_base = "<?php echo $this->webroot; ?>" + "img/training/";
 var condition = "<?=$condition?>";
 var session_number = 1; // todo: dynamic
 var fixation_duration = 500; // how long fixations are displayed
@@ -79,14 +79,14 @@ var neutral_imgs = [5, 6, 7, 8];
 */
 var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen, und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy, möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook etc.) aus, damit Sie nicht gestört werden.<br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab. Wenn Sie auf "Weiter" klicken, beginnt nun der Vollbildmodus. Klicken Sie bitte auf "Erlauben" und setzen ein Häkchen bei "Entscheidung für hu-berlin.de merken", damit Sie den Vollbildmodus nicht bei jedem Training neu erlauben müssen. Brechen Sie den Vollbildmodus während des Trainings nicht ab, da sonst auch die Trainingseinheit unterbrochen wird. Der Vollbildmodus wird nach dem Training automatisch beendet. <br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 
-var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs konzentriert auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
-var session_walkthrough2 = 'Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
-var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten der Buchstabe „' + key_probe1 + '“ oder „' + key_probe2 + '“ auf dem Bildschirm.<br>Ihre Aufgabe ist es, so schnell wie möglich zu entscheiden, um welchen der beiden Buchstaben es sich handelt, indem Sie die entsprechende Taste auf Ihrer Tastatur drücken. Die Position des Buchstabens spielt dabei keine Rolle. <br><br>Erscheint oben oder unten auf dem Bildschirm ein „' + key_probe1 + '“ so drücken Sie bitte immer „' + key_probe1 + '“ auf Ihrer Tastatur , wenn ein „' + key_probe2 + '“ erscheint, drücken Sie bitte immer „' + key_probe2 + '“. <br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich reagieren.<br><br>Im gezeigten Beispiel wäre „' + key_probe1 + '“ die richtige Antwort, da „' + key_probe1 + '“ auf dem Bildschirm zu sehen ist. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
-var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm, das Sie bitte konzentriert anschauen und der nächste Durchgang beginnt. <br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet (falls Sie Fehler machen, wird Ihnen das rückgemeldet, nach richtigen Reaktionen geht es ohne Rückmeldung sofort weiter).<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
+var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs konzentriert auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.<br><br><img src="'+imgpath_base+'instructions/screen_fixation.png" width="400" height="250">';
+var session_walkthrough2 = 'Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.<br><br><img src="'+imgpath_base+'instructions/screen_stimuli.png" width="400" height="250">';
+var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten der Buchstabe „' + key_probe1 + '“ oder „' + key_probe2 + '“ auf dem Bildschirm.<br>Ihre Aufgabe ist es, so schnell wie möglich den angezeigten Buchstaben auf Ihrer Tastatur zu drücken. Die Position des Buchstabens spielt dabei keine Rolle. <br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich reagieren.<br><br>Im gezeigten Beispiel müssten Sie „' + key_probe1 + '“ drücken, da „' + key_probe1 + '“ auf dem Bildschirm zu sehen ist. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.<br><br><img src="'+imgpath_base+'instructions/screen_probe.png" width="400" height="250">';
+var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm, das Sie bitte konzentriert anschauen; und der nächste Durchgang beginnt. <br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet (falls Sie Fehler machen, wird Ihnen das rückgemeldet, nach richtigen Reaktionen geht es ohne Rückmeldung sofort weiter).<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
 
 
-var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger Ihrer linken Hand auf den Buchstaben „' + key_probe1 + '“ und den Ihrer rechten Hand auf „' + key_probe2 + '“. <br>Ihre Finger sollen während der ganzen Trainingseinheit auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf den gezeigten Buchstaben reagieren können.<br><br>'; 
-var begin_tryout_button = 'Drücken Sie „' + key_probe1 + '“';
+var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger Ihrer linken Hand auf den Buchstaben „' + key_probe1 + '“ und den Ihrer rechten Hand auf „' + key_probe2 + '“. <br>Ihre Finger sollen während der ganzen Trainingseinheit auf diesen Tasten liegen bleiben. Das ist wichtig, damit Sie so schnell und genau wie möglich auf den gezeigten Buchstaben reagieren können.<br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_probe1 + '“ um jetzt anzufangen.</button>'; 
+
 var fast_and_right_feedback = 'Sehr gut! Sie haben in der Übungsphase schnell und genau reagiert. Weiter so!';
 var slow_and_wrong_feedback = 'Gut, die Übungsphase ist geschafft! Bitte versuchen Sie nun noch schneller und genauer zu reagieren.';
 var slow_and_right_feedback = 'Sehr gut, Sie haben in der Übungsphase keine Fehler gemacht. Bitte versuchen Sie im folgenden Teil aber noch schneller zu reagieren.';
@@ -101,6 +101,10 @@ var session_fullscreenFail = 'Ihr Web-Browser scheint den Vollbildmodus nicht zu
 var session_featureFail = 'Ihr Web-Browser unterstützt nötige Funktionen nicht. <br>Benutzen Sie Firefox, Safari oder Chrome? Dann müssen Sie Ihren Browser vielleicht nur aktualisieren. <br>Benutzen Sie Opera, Internet Explorer oder einen anderen Browser? Dann benötigen Sie für die Teilnahme einen anderen Browser, der alle nötigen Funktionen unterstützt. Ein alternativer Browser ist z.B. Firefox. Dieser Browser ist kostenlos und Sie können ihn einfach hier herunterladen <a href="http://getfirefox.com">Firefox</a>. Bitte folgen Sie zum herunterladen und installieren den Anweisungen auf der Seite';
 var go_on_button_message = 'Weiter';
 var back_button_message = 'Zurück';
+
+var session_saveFail = 'Die Daten dieser Trainingssitzung konnten nicht gespeichert werden!<br>Bitte versuchen Sie es erneut (nachdem Sie bspw. die Internetverbindung wiederhergestellt haben). Falls es nicht gelingt, kontaktieren Sie bitte die Studienleitung mit den unten angezeigten Informationen.';
+var try_saving_again_button = 'Erneut versuchen, zu speichern';
+var session_close_with_unsaved_changes_prompt = 'Ihre Sitzung ist noch nicht gespeichert. Bitte verlassen Sie die Seite erst, wenn dies geschehen ist (es kann nicht mehr lange dauern).';
 
 /* BLOCKS */
 var ocd_block1 = shuffle(ocd_imgs);
@@ -309,7 +313,7 @@ Session.preLoad = (function() {
 		// no 0 case, the values can't be equally close
 	})[0]; // take the first one
 	
-	imgpath += chosen_height + "/"; // append to path
+	imgpath = imgpath_base + chosen_height + "/"; // append to path
 	$trial.addClass('sh' + chosen_height); // add class for widths and heights
 	
 	preload_these = ocd_imgs.concat(neutral_imgs);
@@ -320,6 +324,9 @@ Session.preLoad = (function() {
 	$('<img/>')[0].src = imgpath + "fixation.png";
 	$('<img/>')[0].src = imgpath + "probe1.png";
 	$('<img/>')[0].src = imgpath + "probe2.png";
+	$('<img/>')[0].src = imgpath_base + "instructions/screen_probe.png";
+	$('<img/>')[0].src = imgpath_base + "instructions/screen_fixation.png";
+	$('<img/>')[0].src = imgpath_base + "instructions/screen_stimuli.png";
 });
 
 Session.featureDetection = (function () {
@@ -388,7 +395,7 @@ Session.showTryoutInstructions = (function() {
 	if(Session.interrupted == true) return;
 	
 	$trial.makeInvisible();
-	$session.empty().append($('<div class="trial_instructions">'+ trial_tryout_instructions +'<br><br></div>').append($('<button id="begin_trial" class="btn btn btn-primary">' + begin_tryout_button +'</button>'))).makeVisible();
+	$session.empty().append($('<div class="trial_instructions">'+ trial_tryout_instructions +'</div>')).makeVisible();
 	
 	$(document).on('keydown',function(e) {
 		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1)
@@ -501,25 +508,40 @@ Session.nextTrial = (function() {
 Session.end = (function() {
 	Session.db.ended = mysqldate( new Date() );
 	Session.db.ended_unixtime = new Date().getTime();
-	
 	console.log('Session.end');
+	
+	$(window).off('keypress click',Reaction.logReaction); // stop logging key strokes
+	$(document).off("fullscreenchange"); // remove error message	
+	$(window).off("blur"); // remove error message
+	$trial.makeInvisible().empty().removeClass('fullscreen');
+	$session.removeClass('fullscreen').makeVisible();
+	
+	window.onbeforeunload = function() {
+		return session_close_with_unsaved_changes_prompt;
+	};
+	Session.save();
+	$('#session_outer').fullScreen(false); // leave fullscreen
+});
+Session.save = (function () {
 	var data = {TrainingSession: Session.db };
 	$.ajax('../TrainingSessions/ajaxAdd',{
 		data: data,
 		type: 'post',
+		dataType: 'text',
 		cache: false,
-		complete: function (resp) {
-			console.log("Session.saved");
-			console.log(resp);
+	}).done(function (data, textStatus, jqXHR) {
+		if(data!='Gespeichert.') {
+			$session.empty().append($('<div class="session_saveFail">' + session_saveFail + "<br>" + textStatus + "<br>" + data + '</div>').append($('<button class="btn btn-large btn-primary">' + try_saving_again_button + '</button>').one('click', Session.save)));
 		}
+		else {
+			console.log("Session.saved");
+			$session.empty().append($('<div class="session_end_message">' + session_end_message +'</div>')).makeVisible();
+			window.onbeforeunload = function() {};
+		}
+		
+	}).fail(function (jqXHR, textStatus, errorThrown) {
+		$session.empty().append($('<div class="session_saveFail">' + session_saveFail + "<br>" + textStatus + "<br>" + errorThrown + '</div>').append($('<button class="btn btn-large btn-primary">' + try_saving_again_button + '</button>').one('click', Session.save)));
 	});
-	$(document).off("fullscreenchange"); // remove error message	
-	$(window).off("blur"); // remove error message
-	$trial.makeInvisible().empty().removeClass('fullscreen');
-	$session.removeClass('fullscreen').append($('<div class="session_end_message">' + session_end_message +'</div>')).makeVisible();
-	$('#session_outer').fullScreen(false); // leave fullscreen
-	$(window).off('keypress click',Reaction.logReaction); // stop logging key strokes
-	
 });
 
 Session.interrupt = (function() { // on leaving fullscreen
@@ -540,7 +562,7 @@ Session.fullscreenFail = (function() { // on leaving fullscreen
 	console.log('Session.fullscreenFail');
 	
 	Session.interrupt();
-	$session.empty().append($('<div class="session_fail">' + session_fullscreenFail + '</div>')).makeVisible();
+	$session.empty().append($('<div class="session_fullscreenFail">' + session_fullscreenFail + '</div>')).makeVisible();
 });
 
 Session.featureFail = (function() { // on leaving fullscreen
@@ -548,7 +570,7 @@ Session.featureFail = (function() { // on leaving fullscreen
 	
 	Session.interrupt();
 	
-	$session.empty().append($('<div class="session_fail">' + session_featureFail + '</div>')).makeVisible();
+	$session.empty().append($('<div class="session_featureFail">' + session_featureFail + '</div>')).makeVisible();
 });
 
 /* ====================================
