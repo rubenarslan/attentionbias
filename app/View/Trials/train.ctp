@@ -27,8 +27,6 @@ echo "<p class='span4'>Die Zahlen auf der x-Achse (horizontal) zeigen die Traini
 	<div id="session_outer">
 		<div id="session">
 			<div class="session_begin">
-				Sie benötigen einen aktuellen Browser, um teilnehmen zu können.<br>
-				Wir unterstützen Firefox, Chrome und Safari. Opera und Internet Explorer haben leider nicht alle nötigen Features.<br>
 				Sie benötigen Javascript, bzw. müssen JavaScript in Ihren Browser-Einstellungen erlauben.
 			</div>
 		</div>
@@ -258,6 +256,7 @@ $(document).ready(function () {
 	$probe2_bottom = $('#probe2_bottom');
 	$mistake_message = $('#mistake_message');
 	
+	Session.featureDetection();
 	Session.preLoad(); // call it on domready to preload images
 	
 	$(document).one("fullscreenerror", Session.fullscreenFail);
@@ -268,7 +267,7 @@ $(document).ready(function () {
 	}); // only does something if fullscreen was left
 
 	$trial.makeInvisible();
-	$('#session div.session_begin').empty().append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').click(Session.featureDetection));
+	$('#session div.session_begin').empty().append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').click(Session.firstInstructions));
 });
 
 
@@ -298,20 +297,12 @@ Session.preLoad = (function() {
 	var swidth = screen.width;
 	var sheight = screen.height;
 	var available_sheights = [600,720,768,800,900,1024,1200,1440];
-	var chosen_height = available_sheights.sort(function (a, b) {
-		if(b - sheight < 0 && a - sheight < 0) // can't use either
-			return 0;
-		if(b - sheight < 0)
-			return -1;
-		if(a - sheight < 0) // can't use this screen width
-			return 1; // b is better
-		// we only get here if both A and B are smaller than SH
-		if(a - sheight < b - sheight)
-			return -1; // a is a closer fit
-		if(a - sheight > b - sheight)
-			return 1; // b is a closer fit
-		// no 0 case, the values can't be equally close
-	})[0]; // take the first one
+	var chosen_height = 600;
+	for(var i = 0; i < available_sheights.length; i++) {
+		console.log(available_sheights[i]);
+		if(sheight >= available_sheights[i]) chosen_height = available_sheights[i];
+	}
+	Session.db.displayed_height = chosen_height;
 	
 	imgpath = imgpath_base + chosen_height + "/"; // append to path
 	$trial.addClass('sh' + chosen_height); // add class for widths and heights
@@ -332,9 +323,6 @@ Session.preLoad = (function() {
 Session.featureDetection = (function () {
 	if(!($.support.ajax && $.support.boxModel && performance.now && window.requestAnimationFrame && window.cancelAnimationFrame)) {
 		Session.featureFail();
-	}
-	else {
-		Session.firstInstructions();
 	}
 });
 
@@ -457,8 +445,10 @@ Session.showTestInstructions = (function() {
 Session.beginTest = (function() {
 	console.log('Session.begin');
 	
+	Session.db.screen_width = screen.width;
 	Session.db.window_width = $(window).width();
 	Session.db.document_width = $(document).width(); // should be identical in full screen
+	Session.db.screen_height =  screen.height;
 	Session.db.window_height =  $(window).height();
 	Session.db.document_height = $(document).height();
 	

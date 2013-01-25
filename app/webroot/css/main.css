@@ -298,13 +298,13 @@ PS = 22
    Screen height 1024
    ========================== 
 IH (1024-30)/2.08 = 478
-IW (1 + 1/3) * 478 = 637
+IW (1 + 1/3) * 478 = 638
 GH 478 * 0.08 = 38
 PS = 19
 */
 #trial.sh1024 .trial_images img {
-	margin-left:-318px; /* IW / 2 */
-	width:637px;
+	margin-left:-319px; /* IW / 2 */
+	width:638px;
 	height:478px;
 }
 #trial.sh1024 .trial_images img.bottom {
