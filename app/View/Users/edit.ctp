@@ -1,3 +1,6 @@
+<?php
+$this->assign('title', 'Profil bearbeiten');
+?>
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>

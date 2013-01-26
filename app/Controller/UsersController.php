@@ -20,24 +20,76 @@ class UsersController extends AppController {
 	    $this->redirect($this->Auth->logout());
 	}
 	
-    public function register() {
-        if ($this->request->is('post')) {
-            $this->User->create();
-			$this->request->data['User']['group_id'] = 2; # set to user group
-			$this->request->data['User']['condition'] = (mt_rand(0,1)===1) ? 'bias_manipulation' : 'bias_control'; # randomly choose condition
-            if ($this->User->save($this->request->data)) {
-			 	$id = $this->User->id;
-			    $this->request->data['User'] = array_merge($this->request->data['User'], array('id' => $id));
-			    if($this->Auth->login())
-                	$this->Session->setFlash(__('You have been registered and logged in.'));
-				else
-					$this->Session->setFlash(__('Login went wrong.'));
-	            $this->redirect($this->Auth->redirect());
-            } else {
-                $this->Session->setFlash(__('Registration unsuccessful. Please, try again.'));
-            }
-        }
-    }
+	public function forgotPassword() {
+		if ($this->request->is('post')) {
+		 	$user = $this->User->find('first', array(
+				'fields' => array('firstname','lastname','email','id'),
+				'conditions' => array('User.email' => $this->request->data['User']['email'] ),
+				'limit' => 1,
+			))['User'];
+	    		$reset_token = $this->User->generateResetToken($user['id']);
+			$email = new CakeEmail('smtp');
+			$email
+			    ->to(array($user['email'] => $user['firstname']." ".$user['lastname']))
+			    ->subject(__('Passwort zurücksetzen Zwang-Studie ATP.'))
+			    ->send(
+"Hallo ".$user['firstname']." ".$user['lastname']."
+
+Sie haben uns gebeten Ihnen einen Link zuzuschicken, um Ihr
+Passwort zurückzusetzen. Falls Sie den Link nicht angefordert
+haben, kontaktieren Sie bitte die Studienleitung, indem Sie
+auf diese Email antworten.
+
+".Router::url( "/users/resetPassword/".$reset_token, true )."
+
+Freundliche Grüße,
+
+Ihr Studienteam");
+			$this->redirect("/");
+		}
+	}
+	public function resetPassword($reset_token = null) {
+		if($reset_token == '' OR $reset_token == null) throw new MethodNotAllowedException(__('Invalid reset token.'));
+		if ($this->request->is('post')) {
+		 	$user_id = $this->User->field('id', array(
+					'User.hashed_reset_token' => AuthComponent::password($reset_token),
+					'User.reset_token_expiration >' => date('Y-m-d H:i:s') 
+				)
+			);
+			if($user_id) { // returns false if not found
+				$this->User->read(null,$user_id);
+				$this->User->set(array(
+					'hashed_reset_token' => null,
+					'reset_token_expiration' => null,
+					'password' => $this->request->data['User']['password'],
+				));
+				if($this->User->save()) {
+					$this->Session->setFlash(__('Passwort successfully changed. Log in now.'));
+					$this->redirect("/users/login");
+				}
+			} else {
+				$this->Session->setFlash(__('Passwort reset token was invalid. Please follow the link in your email or copy it to the browser.'));
+			}
+		}
+	}
+	public function register() {
+	    if ($this->request->is('post')) {
+	        $this->User->create();
+	$this->request->data['User']['group_id'] = 2; # set to user group
+	$this->request->data['User']['condition'] = (mt_rand(0,1)===1) ? 'bias_manipulation' : 'bias_control'; # randomly choose condition
+	        if ($this->User->save($this->request->data)) {
+		$id = $this->User->id;
+	   $this->request->data['User'] = array_merge($this->request->data['User'], array('id' => $id));
+	   if($this->Auth->login())
+	            	$this->Session->setFlash(__('You have been registered and logged in.'));
+	else
+		$this->Session->setFlash(__('Login went wrong.'));
+	         $this->redirect($this->Auth->redirect());
+	        } else {
+	            $this->Session->setFlash(__('Registration unsuccessful. Please, try again.'));
+	        }
+	    }
+	}
 /**
  * index method
  *

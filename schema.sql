@@ -41,6 +41,8 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`users` (
   `birthdate` DATE NULL ,
   `firstname` VARCHAR(255) NULL ,
   `lastname` VARCHAR(255) NULL ,
+  `hashed_reset_token` VARCHAR(255) NULL ,
+  `reset_token_expiration` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `fk_users_groups1`
     FOREIGN KEY (`group_id` )
@@ -72,8 +74,11 @@ CREATE  TABLE IF NOT EXISTS `zwang`.`training_sessions` (
   `browser_language` VARCHAR(255) NULL ,
   `window_width` VARCHAR(45) NULL ,
   `document_width` VARCHAR(45) NULL ,
+  `screen_width` VARCHAR(45) NULL ,
   `window_height` VARCHAR(45) NULL ,
   `document_height` VARCHAR(45) NULL ,
+  `screen_height` VARCHAR(45) NULL ,
+  `displayed_height` VARCHAR(45) NULL ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `fk_sessions_users`
     FOREIGN KEY (`user_id` )

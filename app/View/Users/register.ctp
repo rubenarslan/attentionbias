@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', 'Kontakt');
+$this->assign('title', 'Anmeldung zur Studie');
 ?>
 <div class="span10">
 
@@ -69,7 +69,7 @@ $this->assign('title', 'Kontakt');
 			'value'=> 1,
 			'label' => 'Ich bin mindestens 18 Jahre alt.',
 		));
-		    ?>
+		?>
 		</div>
 	
 		<div class="control-group controls-checkbox">

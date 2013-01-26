@@ -55,8 +55,8 @@ class AppController extends Controller {
 		'RequestHandler',
 	);
 	function beforeFilter() {
-			parent::beforeFilter();
-			$this->Auth->allow('login','logout','register','pages','display');
+		parent::beforeFilter();
+		$this->Auth->allow('login','logout','register','pages','display','forgotPassword','resetPassword');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'display');
 	        $this->Auth->loginRedirect = array('controller' => 'Trials', 'action' => 'train');
@@ -66,3 +66,4 @@ class AppController extends Controller {
 		if($admin) return $admin; # admins can do anything 
 	}
 }
+App::uses('CakeEmail', 'Network/Email');
