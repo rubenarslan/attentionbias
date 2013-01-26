@@ -35,9 +35,9 @@ class User extends AppModel {
 	);
 	public function beforeSave($options = array()) {
 		if (isset($this->data['User']['password']))
-            $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']); ## hash
+            $this->data['User']['password'] = Security::hash($this->data['User']['password'],'blowfish'); ## hash
 		if (isset($this->data['User']['hashed_reset_token']))
-        $this->data['User']['hashed_reset_token'] = AuthComponent::password($this->data['User']['hashed_reset_token']); ## hash
+        $this->data['User']['hashed_reset_token'] = Security::hash($this->data['User']['hashed_reset_token'],'blowfish'); ## hash
         return true;
 	}
 	public function generateResetToken($id) {

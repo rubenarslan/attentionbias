@@ -37,7 +37,7 @@ class AppController extends Controller {
 			'Session',
  	       'Auth' => array(
 				'authenticate' => array(
-				            'Form' => array(
+					    'Blowfish' => array(
 				                'fields' => array(
 									'username' => 'email',
 									'password' => 'password',

@@ -40,7 +40,8 @@ Passwort zurückzusetzen. Falls Sie den Link nicht angefordert
 haben, kontaktieren Sie bitte die Studienleitung, indem Sie
 auf diese Email antworten.
 
-".Router::url( "/users/resetPassword/".$reset_token, true )."
+".Router::url( "/users/resetPassword/".$user['email']."/".$reset_token, true)
+."
 
 Freundliche Grüße,
 
@@ -48,15 +49,23 @@ Ihr Studienteam");
 			$this->redirect("/");
 		}
 	}
-	public function resetPassword($reset_token = null) {
-		if($reset_token == '' OR $reset_token == null) throw new MethodNotAllowedException(__('Invalid reset token.'));
+	public function resetPassword($email = null,$reset_token = null) {
+		if($reset_token == '' OR $reset_token == null OR $email == '' OR $email == null) throw new MethodNotAllowedException(__('Invalid reset token.'));
 		if ($this->request->is('post')) {
-		 	$user_id = $this->User->field('id', array(
-					'User.hashed_reset_token' => AuthComponent::password($reset_token),
-					'User.reset_token_expiration >' => date('Y-m-d H:i:s') 
-				)
-			);
-			if($user_id) { // returns false if not found
+		 	$user = $this->User->find('first', array(
+					'fields' => array('id','hashed_reset_token'),
+					'conditions' => array(
+						'User.email' => $email,
+						'User.reset_token_expiration >' => date('Y-m-d H:i:s') 
+					)
+			));
+			$user_id = $user['User']['id'];
+			$hashed_reset_token = $user['User']['hashed_reset_token'];
+			$rehashed = Security::hash(
+				$reset_token,
+				'blowfish',
+				$hashed_reset_token);
+			if($user_id AND $hashed_reset_token === $rehashed) {
 				$this->User->read(null,$user_id);
 				$this->User->set(array(
 					'hashed_reset_token' => null,
