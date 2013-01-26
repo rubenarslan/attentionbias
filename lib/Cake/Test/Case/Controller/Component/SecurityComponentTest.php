@@ -195,6 +195,22 @@ class SecurityComponentTest extends CakeTestCase {
 	}
 
 /**
+ * Ensure that directly requesting the blackholeCallback as the controller
+ * action results in an exception.
+ *
+ * @return void
+ */
+	public function testExceptionWhenActionIsBlackholeCallback() {
+		$this->Controller->request->addParams(array(
+			'controller' => 'posts',
+			'action' => 'fail'
+		));
+		$this->assertFalse($this->Controller->failed);
+		$this->Controller->Security->startup($this->Controller);
+		$this->assertTrue($this->Controller->failed, 'Request was blackholed.');
+	}
+
+/**
  * test that initialize can set properties.
  *
  * @return void
@@ -1371,5 +1387,19 @@ class SecurityComponentTest extends CakeTestCase {
 		$this->assertFalse(isset($result['3']));
 		$this->assertTrue(isset($result['4']));
 		$this->assertTrue(isset($result['5']));
+	}
+
+/**
+ * Test unlocked actions
+ *
+ * @return void
+ */
+	public function testUnlockedActions() {
+		$_SERVER['REQUEST_METHOD'] = 'POST';
+		$this->Controller->request->data = array('data');
+		$this->Controller->Security->unlockedActions = 'index';
+		$this->Controller->Security->blackHoleCallback = null;
+		$result = $this->Controller->Security->startup($this->Controller);
+		$this->assertNull($result);
 	}
 }
