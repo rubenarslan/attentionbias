@@ -1,0 +1,23 @@
+#for debugging
+#RewriteCond %{QUERY_STRING} !vardump
+#RewriteRule (.*) /app/webroot/info.php?vardump&REWRITEreq=%{THE_REQUEST}&REWRITEreqhost=%{HTTP_HOST}&REWRITEreqfilename=%{REQUEST_FILENAME}&REWRITEdocroot=%{DOCUMENT_ROOT}&REWRITEdocrootreal=%{ENV:DOCUMENT_ROOT_REAL} [R=302,L,QSA]
+
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+## these directives mean: unless it's actually a file or directory. that means only not found ones are rewritten
+## that means: my 500s who are probably loops, never actually get to /app/webroot/index.php
+
+
+## if I add RewriteBase / to the root htaccess, proper files get redirected.
+## this means, the redirection to /app/webroot works, but index.php is not found
+## actually this was the fix and I just forgot to upload the tmp dir (it was skipped due to my transmit rules)
+
+### adding a slash before index.php doesn't fix it, I get the HU 500 (not the "500 500"), static files still work
+#### removing RewriteBase / in root leads to 500-500s, static don't work anymore.
+
+
+# RewriteBase / in all 3 htaccess - only static works
+# RewriteBase to their respective location - doesn't work
+
+# dev: no slash somewhere
+# prod: slash somewhere
