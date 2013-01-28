@@ -42,7 +42,7 @@ class TrialsController extends AppController {
 		if($prevSessions==0 OR $lastSession OR $this->Auth->user('condition')=='') $condition = 'bias_assessment';
 		else $condition = $this->Auth->user('condition'); 
 		
-		$this->set(compact('progress','condition','hadLastSession'));
+		$this->set(compact('progress','condition','hadLastSession','prevSessions'));
 	}
 	function admin_export($exportformat='CSV')
 		{

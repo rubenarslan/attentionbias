@@ -26,7 +26,8 @@ class UsersController extends AppController {
 				'fields' => array('firstname','lastname','email','id'),
 				'conditions' => array('User.email' => $this->request->data['User']['email'] ),
 				'limit' => 1,
-			))['User'];
+			));
+			$user = $user['User'];
 	    		$reset_token = $this->User->generateResetToken($user['id']);
 			$email = new CakeEmail('smtp');
 			$email

@@ -59,7 +59,7 @@ $this->start('script'); ?>
  */
 var imgpath_base = "<?php echo $this->webroot; ?>" + "img/training/";
 var condition = "<?=$condition?>";
-var session_number = 1; // todo: dynamic
+var session_number = <?=++$prevSessions;?>;
 var fixation_duration = 500; // how long fixations are displayed
 var img_duration = 500;
 var mistake_message_duration = 2000;
@@ -77,9 +77,9 @@ var neutral_imgs = [5, 6, 7, 8];
 */
 var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen, und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy, möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook etc.) aus, damit Sie nicht gestört werden.<br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab. Wenn Sie auf "Weiter" klicken, beginnt nun der Vollbildmodus. Klicken Sie bitte auf "Erlauben" und setzen ein Häkchen bei "Entscheidung für hu-berlin.de merken", damit Sie den Vollbildmodus nicht bei jedem Training neu erlauben müssen. Brechen Sie den Vollbildmodus während des Trainings nicht ab, da sonst auch die Trainingseinheit unterbrochen wird. Der Vollbildmodus wird nach dem Training automatisch beendet. <br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 
-var session_walkthrough1 = 'Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs konzentriert auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.<br><br><img src="'+imgpath_base+'instructions/screen_fixation.png" width="400" height="250">';
-var session_walkthrough2 = 'Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.<br><br><img src="'+imgpath_base+'instructions/screen_stimuli.png" width="400" height="250">';
-var session_walkthrough3 = 'Sobald die Fotos verschwinden, erscheint oben oder unten der Buchstabe „' + key_probe1 + '“ oder „' + key_probe2 + '“ auf dem Bildschirm.<br>Ihre Aufgabe ist es, so schnell wie möglich den angezeigten Buchstaben auf Ihrer Tastatur zu drücken. Die Position des Buchstabens spielt dabei keine Rolle. <br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich reagieren.<br><br>Im gezeigten Beispiel müssten Sie „' + key_probe1 + '“ drücken, da „' + key_probe1 + '“ auf dem Bildschirm zu sehen ist. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.<br><br><img src="'+imgpath_base+'instructions/screen_probe.png" width="400" height="250">';
+var session_walkthrough1 = '<div class="instruction_image"><img src="'+imgpath_base+'instructions/screen_fixation.png" width="400" height="250"></div>Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs konzentriert auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough2 = '<div class="instruction_image"><img src="'+imgpath_base+'instructions/screen_stimuli.png" width="400" height="250"></div>Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_walkthrough3 = '<div class="instruction_image"><img src="'+imgpath_base+'instructions/screen_probe.png" width="400" height="250"></div>Sobald die Fotos verschwinden, erscheint oben oder unten der Buchstabe „' + key_probe1 + '“ oder „' + key_probe2 + '“ auf dem Bildschirm.<br>Ihre Aufgabe ist es, so schnell wie möglich den angezeigten Buchstaben auf Ihrer Tastatur zu drücken. Die Position des Buchstabens spielt dabei keine Rolle. <br><br>Es ist wichtig, dass Sie immer so schnell und genau wie möglich reagieren.<br><br>Im gezeigten Beispiel müssten Sie „' + key_probe1 + '“ drücken, da „' + key_probe1 + '“ auf dem Bildschirm zu sehen ist. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 var session_walkthrough4 = 'Sobald Sie eine der beiden Tasten gedrückt haben, erscheint wieder das weiße Kreuz auf dem Bildschirm, das Sie bitte konzentriert anschauen; und der nächste Durchgang beginnt. <br><br>Damit Sie sich mit dem Ablauf vertraut machen können, folgt jetzt eine kurze Übungsphase. Ihre Reaktionen werden in dieser Phase noch nicht aufgezeichnet (falls Sie Fehler machen, wird Ihnen das rückgemeldet, nach richtigen Reaktionen geht es ohne Rückmeldung sofort weiter).<br><br>Klicken Sie „Weiter“, um mit der Übungsphase anzufangen.<br><br>Wenn Sie die Anleitung gerne noch einmal durchlesen möchten, bevor Sie mit der Übungsphase beginnen, klicken Sie bitte „Zurück“.';
 
 
@@ -357,24 +357,22 @@ Session.preRender = (function() {
 		$probe2_bottom.append($('<img src="' +imgpath+ 'probe2.png'  + '">'));
 		$fixation.append($('<img src="' +imgpath+ 'fixation.png'  + '">').one('load',Session.showWalkthrough1));
 		$trial.append(Session.imgs);
-}); // fixme: doesn't work in firefox 16, weiter-button in preRender doesn't work.
+});
 
 Session.showWalkthrough1 = (function() {
-	$('#session div.session_first_instructions').makeInvisible();
-	$('#session div.session_walkthrough:visible').makeInvisible();
-	$session.append($('<div class="session_walkthrough">'+ session_walkthrough1 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough2)));
+	$session.empty().append($('<div class="session_walkthrough">'+ session_walkthrough1 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough2)));
 });
 
 Session.showWalkthrough2 = (function() {
-	$('#session div.session_walkthrough:visible').makeInvisible();
+	$('#session div.session_walkthrough:visible').hide();
 	$session.append($('<div class="session_walkthrough">'+ session_walkthrough2 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough3)));
 });
 Session.showWalkthrough3 = (function() {
-	$('#session div.session_walkthrough:visible').makeInvisible();
+	$('#session div.session_walkthrough:visible').hide();
 	$session.append($('<div class="session_walkthrough">'+ session_walkthrough3 +'<br><br></div>').append($('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showWalkthrough4)));
 });
 Session.showWalkthrough4 = (function() {
-	$('#session div.session_walkthrough:visible').makeInvisible();
+	$('#session div.session_walkthrough:visible').hide();
 	$session.append($('<div class="session_walkthrough">'+ session_walkthrough4 +'<br><br></div>').append( $('<button class="btn btn-large">' + back_button_message + '</button>').one('click', Session.showWalkthrough1) ).append( $('<button class="btn btn-large btn-primary">' + go_on_button_message + '</button>').one('click', Session.showTryoutInstructions) ) );
 });
 
