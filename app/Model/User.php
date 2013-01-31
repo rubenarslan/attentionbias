@@ -15,7 +15,7 @@ class User extends AppModel {
 			'Security', # the one addition
 	        'Auth' => array(
 				'authenticate' => array(
-				            'Form' => array(
+				            'Blowfish' => array(
 				                'fields' => array(
 									'username' => 'email',
 									'password' => 'password',

@@ -21,7 +21,7 @@
  */
 
 App::uses('Controller', 'Controller');
-
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Application Controller
  *
@@ -66,4 +66,3 @@ class AppController extends Controller {
 		if($admin) return $admin; # admins can do anything 
 	}
 }
-App::uses('CakeEmail', 'Network/Email');
