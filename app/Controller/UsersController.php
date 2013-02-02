@@ -23,7 +23,7 @@ class UsersController extends AppController {
 	public function forgotPassword() {
 		if ($this->request->is('post')) {
 		 	$user = $this->User->find('first', array(
-				'fields' => array('firstname','lastname','email','id'),
+				'fields' => array('email','id'),
 				'conditions' => array('User.email' => $this->request->data['User']['email'] ),
 				'limit' => 1,
 			));
@@ -31,10 +31,10 @@ class UsersController extends AppController {
 	    		$reset_token = $this->User->generateResetToken($user['id']);
 			$email = new CakeEmail('smtp');
 			$email
-			    ->to(array($user['email'] => $user['firstname']." ".$user['lastname']))
+			    ->to($user['email'])
 			    ->subject(__('Passwort zurücksetzen Zwang-Studie ATP.'))
 			    ->send(
-"Hallo ".$user['firstname']." ".$user['lastname']."
+"Sehr geehrte/r Teilnehmer/in,
 
 Sie haben uns gebeten Ihnen einen Link zuzuschicken, um Ihr
 Passwort zurückzusetzen. Falls Sie den Link nicht angefordert
@@ -194,7 +194,31 @@ Ihr Studienteam");
 		$this->redirect(array('action' => 'index'));
 	}
 
+	function admin_export($exportformat='CSV')	{
+			$ufields = array('id' ,
+			'group_id',
+			'created',
+			'modified' ,
+			'code',
+			'condition',
+			'birthdate');
+			
+			if($exportformat=='excelemail') {
+				$ufields[] = 'email';
+				$exportformat = 'excel';
+			}
+			
+			$toExport = $this->User->find('all',array(
+				'fields' => $ufields
+			));
 
+		    $this->set(compact('toExport','exportformat'));
+			if($exportformat=='excel') $this->layout = 'export_xls';
+			else { 
+				$this->layout = null;
+		    	$this->autoLayout = false;
+			}
+	}
 /**
  * admin_index method
  *

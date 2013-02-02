@@ -87,7 +87,7 @@ var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger Ihrer link
 
 var fast_and_right_feedback = 'Sehr gut! Sie haben in der Übungsphase schnell und genau reagiert. Weiter so!';
 var slow_and_wrong_feedback = 'Gut, die Übungsphase ist geschafft! Bitte versuchen Sie nun noch schneller und genauer zu reagieren.';
-var slow_and_right_feedback = 'Sehr gut, Sie haben in der Übungsphase keine Fehler gemacht. Bitte versuchen Sie im folgenden Teil aber noch schneller zu reagieren.';
+var slow_and_right_feedback = 'Gut, Sie haben in der Übungsphase genau reagiert. Bitte versuchen Sie im folgenden Teil aber noch schneller zu reagieren.';
 var fast_and_wrong_feedback = 'Gut, Ihre Reaktionsgeschwindigkeit war sehr hoch. Bitte versuchen Sie aber im folgenden Teil noch weniger Fehler zu machen.';
 
 var trial_test_instructions = 'Nun haben Sie die Übungsphase geschafft und sind bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: linker Zeigefinger auf „' + key_probe1 + '“ und rechter Zeigefinger auf „' + key_probe2 + '“. <br><br>Es gibt ab jetzt keine Rückmeldung mehr, wenn Sie die falsche Taste drücken. Konzentrieren Sie sich bitte einfach darauf, möglichst genau und schnell durch Tastendruck auf den gezeigten Buchstaben zu reagieren. <br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_probe1 + '“ um jetzt anzufangen.</button>'; 
@@ -145,7 +145,7 @@ var ocd_top_sequence = ocd_top_block1.concat(ocd_top_block2);
 var number_of_trials = ocd_sequence.length; // includes test trials, so increase it accordingly
 var number_of_test_trials = 10;
 var can_be_wrong = 1; // number of test trials that can be wrong without triggering neg. feedback
-var sufficiently_fast_reaction_time = 500; // if the subject's mean RT in the test trials is smaller than this: neg. feedback
+var sufficiently_fast_reaction_time = 650; // if the subject's mean RT in the test trials is smaller than this: neg. feedback
 
 function repeatArray(arr, count) {
   var ln = arr.length;
@@ -315,6 +315,7 @@ Session.preLoad = (function() {
 	$('<img/>')[0].src = imgpath + "fixation.png";
 	$('<img/>')[0].src = imgpath + "probe1.png";
 	$('<img/>')[0].src = imgpath + "probe2.png";
+	$('<img/>')[0].src = imgpath_base + "instructions/monitor.png";
 	$('<img/>')[0].src = imgpath_base + "instructions/screen_probe.png";
 	$('<img/>')[0].src = imgpath_base + "instructions/screen_fixation.png";
 	$('<img/>')[0].src = imgpath_base + "instructions/screen_stimuli.png";
@@ -478,7 +479,7 @@ Session.nextTrial = (function() {
 			'Reaction': [],
 		});
 					
-		if(condition == 'bias_assessment' || condition || 'bias_control')
+		if(condition == 'bias_assessment' || condition == 'bias_assessment2' || condition == 'bias_control')
 			Session.db.Trial[Trial.current].probe_on_top = ( ! Math.round(Math.random()) ) ? 1 : 0; // ! to ensure it's a bool
 		else if (condition == 'bias_manipulation')
 			Session.db.Trial[Trial.current].probe_on_top = ! Session.db.Trial[Trial.current].ocd_on_top;

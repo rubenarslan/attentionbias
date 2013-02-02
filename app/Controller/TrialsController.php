@@ -39,7 +39,8 @@ class TrialsController extends AppController {
 		}
 		else $lastSession = $hadLastSession = false;
 				
-		if($prevSessions==0 OR $lastSession OR $this->Auth->user('condition')=='') $condition = 'bias_assessment';
+		if($prevSessions==0) $condition = 'bias_assessment';
+		elseif($lastSession) $condition = 'bias_assessment2';
 		else $condition = $this->Auth->user('condition'); 
 		
 		$this->set(compact('progress','condition','hadLastSession','prevSessions'));
