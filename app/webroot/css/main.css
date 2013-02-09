@@ -4,6 +4,16 @@
 body {
     padding-bottom: 40px;
 }
+
+.offset-hero {
+	margin-left:90px;
+}
+.span-halfhero {
+	width:420px;
+}
+.span-hero {
+	width:870px;
+}
 @media (min-width: 940px) { 
 	header.study-header {
 		background-image:url(../img/Study_header_big.png);
