@@ -3,15 +3,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: 0.1\n"
 "POT-Creation-Date: 2013-02-09 14:17+0100\n"
-"PO-Revision-Date: 2013-02-09 14:21+0100\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-02-09 16:41+0100\n"
+"Last-Translator: Ruben <rubenarslan@gmail.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.5\n"
 
 #: Controller/GroupsController.php:30;62;90;120;152;180
@@ -62,18 +62,21 @@ msgstr "Ihre Trainingseinheit wurde gespeichert."
 #: Controller/TrainingSessionsController.php:82;106;176;200
 msgid "The training session could not be saved. Please, try again."
 msgstr ""
+"Die Trainingssitzung konnte nicht gespeichert werden. Bitte versuchen Sie es "
+"noch einmal."
 
 #: Controller/TrainingSessionsController.php:132;226
 msgid "Training session deleted"
-msgstr ""
+msgstr "Trainingssitzung wurde gelöscht."
 
 #: Controller/TrainingSessionsController.php:135;229
 msgid "Training session was not deleted"
-msgstr ""
+msgstr "Trainingssitzung wurde nicht gelöscht."
 
 #: Controller/UsersController.php:15
 msgid "Invalid email or password, try again"
 msgstr ""
+"Falsche Emailadresse oder Passwort. Bitte versuchen Sie es noch einmal."
 
 #: Controller/UsersController.php:35
 msgid "Passwort zurücksetzen Zwang-Studie ATP."
@@ -85,7 +88,7 @@ msgstr ""
 
 #: Controller/UsersController.php:77
 msgid "Passwort successfully changed. Log in now."
-msgstr ""
+msgstr "Passwort erfolgreich geändert! Sie können sich jetzt einloggen."
 
 #: Controller/UsersController.php:81
 msgid ""
@@ -95,19 +98,19 @@ msgstr ""
 
 #: Controller/UsersController.php:94
 msgid "You have been registered and logged in."
-msgstr ""
+msgstr "Anmeldung und Login erfolgreich!"
 
 #: Controller/UsersController.php:96
 msgid "Login went wrong."
-msgstr ""
+msgstr "Login nicht erfolgreich."
 
 #: Controller/UsersController.php:99
 msgid "Registration unsuccessful. Please, try again."
-msgstr ""
+msgstr "Fehler bei Anmeldung. Bitte versuchen Sie es noch einmal."
 
 #: Controller/UsersController.php:123;157;187;251;285;315
 msgid "Invalid user"
-msgstr ""
+msgstr "Ungültige Emailadresse."
 
 #: Controller/UsersController.php:137;161;265;289
 msgid "The user has been saved"
@@ -213,7 +216,7 @@ msgstr ""
 #: View/Users/edit.ctp:24 View/Users/index.ctp:33 View/Users/view.ctp:55;114
 #: View/Scaffolds/form.ctp:34
 msgid "Are you sure you want to delete # %s?"
-msgstr ""
+msgstr "Wollen Sie # %s wirklich löschen?"
 
 #: View/Groups/index.ctp:2
 msgid "Groups"
@@ -251,13 +254,13 @@ msgstr ""
 #: View/TrainingSessions/index.ctp:49 View/Users/admin_index.ctp:59
 #: View/Users/index.ctp:47 View/Scaffolds/index.ctp:71
 msgid "previous"
-msgstr ""
+msgstr "zurück"
 
 #: View/Groups/index.ctp:37 View/TrainingSessions/admin_index.ctp:51
 #: View/TrainingSessions/index.ctp:51 View/Users/admin_index.ctp:61
 #: View/Users/index.ctp:49 View/Scaffolds/index.ctp:73
 msgid "next"
-msgstr ""
+msgstr "weiter"
 
 #: View/Groups/index.ctp:44 View/Groups/view.ctp:32 View/Users/add.ctp:22
 #: View/Users/admin_add.ctp:22 View/Users/admin_edit.ctp:24
@@ -313,7 +316,7 @@ msgstr ""
 
 #: View/Groups/view.ctp:49 View/Users/admin_view.ctp:39 View/Users/view.ctp:39
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: View/TrainingSessions/add.ctp:4
 msgid "Add Training Session"
@@ -356,7 +359,7 @@ msgstr ""
 
 #: View/TrainingSessions/admin_index.ctp:2 View/TrainingSessions/index.ctp:2
 msgid "Training Sessions"
-msgstr ""
+msgstr "Trainingseinheiten"
 
 #: View/TrainingSessions/admin_index.ctp:58
 #: View/TrainingSessions/admin_view.ctp:62 View/TrainingSessions/index.ctp:58
@@ -365,22 +368,22 @@ msgstr ""
 #: View/Users/admin_index.ctp:72 View/Users/admin_view.ctp:61;123
 #: View/Users/edit.ctp:29 View/Users/index.ctp:60 View/Users/view.ctp:61;123
 msgid "New Training Session"
-msgstr ""
+msgstr "Neue Trainingseinheit"
 
 #: View/TrainingSessions/admin_view.ctp:2 View/TrainingSessions/view.ctp:2
 msgid "Training Session"
-msgstr ""
+msgstr "Trainingseinheit"
 
 #: View/TrainingSessions/admin_view.ctp:9 View/TrainingSessions/view.ctp:9
 #: View/Users/admin_view.ctp:2 View/Users/view.ctp:2
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #: View/TrainingSessions/admin_view.ctp:14;77
 #: View/TrainingSessions/view.ctp:14;77 View/Users/admin_view.ctp:71
 #: View/Users/view.ctp:71
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 #: View/TrainingSessions/admin_view.ctp:19 View/TrainingSessions/view.ctp:19
 #: View/Users/admin_view.ctp:72 View/Users/view.ctp:72
@@ -395,7 +398,7 @@ msgstr ""
 #: View/TrainingSessions/admin_view.ctp:29 View/TrainingSessions/view.ctp:29
 #: View/Users/admin_view.ctp:74 View/Users/view.ctp:74
 msgid "Began"
-msgstr ""
+msgstr "Beginn"
 
 #: View/TrainingSessions/admin_view.ctp:34;78
 #: View/TrainingSessions/view.ctp:34;78 View/Users/admin_view.ctp:75
@@ -406,7 +409,7 @@ msgstr ""
 #: View/TrainingSessions/admin_view.ctp:39 View/TrainingSessions/view.ctp:39
 #: View/Users/admin_view.ctp:76 View/Users/view.ctp:76
 msgid "Ended"
-msgstr ""
+msgstr "Ende"
 
 #: View/TrainingSessions/admin_view.ctp:44 View/TrainingSessions/view.ctp:44
 #: View/Users/admin_view.ctp:77 View/Users/view.ctp:77
@@ -571,7 +574,7 @@ msgstr ""
 #: View/Errors/missing_view.ctp:21;25 View/Errors/pdo_error.ctp:21
 #: View/Errors/private_action.ctp:21 View/Errors/scaffold_error.ctp:21
 msgid "Error"
-msgstr ""
+msgstr "Fehler"
 
 #: View/Errors/error400.ctp:23
 msgid "The requested address %s was not found on this server."
@@ -579,7 +582,7 @@ msgstr ""
 
 #: View/Errors/error500.ctp:22 Error/ExceptionRenderer.php:226
 msgid "An Internal Error Has Occurred."
-msgstr ""
+msgstr "Ein interner Fehler ist aufgetreten."
 
 #: Controller/Scaffold.php:128
 msgid "Scaffold :: "
@@ -587,15 +590,15 @@ msgstr ""
 
 #: Controller/Scaffold.php:167;234;305
 msgid "Invalid %s"
-msgstr ""
+msgstr "Ungültig %s"
 
 #: Controller/Scaffold.php:222
 msgid "updated"
-msgstr ""
+msgstr "upgedated"
 
 #: Controller/Scaffold.php:225
 msgid "saved"
-msgstr ""
+msgstr "gespeichert"
 
 #: Controller/Scaffold.php:245
 msgid "The %1$s has been %2$s"
@@ -615,7 +618,7 @@ msgstr ""
 
 #: Controller/Component/AuthComponent.php:347
 msgid "You are not authorized to access that location."
-msgstr ""
+msgstr "Loggen Sie sich ein, um mit dem Training anzufangen."
 
 #: Core/Configure.php:309
 msgid "There is no \"%s\" adapter."
@@ -627,7 +630,7 @@ msgstr ""
 
 #: Error/ExceptionRenderer.php:204
 msgid "Not Found"
-msgstr ""
+msgstr "Nicht gefunden"
 
 #: Utility/CakeNumber.php:94
 msgid "%d KB"
@@ -653,43 +656,43 @@ msgstr[1] ""
 
 #: Utility/CakeTime.php:387
 msgid "Sunday"
-msgstr ""
+msgstr "Sonntag"
 
 #: Utility/CakeTime.php:388
 msgid "Monday"
-msgstr ""
+msgstr "Montag"
 
 #: Utility/CakeTime.php:389
 msgid "Tuesday"
-msgstr ""
+msgstr "Dienstag"
 
 #: Utility/CakeTime.php:390
 msgid "Wednesday"
-msgstr ""
+msgstr "Mittwoch"
 
 #: Utility/CakeTime.php:391
 msgid "Thursday"
-msgstr ""
+msgstr "Donnerstag"
 
 #: Utility/CakeTime.php:392
 msgid "Friday"
-msgstr ""
+msgstr "Freitag"
 
 #: Utility/CakeTime.php:393
 msgid "Saturday"
-msgstr ""
+msgstr "Samstag"
 
 #: Utility/CakeTime.php:397
 msgid "Today, %s"
-msgstr ""
+msgstr "Heute, &s"
 
 #: Utility/CakeTime.php:399
 msgid "Yesterday, %s"
-msgstr ""
+msgstr "Gestern, %s"
 
 #: Utility/CakeTime.php:401
 msgid "Tomorrow, %s"
-msgstr ""
+msgstr "Morgen, %s"
 
 #: Utility/CakeTime.php:405
 msgid "On %s %s"
@@ -709,7 +712,7 @@ msgstr ""
 
 #: Utility/CakeTime.php:860;885
 msgid "days"
-msgstr ""
+msgstr "Tage"
 
 #: Utility/CakeTime.php:148
 msgid "abday"
@@ -717,7 +720,7 @@ msgstr ""
 
 #: Utility/CakeTime.php:154
 msgid "day"
-msgstr ""
+msgstr "Tag"
 
 #: Utility/CakeTime.php:160
 msgid "d_t_fmt"
@@ -751,43 +754,36 @@ msgstr ""
 msgid "%d year"
 msgid_plural "%d years"
 msgstr[0] ""
-msgstr[1] ""
 
 #: Utility/CakeTime.php:828
 msgid "%d month"
 msgid_plural "%d months"
 msgstr[0] ""
-msgstr[1] ""
 
 #: Utility/CakeTime.php:829
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
-msgstr[1] ""
 
 #: Utility/CakeTime.php:830
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] ""
-msgstr[1] ""
 
 #: Utility/CakeTime.php:831
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] ""
-msgstr[1] ""
 
 #: Utility/CakeTime.php:832
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] ""
-msgstr[1] ""
 
 #: Utility/CakeTime.php:833
 msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] ""
-msgstr[1] ""
 
 #: View/Helper/FormHelper.php:676
 msgid "Error in field %s"
@@ -804,15 +800,15 @@ msgstr ""
 
 #: View/Helper/FormHelper.php:2539
 msgid "January"
-msgstr ""
+msgstr "Januar"
 
 #: View/Helper/FormHelper.php:2540
 msgid "February"
-msgstr ""
+msgstr "Februar"
 
 #: View/Helper/FormHelper.php:2541
 msgid "March"
-msgstr ""
+msgstr "März"
 
 #: View/Helper/FormHelper.php:2542
 msgid "April"
@@ -820,15 +816,15 @@ msgstr ""
 
 #: View/Helper/FormHelper.php:2543
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: View/Helper/FormHelper.php:2544
 msgid "June"
-msgstr ""
+msgstr "Juni"
 
 #: View/Helper/FormHelper.php:2545
 msgid "July"
-msgstr ""
+msgstr "Juli"
 
 #: View/Helper/FormHelper.php:2546
 msgid "August"
@@ -840,7 +836,7 @@ msgstr ""
 
 #: View/Helper/FormHelper.php:2548
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: View/Helper/FormHelper.php:2549
 msgid "November"
@@ -848,7 +844,7 @@ msgstr ""
 
 #: View/Helper/FormHelper.php:2550
 msgid "December"
-msgstr ""
+msgstr "Dezember"
 
 #: View/Helper/PaginatorHelper.php:581
 msgid " of "
