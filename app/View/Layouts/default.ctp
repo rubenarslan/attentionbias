@@ -87,7 +87,7 @@
 							echo "</li>";
 						}
 						else {
-							echo $this->Html->link("Logout ". AuthComponent::user('email'), '/users/logout'). "</li>";
+							echo $this->Html->link("Ausloggen ". AuthComponent::user('email'), '/users/logout'). "</li>";
 							if(AuthComponent::user('Group.name')==='admin') {
 								?>
 						  <li class="dropdown">

@@ -189,6 +189,7 @@ div.instruction_image {
 	background-repeat:no-repeat;
 	width:490px;
 	height:360px;
+	margin-left:20px;
 	float:right;
 }
 div.instruction_image img {

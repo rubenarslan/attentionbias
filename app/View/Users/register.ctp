@@ -7,29 +7,6 @@ $this->assign('title', 'Anmeldung zur Studie');
 	<?php echo $this->Form->create('User', array('class' => 'form-horizontal')); ?>
 
 	<div class="control-group">
-		<div class="control-group">
-		<?php		echo $this->Form->input('firstname', array(
-			'class' => 'span4',
-			'between'=> '<div class="controls">',
-			'after' => '</div>', 
-			'label' => array(
-				'text' => 'Vorname',
-				'class' => 'control-label'), 
-			));
-		?>
-		</div>
-		<div class="control-group">
-		<?php		echo $this->Form->input('lastname', array(
-			'class' => 'span4',
-			'between'=> '<div class="controls">',
-			'after' => '</div>', 
-			'label' => array(
-				'text' => 'Nachname',
-				'class' => 'control-label'), 
-			));
-		?>
-		</div>
-	
 
 		<div class="control-group">
 		<?php		echo $this->Form->input('email', array(
@@ -82,14 +59,13 @@ $this->assign('title', 'Anmeldung zur Studie');
 		));
 		    ?>
 		</div>
-	
 		<div class="control-group controls-checkbox">
 		<?php
 		echo $this->Form->input('data_agree', array(
 			'div' => array('class' => 'span4 controls'), 
 			'type' => 'checkbox',
 			'value'=> 1,
-			'label' => 'Ich erkläre mich damit einverstanden, dass die im Rahmen dieser Studie erhobenen Daten wie im '.$this->Html->link('Aufklärungsbogen', '/pages/study#datenschutz').' beschrieben aufgezeichnet, verarbeitet, und in anonymisierter Form veröffentlicht werden.',
+			'label' => 'Ich erkläre mich damit einverstanden, dass die im Rahmen dieser Studie erhobenen Daten – wie im '.$this->Html->link('Aufklärungsbogen', '/pages/study#datenschutz').' beschrieben – aufgezeichnet, verarbeitet, und in anonymisierter Form veröffentlicht werden.',
 		));
 		    ?>
 		</div>
