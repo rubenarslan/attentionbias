@@ -50,7 +50,7 @@ $this->assign('title', 'Studie');
 
 <section id="untersuchungsdurchfuehrung">
 	<h5>Untersuchungsdurchführung</h5>
-	<p>Bei unserer Untersuchung handelt es sich um eine sogenannte placebokontrollierte Doppelblindstudie. Das bedeutet, dass es zwei Gruppen gibt die miteinander verglichen werden, eine Trainingsgruppe und eine Placebogruppe. Zu Beginn werden alle Teilnehmer per Zufall einer der beiden Gruppen zugewiesen. Die Zuweisung nimmt der Computer automatisch vor, ohne dass Sie oder wir wissen, in welche Gruppe sie zunächst kommen (doppelblind). Die eine Gruppe bekommt unmittelbar das Training (Trainingsgruppe), die andere bekommt zunächst eine augenscheinlich ähnliche Aufgabe, die jedoch die Aufmerksamkeit nicht trainiert (Placebogruppe). Nur so können wir die Wirksamkeit des Trainings überprüfen. Sollten Sie im ersten Durchgang in der Placebogruppe sein, haben Sie direkt im Anschluss die Möglichkeit, das Training mitzumachen. Alle Teilnehmer_Innen werden also am Ende das richtige Aufmerksamkeitstraining durchlaufen haben.</p>
+	<p>Bei unserer Untersuchung handelt es sich um eine sogenannte placebokontrollierte Doppelblindstudie. Das bedeutet, dass es zwei Gruppen gibt, die miteinander verglichen werden, eine Trainingsgruppe und eine Placebogruppe. Zu Beginn werden alle Teilnehmer per Zufall einer der beiden Gruppen zugewiesen. Die Zuweisung nimmt der Computer automatisch vor, ohne dass Sie oder wir wissen, in welche Gruppe sie zunächst kommen (doppelblind). Die eine Gruppe bekommt unmittelbar das Training (Trainingsgruppe), die andere bekommt zunächst eine augenscheinlich ähnliche Aufgabe, die jedoch die Aufmerksamkeit nicht trainiert (Placebogruppe). Nur so können wir die Wirksamkeit des Trainings überprüfen. Sollten Sie im ersten Durchgang in der Placebogruppe sein, haben Sie direkt im Anschluss die Möglichkeit, das Training mitzumachen. Alle Teilnehmer_Innen werden also am Ende das richtige Aufmerksamkeitstraining durchlaufen haben.</p>
 </section>
 
 <section id="teilnahme">
@@ -62,10 +62,14 @@ $this->assign('title', 'Studie');
 
 <section id="datenschutz">
 	<h4>Datenschutz</h4>
-	<p>Persönlichen Daten wie Name und Geburtsdatum der Teilnehmenden werden auf der
+	<p>Ihren Namen brauchen Sie für die Teilnahme nicht angeben. Persönliche Daten wie Emailadresse und Geburtsdatum werden auf der
 	Einwilligungserklärung vermerkt und bei der Studienleitung getrennt von den anderen
-	Daten aufbewahrt. Alle anderen Daten werden in anonymisierter Form erhoben,
-	unter einem Zifferncode gespeichert und computergestützt ausgewertet. Diagnostik
+	Daten aufbewahrt.  Alle anderen Daten werden in anonymisierter Form erhoben,
+	unter einem Zifferncode getrennt gespeichert und computergestützt ausgewertet. Wenn das 
+	Forschungsprojekt es notwendig macht, die Test- und persönlichen Daten 
+	zusammenzuführen, wird dies unter Einhaltung von Schweigepflicht und gesetzlichen Datenschutzvorschriften geschehen. 
+	Ihre personenbezogenen Daten werden nach der von der Deutschen Forschungsgemeinschaft geforderten und 
+	gesetzlich vorgeschriebenen zehnjährigen Nachweispflicht gelöscht.  Diagnostik
 	und Erhebung werden online durchgeführt. Nur autorisierte Mitarbeiter_Innen der
 	Studie haben Zugang zu den erhobenen Daten. Persönliche Daten werden nicht an
 	Außenstehende weitergegeben. Die Daten werden am Institut für Psychologie der

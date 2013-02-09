@@ -4,7 +4,7 @@ $this->assign('title', 'Aufmerksamkeitstrainingsprogramm');
 <div class="span10">
 	<?php
 if(count($progress)>1) {
-	echo "<h4>Ihr Fortschritt</h4>";
+	echo "<h4>Ihr ATP-Fortschritt</h4>";
 	echo '<div class="row"><p class="span5">';
 	$dataseturl = '&amp;chd='.'t:' . implode(',',$progress);
 	if(max($progress)!=0) $dataseturl .= '&amp;chds=0,'.max($progress);
@@ -13,7 +13,8 @@ if(count($progress)>1) {
 	'0,'. count($progress) . ',0'
 	.$dataseturl . '" alt="Graph Ihres Fortschritt" title="Ihr Fortschritt. Ihre neuesten Ergebnisse stehen rechts, die Zahlen auf der x-Achse zeigen die Trainingssitzungen an." />';
 	echo '</p>';
-echo "<p class='span4'>Die Zahlen auf der x-Achse (horizontal) zeigen die Trainingssitzungen an (Ihre neuesten Ergebnisse stehen also rechts), auf der y-Achse (vertikal) sind Ihre durchschnittlichen Reaktionszeiten in Millisekunden abgetragen.</p></div>";
+echo "<p class='span4'>Hier sehen Sie Ihren persönlichen Fortschritt beim ATP. In der Grafik können Sie Ihren heutigen Trainingserfolg mit Ihren bisherigen Leistungen vergleichen. 
+Je steiler die blaue Linie, desto größer ist ihr Trainingserfolg!</p></div>";
 }
 
 	?>
@@ -27,7 +28,8 @@ echo "<p class='span4'>Die Zahlen auf der x-Achse (horizontal) zeigen die Traini
 	<div id="session_outer">
 		<div id="session">
 			<div class="session_begin">
-				Sie benötigen Javascript, bzw. müssen JavaScript in Ihren Browser-Einstellungen erlauben.
+				Für die korrekte Darstellung der Aufgabe, müssen Sie JavaScript in Ihren Browser-Einstellungen erlauben.
+				Eine genaue Anleitung dafür, finden Sie <p><a href="http://www.enable-javascript.com/de/">auf dieser Homepage</a><br>.
 			</div>
 		</div>
 		<div id="trial">
@@ -75,7 +77,7 @@ var neutral_imgs = [5, 6, 7, 8];
 /*
 ---- INSTRUCTIONS, localisation
 */
-var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen, und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy, möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook etc.) aus, damit Sie nicht gestört werden.<br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab. Wenn Sie auf "Weiter" klicken, beginnt nun der Vollbildmodus. Klicken Sie bitte auf "Erlauben" und setzen ein Häkchen bei "Entscheidung für hu-berlin.de merken", damit Sie den Vollbildmodus nicht bei jedem Training neu erlauben müssen. Brechen Sie den Vollbildmodus während des Trainings nicht ab, da sonst auch die Trainingseinheit unterbrochen wird. Der Vollbildmodus wird nach dem Training automatisch beendet. <br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
+var session_first_instructions = 'Bitte stellen Sie sicher, dass Sie 15 Minuten Zeit haben, um die Aufgabe ohne Unterbrechung zu bearbeiten. Achten Sie darauf, dass Sie in einer bequemen Position sitzen und schalten Sie gegebenenfalls Radio, Musik, Fernseher, Handy und möglicherweise störende Programme am Computer (Dropbox, Chat, Facebook etc.) aus. <br>Bitte schließen Sie sämtliche Browser-Fenster und Tabs außer diesem.<br>Stellen Sie bitte den Ton am Computer ab. Wenn Sie auf "Weiter" klicken, beginnt nun der Vollbildmodus. Klicken Sie bitte auf "Erlauben" und setzen ein Häkchen bei "Entscheidung für hu-berlin.de merken", damit Sie den Vollbildmodus nicht bei jedem Training neu erlauben müssen. Wenn Sie gefragt werden, ob Ihr Passwort gespeichert werden soll, klicken Sie entweder "Ja" oder "Nie, für diese Seite" an. Das ist nötig, damit die Frage wieder verschwindet und Sie die Aufgabe richtig sehen können. Brechen Sie den Vollbildmodus während des Trainings nicht ab, da sonst auch die Trainingseinheit unterbrochen wird. Der Vollbildmodus wird nach dem Training automatisch beendet. <br><br>Bitte klicken Sie auf „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 
 var session_walkthrough1 = '<div class="instruction_image"><img src="'+imgpath_base+'instructions/screen_fixation.png" width="400" height="250"></div>Als erstes werden Sie in der Mitte des Bildschirms kurz ein weißes Kreuz sehen, wie unten abgebildet. Bitte schauen Sie am Anfang jedes Durchgangs konzentriert auf dieses Kreuz, sobald es erscheint. <br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
 var session_walkthrough2 = '<div class="instruction_image"><img src="'+imgpath_base+'instructions/screen_stimuli.png" width="400" height="250"></div>Als nächstes werden zwei Fotos auf dem Bildschirm erscheinen, so wie unten abgebildet. Die Fotos werden kurz gezeigt und verschwinden dann wieder.<br><br>Bitte klicken Sie „Weiter“, wenn Sie bereit für weitere Instruktionen sind.';
@@ -87,7 +89,7 @@ var trial_tryout_instructions = 'Bitte platzieren Sie den Zeigefinger Ihrer link
 
 var fast_and_right_feedback = 'Sehr gut! Sie haben in der Übungsphase schnell und genau reagiert. Weiter so!';
 var slow_and_wrong_feedback = 'Gut, die Übungsphase ist geschafft! Bitte versuchen Sie nun noch schneller und genauer zu reagieren.';
-var slow_and_right_feedback = 'Gut, Sie haben in der Übungsphase genau reagiert. Bitte versuchen Sie im folgenden Teil aber noch schneller zu reagieren.';
+var slow_and_right_feedback = 'Gut, Sie haben in der Übungsphase sehr genau reagiert. Bitte versuchen Sie im folgenden Teil aber noch schneller zu reagieren.';
 var fast_and_wrong_feedback = 'Gut, Ihre Reaktionsgeschwindigkeit war sehr hoch. Bitte versuchen Sie aber im folgenden Teil noch weniger Fehler zu machen.';
 
 var trial_test_instructions = 'Nun haben Sie die Übungsphase geschafft und sind bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: linker Zeigefinger auf „' + key_probe1 + '“ und rechter Zeigefinger auf „' + key_probe2 + '“. <br><br>Es gibt ab jetzt keine Rückmeldung mehr, wenn Sie die falsche Taste drücken. Konzentrieren Sie sich bitte einfach darauf, möglichst genau und schnell durch Tastendruck auf den gezeigten Buchstaben zu reagieren. <br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_probe1 + '“ um jetzt anzufangen.</button>'; 
