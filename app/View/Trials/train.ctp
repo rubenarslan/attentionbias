@@ -97,9 +97,9 @@ var trial_test_instructions = 'Nun haben Sie die Übungsphase geschafft und sind
 
 var session_end_message = 'Ende der Trainingseinheit. Sie haben es geschafft.<br><br>Vielen Dank für Ihre heutige Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :)';
 var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen und verlassen Sie nicht den Test. Bitte schließen Sie vor dem Test Programme, die Sie während des Tests ablenken könnten (durch Töne oder indem sie Sie zwingen, das Test-Fenster zu verlassen). Um Ihre Trainingseinheit jetzt von vorne anzufangen, drücken Sie in der Menüleiste oben auf "Trainieren".';
-var session_fullscreenFail = 'Ihr Web-Browser scheint den Vollbildmodus nicht zu unterstützen. <br>Benutzen Sie Firefox oder Google Chrome? Dann müssen Sie Ihren Browser nur aktualisieren.<br>Wählen Sie dazu "Über…" im Menü oder folgen Sie dem Link zum Download.<br><br>Benutzen Sie Opera, Internet Explorer, Safari oder einen anderen Browser? Dann benötigen Sie für die Teilnahme einen anderen Browser, der alle nötigen Funktionen unterstützt. Die unterstützten Browser sind Firefox oder Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="<?php echo $this->webroot; ?>img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite';
+var session_fullscreenFail = 'Ihr Web-Browser unterstützt den Vollbildmodus nicht. Um das Problem zu beheben, installieren Sie bitte die aktuelle Version der Browser Mozilla Firefox oder Google Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="<?php echo $this->webroot; ?>img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite <br>Wenn das Problem bestehen bleibt, schreiben Sie uns bitte eine Email an <a href="mailto:zwang.psychologie@hu-berlin.de">zwang.psychologie@hu-berlin.de</a> wir werden Ihnen sobald wie möglich mit der Lösung helfen!';
 
-var session_featureFail = 'Ihr Web-Browser unterstützt nötige Funktionen nicht. <br>Benutzen Sie Firefox oder Google Chrome? Dann müssen Sie Ihren Browser nur aktualisieren.<br>Wählen Sie dazu "Über…" im Menü oder folgen Sie dem Link zum Download.<br><br>Benutzen Sie Opera, Internet Explorer, Safari oder einen anderen Browser? Dann benötigen Sie für die Teilnahme einen anderen Browser, der alle nötigen Funktionen unterstützt. Die unterstützten Browser sind Firefox oder Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="<?php echo $this->webroot; ?>img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite';
+var session_featureFail = 'Ein Fehler ist aufgetreten. Ihr Web-Browser wird nicht unterstützt oder ist nicht aktuell. Um das Problem zu beheben, installieren Sie bitte die aktuelle Version der Browser Mozilla Firefox oder Google Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="<?php echo $this->webroot; ?>img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite <br>Wenn das Problem bestehen bleibt, schreiben Sie uns bitte eine Email an <a href="mailto:zwang.psychologie@hu-berlin.de">zwang.psychologie@hu-berlin.de</a> wir werden Ihnen sobald wie möglich mit der Lösung helfen!';
 
 var go_on_button_message = 'Weiter';
 var back_button_message = 'Zurück';
@@ -390,8 +390,8 @@ Session.showTryoutInstructions = (function() {
 	
 	$(document).on('keydown',function(e) {
 		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1)
-			Session.beginTryout();
 			$(document).off('keydown');
+			Session.beginTryout();
 	});
 });
 
@@ -440,8 +440,8 @@ Session.showTestInstructions = (function() {
 	
 	$(document).on('keydown',function(e) {
 		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1)
-			Session.beginTest();
-			$(document).off('keydown');
+				$(document).off('keydown');
+				Session.beginTest();
 	});
 });
 
@@ -596,9 +596,9 @@ Trial.showImages = (function() {
 	console.log('Trial.showImages');
 	
 	$fixation.makeInvisible();
-	$(window).one('MozAfterPaint', function () {
-		Trial.FixationHidden = performance.now();
-	});
+//	$(window).one('MozAfterPaint', function () {
+//		Trial.FixationHidden = performance.now();
+//	});
 	Session.imgs[Trial.current].makeVisible();
 	if(console.markTimeline) console.markTimeline("images visible");
 	Trial.ImagesShown = performance.now();
@@ -611,17 +611,17 @@ Trial.showImages = (function() {
 Trial.showProbe = (function() {
 	console.log('Trial.showProbe');
 
-	$(window).one('MozAfterPaint', function () {
-		Trial.ImagesHidden = performance.now();
-	});
+//	$(window).one('MozAfterPaint', function () {
+//		Trial.ImagesHidden = performance.now();
+//	});
 	Session.imgs[Trial.current].makeInvisible();
 	if(console.markTimeline) console.markTimeline("images INvisible");
 	Trial.ProbeShown = performance.now();
 	
 	window[Trial.CurrentProbe].makeVisible();
 
-	Trial.CurrentlyDisplayed = Trial.CurrentProbe;
 	$(window).on('keydown',Trial.response);
+	Trial.CurrentlyDisplayed = Trial.CurrentProbe;
 });
 
 // SELECT AVG( first_reaction_time_since_trial_began - first_reaction_time_since_probe_shown), STDDEV(first_reaction_time_since_trial_began - first_reaction_time_since_probe_shown) FROM trials
@@ -667,9 +667,9 @@ Trial.showMistakeMessage = (function() { // log valid responses
 Trial.end = (function() { // log valid responses
 	Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesShown - Trial.FixationShown;
 	
-	if(Trial.ImagesHidden)
-		Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesHidden - Trial.FixationHidden;
-		// fixme: remove mozafterpaint code completely when live
+//	if(Trial.ImagesHidden)
+//		Session.db.Trial[Trial.current].fixation_duration = Trial.ImagesHidden - Trial.FixationHidden;
+		// commented out moz after paint code mozafterpaint code completely when live
 	Session.db.Trial[Trial.current].images_duration = Trial.ProbeShown - Trial.ImagesShown;
 	if(Trial.current != number_of_test_trials - 1)
 		Session.nextTrial(); // trigger

@@ -124,7 +124,7 @@ class User extends AppModel {
 				'allowEmpty' => true,
 				'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'birthdate' => array(
@@ -134,7 +134,7 @@ class User extends AppModel {
 				'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'am18' => array(
@@ -142,18 +142,23 @@ class User extends AppModel {
 			'message' => "Sie müssen mindestens 18 sein, um teilzunehmen.",
 			'allowEmpty' => false,
 			'required' => true,
+			'on' => 'create', // Limit validation to 'create' or 'update' operations
 		),
 		'data_agree' => array(
 	        'rule'    => array('comparison', '==', 1),
 			'message' => "Sie müssen der Verwendung Ihrer Daten zustimmen.",
 			'allowEmpty' => false,
 			'required' => true,
+			'on' => 'create', // Limit validation to 'create' or 'update' operations
+			
 		),
 		'participate_agree' => array(
 	        'rule'    => array('comparison', '==', 1),
 			'message' => "Sie müssen den Teilnahmebedingungen zustimmen.",
 			'allowEmpty' => false,
 			'required' => true,
+			'on' => 'create', // Limit validation to 'create' or 'update' operations
+			
 		),
 		'password' => array(
 			'notEmpty' => array(
@@ -162,7 +167,7 @@ class User extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);

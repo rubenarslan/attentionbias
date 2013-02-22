@@ -11,7 +11,6 @@ $this->assign('title', 'Profil bearbeiten');
 		echo $this->Form->input('name');
 		echo $this->Form->input('email');
 		echo $this->Form->input('code');
-		echo $this->Form->input('password');
 		echo $this->Form->input('condition');
 	?>
 	</fieldset>

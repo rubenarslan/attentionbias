@@ -74,7 +74,7 @@ $this->assign('title', 'Anmeldung zur Studie');
 		<?php
 		echo $this->Form->input('password', array(
 			'class' => 'span4', 
-			'after' => '<span class="help-inline">Bitte wählen Sie eine sichere, leicht zu erinnernde Passwort-Phrase.</span></div>', 
+			'after' => '<span class="help-inline">Bitte wählen Sie ein sicheres, leicht zu erinnerndes Passwort.</span></div>', 
 			'label' => array(
 				'text' => 'Passwort',
 				'class' => 'control-label'), 
