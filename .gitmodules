@@ -1,0 +1,3 @@
+[submodule "app/webroot/survey"]
+	path = app/webroot/survey
+	url = https://scornflakes@bitbucket.org/scornflakes/survey-framework.git
