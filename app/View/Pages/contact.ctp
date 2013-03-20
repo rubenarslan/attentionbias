@@ -9,10 +9,10 @@ $this->assign('title', 'Kontakt');
 	Cand.-Psych. Isabelle Habedank</p>
 
 
-	<h4>Email-Kontakt</h4>
+	<h4>E-Mail-Kontakt</h4>
 
-	<p>Sie können sich jederzeit per Email an <a href="mailto:<?=Configure::read('ContactEmail') ?>"><?=Configure::read('ContactEmail') ?></a> wenden.<br>
-	Wir beantworten Ihre Email so schnell wie möglich, das heißt in maximal 1-2 Werktagen.
+	<p>Sie können sich jederzeit per E-Mail an <a href="mailto:<?=Configure::read('ContactEmail') ?>"><?=Configure::read('ContactEmail') ?></a> wenden.<br>
+	Wir beantworten Ihre E-Mail so schnell wie möglich, das heißt in maximal 1-2 Werktagen.
 	</p>
 
 

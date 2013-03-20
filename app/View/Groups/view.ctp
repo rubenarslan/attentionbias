@@ -44,7 +44,7 @@
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
 		<th><?php echo __('Name'); ?></th>
-		<th><?php echo __('Email'); ?></th>
+		<th><?php echo __('E-Mail'); ?></th>
 		<th><?php echo __('Code'); ?></th>
 		<th><?php echo __('Password'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>

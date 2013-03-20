@@ -97,9 +97,9 @@ var trial_test_instructions = 'Nun haben Sie die Übungsphase geschafft und sind
 
 var session_end_message = 'Ende der Trainingseinheit. Sie haben es geschafft.<br><br>Vielen Dank für Ihre heutige Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :)';
 var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen und verlassen Sie nicht den Test. Bitte schließen Sie vor dem Test Programme, die Sie während des Tests ablenken könnten (durch Töne oder indem sie Sie zwingen, das Test-Fenster zu verlassen). Um Ihre Trainingseinheit jetzt von vorne anzufangen, drücken Sie in der Menüleiste oben auf "Trainieren".';
-var session_fullscreenFail = 'Ihr Web-Browser unterstützt den Vollbildmodus nicht. Um das Problem zu beheben, installieren Sie bitte die aktuelle Version der Browser Mozilla Firefox oder Google Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="<?php echo $this->webroot; ?>img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite <br>Wenn das Problem bestehen bleibt, schreiben Sie uns bitte eine Email an <a href="mailto:zwang.psychologie@hu-berlin.de">zwang.psychologie@hu-berlin.de</a> wir werden Ihnen sobald wie möglich mit der Lösung helfen!';
+var session_fullscreenFail = 'Ihr Web-Browser unterstützt den Vollbildmodus nicht. Um das Problem zu beheben, installieren Sie bitte die aktuelle Version der Browser Mozilla Firefox oder Google Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="<?php echo $this->webroot; ?>img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite <br>Wenn das Problem bestehen bleibt, schreiben Sie uns bitte eine E-Mail an <a href="mailto:zwang.psychologie@hu-berlin.de">zwang.psychologie@hu-berlin.de</a> wir werden Ihnen sobald wie möglich mit der Lösung helfen!';
 
-var session_featureFail = 'Ein Fehler ist aufgetreten. Ihr Web-Browser wird nicht unterstützt oder ist nicht aktuell. Um das Problem zu beheben, installieren Sie bitte die aktuelle Version der Browser Mozilla Firefox oder Google Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="<?php echo $this->webroot; ?>img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite <br>Wenn das Problem bestehen bleibt, schreiben Sie uns bitte eine Email an <a href="mailto:zwang.psychologie@hu-berlin.de">zwang.psychologie@hu-berlin.de</a> wir werden Ihnen sobald wie möglich mit der Lösung helfen!';
+var session_featureFail = 'Ein Fehler ist aufgetreten. Ihr Web-Browser wird nicht unterstützt oder ist nicht aktuell. Um das Problem zu beheben, installieren Sie bitte die aktuelle Version der Browser Mozilla Firefox oder Google Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="<?php echo $this->webroot; ?>img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite <br>Wenn das Problem bestehen bleibt, schreiben Sie uns bitte eine E-Mail an <a href="mailto:zwang.psychologie@hu-berlin.de">zwang.psychologie@hu-berlin.de</a> wir werden Ihnen sobald wie möglich mit der Lösung helfen!';
 
 var go_on_button_message = 'Weiter';
 var back_button_message = 'Zurück';
@@ -386,13 +386,14 @@ Session.showTryoutInstructions = (function() {
 	if(Session.interrupted == true) return;
 	
 	$trial.makeInvisible();
-	$session.empty().append($('<div class="trial_instructions">'+ trial_tryout_instructions +'</div>')).makeVisible();
-	
 	$(document).on('keydown',function(e) {
-		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1)
+		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1) {
 			$(document).off('keydown');
 			Session.beginTryout();
+		}
 	});
+	
+	$session.empty().append($('<div class="trial_instructions">'+ trial_tryout_instructions +'</div>')).makeVisible();
 });
 
 
@@ -436,13 +437,16 @@ Session.showTestInstructions = (function() {
 	
 	if(Session.interrupted == true) return;
 	$trial.makeInvisible();
-	$session.empty().append($('<div class="trial_instructions">'+ trial_test_instructions +'</div>')).makeVisible();
 	
 	$(document).on('keydown',function(e) {
-		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1)
+		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1) {
 				$(document).off('keydown');
 				Session.beginTest();
+			}
 	});
+	
+	$session.empty().append($('<div class="trial_instructions">'+ trial_test_instructions +'</div>')).makeVisible();
+	
 });
 
 Session.beginTest = (function() {

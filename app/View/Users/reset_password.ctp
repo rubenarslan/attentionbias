@@ -5,7 +5,7 @@ $this->assign('title', 'Passwort zurücksetzen');
 <div class="users form">
 <?php echo $this->Session->flash('auth'); ?>
 <?php echo $this->Form->create('User'); ?>
-	<p><?php echo __('Geben Sie ein neues Passwort ein. Sie können sich daraufhin mit Ihrer Emailadresse und dem neuen Passwort einloggen.'); ?></p>
+	<p><?php echo __('Geben Sie ein neues Passwort ein. Sie können sich daraufhin mit Ihrer E-Mail-Adresse und dem neuen Passwort einloggen.'); ?></p>
 	<?php   
 	echo $this->Form->input('password', array(
 		'type' => 'password',

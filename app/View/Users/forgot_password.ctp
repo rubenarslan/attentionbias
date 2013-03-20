@@ -5,7 +5,7 @@ $this->assign('title', 'Passwort vergessen');
 <div class="users form">
 <?php echo $this->Session->flash('auth'); ?>
 <?php echo $this->Form->create('User'); ?>
-	<p><?php echo __('Haben Sie Ihr Passwort vergessen? Bitte geben Sie Ihre Email-Adresse ein, wir schicken Ihnen
+	<p><?php echo __('Haben Sie Ihr Passwort vergessen? Bitte geben Sie Ihre E-Mail-Adresse ein, wir schicken Ihnen
 	einen Link, um Ihr Passwort zurückzusetzen.'); ?></p>
 	<?php   
 	echo $this->Form->input('email', array(

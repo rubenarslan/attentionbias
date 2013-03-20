@@ -76,7 +76,7 @@ msgstr "Trainingssitzung wurde nicht gelöscht."
 #: Controller/UsersController.php:15
 msgid "Invalid email or password, try again"
 msgstr ""
-"Falsche Emailadresse oder Passwort. Bitte versuchen Sie es noch einmal."
+"Falsche E-Mail-Adresse oder Passwort. Bitte versuchen Sie es noch einmal."
 
 #: Controller/UsersController.php:35
 msgid "Passwort zurücksetzen Zwang-Studie ATP."
@@ -110,7 +110,7 @@ msgstr "Fehler bei Anmeldung. Bitte versuchen Sie es noch einmal."
 
 #: Controller/UsersController.php:123;157;187;251;285;315
 msgid "Invalid user"
-msgstr "Ungültige Emailadresse."
+msgstr "Ungültige E-Mail-Adresse."
 
 #: Controller/UsersController.php:137;161;265;289
 msgid "The user has been saved"
@@ -549,7 +549,7 @@ msgstr ""
 #: View/Users/reset_password.ctp:8
 msgid ""
 "Geben Sie ein neues Passwort ein. Sie können sich daraufhin mit Ihrer "
-"Emailadresse und dem neuen Passwort einloggen."
+"E-Mail-Adresse und dem neuen Passwort einloggen."
 msgstr ""
 
 #: View/Helper/FormHelper.php:1329

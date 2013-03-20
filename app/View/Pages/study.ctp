@@ -56,13 +56,13 @@ $this->assign('title', 'Studie');
 <section id="teilnahme">
 	<h4>Teilnahme</h4>
 	<p>Die Teilnahme an der Studie ist kostenlos und freiwillig. Während der Studie können Sie zu jedem Zeitpunkt ohne Angabe von Gründen Ihre Teilnahme beenden, es würden Ihnen hieraus keine Nachteile entstehen.<br>
-	 Wir hoffen, wir konnten Sie für die Teilnahme an unserer Studie begeistern. Wenn Sie noch offene Fragen, Kritik oder Anregungen haben, können Sie sich jederzeit per Email an uns wenden: <br>
+	 Wir hoffen, wir konnten Sie für die Teilnahme an unserer Studie begeistern. Wenn Sie noch offene Fragen, Kritik oder Anregungen haben, können Sie sich jederzeit per E-Mail an uns wenden: <br>
 	<a href="mailto:<?=Configure::read('ContactEmail') ?>"><?=Configure::read('ContactEmail') ?></a></p>
 </section>
 
 <section id="datenschutz">
 	<h4>Datenschutz</h4>
-	<p>Ihren Namen brauchen Sie für die Teilnahme nicht angeben. Persönliche Daten wie Emailadresse und Geburtsdatum werden auf der
+	<p>Ihren Namen brauchen Sie für die Teilnahme nicht angeben. Persönliche Daten wie E-Mail-Adresse und Geburtsdatum werden auf der
 	Einwilligungserklärung vermerkt und bei der Studienleitung getrennt von den anderen
 	Daten aufbewahrt.  Alle anderen Daten werden in anonymisierter Form erhoben,
 	unter einem Zifferncode getrennt gespeichert und computergestützt ausgewertet. Wenn das 

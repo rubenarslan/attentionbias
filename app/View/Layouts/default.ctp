@@ -65,7 +65,7 @@
 							));
 					    	echo $this->Form->input('email', array(
 								'class'=>'span2', 
-								'placeholder' => 'Email',
+								'placeholder' => 'E-Mail',
 								'type' => 'email',
 								'label' => false,
 								'between'=> '<div class="span input-prepend" style="margin-top:5px;margin-right:5px"><span class="add-on"><i class="icon-envelope"></i></span>', 
@@ -102,7 +102,7 @@
 								<li><?=$this->Html->link("Export Users as TSV",  '/admin/users/export/TSV'); ?></li>
 								<li><?=$this->Html->link("Export Sessions as TSV",   '/admin/trainingSessions/export/TSV'); ?></li>
 								
-								<li><?=$this->Html->link("Export Users+Emails as Excel",'/admin/users/export/excelemail'); ?></li>
+								<li><?=$this->Html->link("Export Users+E-Mails as Excel",'/admin/users/export/excelemail'); ?></li>
 								<li class="divider"></li>                             
 								<li class="dropdown-submenu"><a href="#">Export…</a>
 									<ul class="dropdown-menu">
