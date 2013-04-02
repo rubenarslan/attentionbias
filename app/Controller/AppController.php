@@ -61,8 +61,17 @@ class AppController extends Controller {
 	        $this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'display');
 	        $this->Auth->loginRedirect = array('controller' => 'Trials', 'action' => 'train');
 	}
+	function beforeRender(){
+	    if ($this->Session->check('Message.flash')) {
+	        $flash = $this->Session->read('Message.flash');
+	        if ($flash['element'] == 'default') {
+	            $flash['element'] = 'alert';
+	            $this->Session->write('Message.flash', $flash);
+	        }
+	    }
+	}
 	public function isAuthorized($user = null, $request = null) {
 		$admin = $user['Group']['name']==='admin';
-		if($admin) return $admin; # admins can do anything 
+		return $admin; # admins can do anything 
 	}
 }
