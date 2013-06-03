@@ -82,12 +82,55 @@ Ihr Studienteam");
 			}
 		}
 	}
+	public function linkLogin($email = NULL, $code = NULL,$goto_controller = NULL, $goto_action = NULL) {
+	    if ($code !== NULL AND $email !== NULL) {
+			if($id = $this->User->verifyCodeLogin($email,$code)) {
+				$this->User->id = $id;
+#				debug($user);
+				if($this->Auth->login($this->User->read(null))) {		
+					$this->Session->setFlash(__('Sie wurden eingeloggt.'),'alert-info');
+							
+					if($goto_controller) $this->redirect("/$goto_controller/$goto_action");
+				} else
+					$this->Session->setFlash(__('Login schlug fehl.'),'alert-error');
+			} else
+				$this->Session->setFlash(__('Stimmt nicht.'),'alert-error');
+	    } else
+			$this->Session->setFlash(__('Code oder Email fehlt.'),'alert-error');
+		
+		$this->redirect('/');
+	}
+	public function sendLoginLink($id,$goto = "/SocialNetworks/generate") {
+		$this->User->id = $id;
+		if($this->User->exists()) {
+			$user = $this->User->read(null);
+			$user = $user['User'];
+	    	$email = new CakeEmail('smtp');
+			$email
+			    ->to($user['email'])
+			    ->subject(__('Trainings-Link ATP gegen Zwänge'))
+			    ->send(
+"Hallo,
+
+Mit folgendem Link können Sie sich einloggen
+
+".Router::url( "/users/LinkLogin/".$user['email']."/".$user['code'].$goto, true)
+."
+
+Freundliche Grüße,
+
+Ihr Studienteam");
+			$this->redirect("/");
+		}
+	}
 	public function register() {
 	    if ($this->request->is('post')) {
 	        $this->User->create();
 	$this->request->data['User']['group_id'] = 2; # set to user group
 	$this->request->data['User']['condition'] = (mt_rand(0,1)===1) ? 'bias_manipulation' : 'bias_control'; # randomly choose condition
-	        if ($this->User->save($this->request->data)) {
+	$this->request->data['User']['code'] = bin2hex(openssl_random_pseudo_bytes(32)); # 64 chars, 32 bits
+		
+    if ($this->User->save($this->request->data)) {
 		$id = $this->User->id;
 	   $this->request->data['User'] = array_merge($this->request->data['User'], array('id' => $id));
 	   if($this->Auth->login())

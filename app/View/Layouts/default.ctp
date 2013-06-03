@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-<?php echo $this->Html->meta('icon');?>
+		<?php echo $this->Html->meta('icon');?>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>
 			<?php echo $this->fetch('title'); ?>
@@ -142,7 +142,7 @@
             <footer class="span12">
 	            <hr>
 	
-                <p>&copy; Humboldt-Universität zu Berlin 2012</p>
+                <p>&copy; Humboldt-Universität zu Berlin 2013</p>
             </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
@@ -155,7 +155,7 @@
 <?php 		echo $this->fetch('script'); ?>
 
 
-		<?php
+<?php
 		echo $this->element('sql_dump');
 		debug($this->data);
 		pr($this->validationErrors);
