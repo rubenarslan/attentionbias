@@ -21,3 +21,10 @@
 
 # dev: no slash somewhere
 # prod: slash somewhere
+
+
+# also auf dem HU server muss RewriteBase / in root gesetzt sein und in webroot muss ein Slash vor /index.php
+
+# todo: make it so that number of training_sessions can be referenced from run
+# todo: check what training session says at the end
+# todo: images ok?

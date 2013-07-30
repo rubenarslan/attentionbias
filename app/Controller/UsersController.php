@@ -126,22 +126,40 @@ Ihr Studienteam");
 	public function register() {
 	    if ($this->request->is('post')) {
 	        $this->User->create();
-	$this->request->data['User']['group_id'] = 2; # set to user group
-	$this->request->data['User']['condition'] = (mt_rand(0,1)===1) ? 'bias_manipulation' : 'bias_control'; # randomly choose condition
-	$this->request->data['User']['code'] = bin2hex(openssl_random_pseudo_bytes(32)); # 64 chars, 32 bits
+			$this->request->data['User']['group_id'] = 2; # set to user group
+			$this->request->data['User']['condition'] = (mt_rand(0,1)===1) ? 'bias_manipulation' : 'bias_control'; # randomly choose condition
+			$this->request->data['User']['code'] = bin2hex(openssl_random_pseudo_bytes(32)); # 64 chars, 32 bits
+	
+			if ($this->User->save($this->request->data)) {
+				$id = $this->User->id;
+				$this->request->data['User'] = array_merge($this->request->data['User'], array('id' => $id));
+
+				if($this->Auth->login())
+				{
+					$this->Session->setFlash(__('You have been registered and logged in.'));
+				}
+				else
+				{
+					$this->Session->setFlash(__('Login went wrong.'));
+				}
 		
-    if ($this->User->save($this->request->data)) {
-		$id = $this->User->id;
-	   $this->request->data['User'] = array_merge($this->request->data['User'], array('id' => $id));
-	   if($this->Auth->login())
-	            	$this->Session->setFlash(__('You have been registered and logged in.'));
-	else
-		$this->Session->setFlash(__('Login went wrong.'));
-	         $this->redirect($this->Auth->redirect());
-	        } else {
-	            $this->Session->setFlash(__('Registration unsuccessful. Please, try again.'));
-	        }
-	    }
+				$url = Configure::read('Survey.api') . 'api/'. Configure::read('Survey.run_name').'/create_session';
+				$ch = curl_init($url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POST, 1);
+	
+				$post = array('api_secret' => Configure::read('Survey.api_secret'), 'code' => $this->request->data['User']['code']);
+
+				curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+				$output = curl_exec($ch);
+				curl_close ($ch);
+				$this->redirect(Configure::read('Survey.api') . Configure::read('Survey.run_name') . '/?code='.$this->request->data['User']['code']);
+			}
+			else 
+			{
+				$this->Session->setFlash(__('Registration unsuccessful. Please, try again.'));
+			}
+		}
 	}
 /**
  * index method

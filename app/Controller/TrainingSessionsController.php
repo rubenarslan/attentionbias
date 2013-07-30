@@ -50,10 +50,23 @@ class TrainingSessionsController extends AppController {
 			if(!isset($this->request->data['TrainingSession']['user_id']))
 				$this->request->data['TrainingSession']['user_id'] = $this->Auth->user('id');
 			if( $this->request->data['TrainingSession']['user_id'] == $this->Auth->user('id')) { # is the 	creator of the training session the logged in user.
-				if ($this->TrainingSession->saveAssociated($this->request->data,array("deep" => TRUE) ) ) {
+				if ($this->TrainingSession->saveAssociated($this->request->data,array("deep" => TRUE) ) ) 
+				{
 					echo __('Gespeichert.');
+
+					$url = Configure::read('Survey.api') . 'api/'. Configure::read('Survey.run_name').'/end_last_external';
+					$ch = curl_init($url);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_POST, 1);
+					$post = array('api_secret' => Configure::read('Survey.api_secret'), 'session' => $this->Auth->user('code'));
+					curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+					$output = curl_exec($ch);
+					curl_close($ch);
+					
 				} else {
 					echo __('Ihre Trainingssitzung konnte nicht gespeichert werden. Kontaktieren Sie bitte die Studienleitung.');
+					pr($this->TrainingSession->validationErrors);
+					
 				}
 			} else {
 				echo __('Haben Sie versucht, den Account zu wechseln, während Sie trainiert haben? Falls dieses Problem unerwartet auftritt, kontaktieren Sie die Studienleitung.');

@@ -23,6 +23,16 @@
 			echo $this->fetch('meta');
 			echo $this->fetch('css');
 		?>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo $this->webroot; ?>js/vendor/jquery-1.8.3.js"><\/script>')</script>
+
+        <script src="<?php echo $this->webroot; ?>js/vendor/bootstrap.min.js"></script>
+
+        <script src="<?php echo $this->webroot; ?>js/plugins.js"></script>
+        <script src="<?php echo $this->webroot; ?>js/main.js"></script>
+<?php 		echo $this->fetch('script'); ?>
+
+		
     </head>
     <body data-spy="scroll" data-offset="233">
         <!--[if lt IE 7]>
@@ -145,20 +155,13 @@
                 <p>&copy; Humboldt-Universität zu Berlin 2013</p>
             </footer>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php echo $this->webroot; ?>js/vendor/jquery-1.8.3.js"><\/script>')</script>
-
-        <script src="<?php echo $this->webroot; ?>js/vendor/bootstrap.min.js"></script>
-
-        <script src="<?php echo $this->webroot; ?>js/plugins.js"></script>
-        <script src="<?php echo $this->webroot; ?>js/main.js"></script>
-<?php 		echo $this->fetch('script'); ?>
-
 
 <?php
+if(Configure::read('debug')):
 		echo $this->element('sql_dump');
 		debug($this->data);
 		pr($this->validationErrors);
+endif;
 ?>
 
     </body>

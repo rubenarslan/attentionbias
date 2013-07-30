@@ -50,30 +50,21 @@ $this->assign('title', 'Studie');
 
 <section id="untersuchungsdurchfuehrung">
 	<h5>Untersuchungsdurchführung</h5>
-	<p>Bei unserer Untersuchung handelt es sich um eine sogenannte placebokontrollierte Doppelblindstudie. Das bedeutet, dass es zwei Gruppen gibt, die miteinander verglichen werden, eine Trainingsgruppe und eine Placebogruppe. Zu Beginn werden alle Teilnehmer per Zufall einer der beiden Gruppen zugewiesen. Die Zuweisung nimmt der Computer automatisch vor, ohne dass Sie oder wir wissen, in welche Gruppe sie zunächst kommen (doppelblind). Die eine Gruppe bekommt unmittelbar das Training (Trainingsgruppe), die andere bekommt zunächst eine augenscheinlich ähnliche Aufgabe, die jedoch die Aufmerksamkeit nicht trainiert (Placebogruppe). Nur so können wir die Wirksamkeit des Trainings überprüfen. Sollten Sie im ersten Durchgang in der Placebogruppe sein, haben Sie direkt im Anschluss die Möglichkeit, das Training mitzumachen. Alle Teilnehmer_Innen werden also am Ende das richtige Aufmerksamkeitstraining durchlaufen haben.</p>
+	<p>Bei unserer Untersuchung handelt es sich um eine sogenannte placebokontrollierte Doppelblindstudie. Das bedeutet, dass es zwei Gruppen gibt die miteinander verglichen werden, eine Trainingsgruppe und eine Placebogruppe. Zu Beginn werden alle Teilnehmer per Zufall einer der beiden Gruppen zugewiesen. Die Zuweisung nimmt der Computer automatisch vor, ohne dass Sie oder wir wissen, in welche Gruppe sie zunächst kommen (doppelblind). Die eine Gruppe bekommt unmittelbar das Training (Trainingsgruppe), die andere bekommt zunächst eine augenscheinlich ähnliche Aufgabe, die jedoch die Aufmerksamkeit nicht trainiert (Placebogruppe). Nur so können wir die Wirksamkeit des Trainings überprüfen. Sollten Sie im ersten Durchgang in der Placebogruppe sein, haben Sie direkt im Anschluss die Möglichkeit, das Training mitzumachen. Alle Teilnehmer_Innen werden also am Ende das richtige Aufmerksamkeitstraining durchlaufen haben.</p>
+</section>
+
+
+
+<section id="datenschutz">
+	<h4>Datenschutz</h4>
+	<p>Ihren Namen brauchen Sie für die Teilnahme nicht angeben. Persönliche Daten wie E-Mail-Adresse und Geburtsdatum werden auf der Einwilligungserklärung vermerkt und bei der Studienleitung getrennt von den anderen Daten aufbewahrt. Alle anderen Daten werden in anonymisierter Form erhoben, unter einem Zifferncode getrennt gespeichert und computergestützt ausgewertet. Wenn das Forschungsprojekt es notwendig macht, die Test- und persönlichen Daten zusammenzuführen, wird dies unter Einhaltung von Schweigepflicht und gesetzlichen Datenschutzvorschriften geschehen. Ihre personenbezogenen Daten werden nach der von der Deutschen Forschungsgemeinschaft geforderten und gesetzlich vorgeschriebenen zehnjährigen Nachweispflicht gelöscht. Diagnostik und Erhebung werden online durchgeführt. Nur autorisierte Mitarbeiter_Innen der Studie haben Zugang zu den erhobenen Daten. Persönliche Daten werden nicht an Außenstehende weitergegeben. Die Daten werden am Institut für Psychologie der Humboldt-Universität zu Berlin allein zu Forschungszwecken verwendet.</p>
 </section>
 
 <section id="teilnahme">
 	<h4>Teilnahme</h4>
-	<p>Die Teilnahme an der Studie ist kostenlos und freiwillig. Während der Studie können Sie zu jedem Zeitpunkt ohne Angabe von Gründen Ihre Teilnahme beenden, es würden Ihnen hieraus keine Nachteile entstehen.<br>
-	 Wir hoffen, wir konnten Sie für die Teilnahme an unserer Studie begeistern. Wenn Sie noch offene Fragen, Kritik oder Anregungen haben, können Sie sich jederzeit per E-Mail an uns wenden: <br>
+	<p>Die Teilnahme an der Studie ist kostenlos und freiwillig. Während der Studie können Sie zu jedem Zeitpunkt ohne Angabe von Gründen Ihre Teilnahme beenden und per E-Mail um die Vernichtung Ihrer Daten bitten, es würden Ihnen hieraus keine Nachteile entstehen.<br>
+	 Wir hoffen, wir konnten Sie für die Teilnahme an unserer Studie begeistern. Wenn Sie noch offene Fragen, Kritik oder Anregungen haben, können Sie sich jederzeit per <?=$this->Html->link('Email', '/pages/contact'); ?> an uns wenden:  <br>
 	<a href="mailto:<?=Configure::read('ContactEmail') ?>"><?=Configure::read('ContactEmail') ?></a></p>
-</section>
-
-<section id="datenschutz">
-	<h4>Datenschutz</h4>
-	<p>Ihren Namen brauchen Sie für die Teilnahme nicht angeben. Persönliche Daten wie E-Mail-Adresse und Geburtsdatum werden auf der
-	Einwilligungserklärung vermerkt und bei der Studienleitung getrennt von den anderen
-	Daten aufbewahrt.  Alle anderen Daten werden in anonymisierter Form erhoben,
-	unter einem Zifferncode getrennt gespeichert und computergestützt ausgewertet. Wenn das 
-	Forschungsprojekt es notwendig macht, die Test- und persönlichen Daten 
-	zusammenzuführen, wird dies unter Einhaltung von Schweigepflicht und gesetzlichen Datenschutzvorschriften geschehen. 
-	Ihre personenbezogenen Daten werden nach der von der Deutschen Forschungsgemeinschaft geforderten und 
-	gesetzlich vorgeschriebenen zehnjährigen Nachweispflicht gelöscht.  Diagnostik
-	und Erhebung werden online durchgeführt. Nur autorisierte Mitarbeiter_Innen der
-	Studie haben Zugang zu den erhobenen Daten. Persönliche Daten werden nicht an
-	Außenstehende weitergegeben. Die Daten werden am Institut für Psychologie der
-	Humboldt-Universität zu Berlin allein zu Forschungszwecken verwendet.</p>
 </section>
 
 </div>
