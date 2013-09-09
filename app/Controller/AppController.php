@@ -56,7 +56,7 @@ class AppController extends Controller {
 	);
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('login','logout','register','pages','display','forgotPassword','resetPassword');
+		$this->Auth->allow('login','logout','linkLogin','register','pages','display','forgotPassword','resetPassword');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'display');
 	        $this->Auth->loginRedirect = array('controller' => 'Trials', 'action' => 'train');

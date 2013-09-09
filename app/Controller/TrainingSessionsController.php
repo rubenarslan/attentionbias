@@ -53,7 +53,7 @@ class TrainingSessionsController extends AppController {
 				if ($this->TrainingSession->saveAssociated($this->request->data,array("deep" => TRUE) ) ) 
 				{
 					echo __('Gespeichert.');
-
+                    
 					$url = Configure::read('Survey.api') . 'api/'. Configure::read('Survey.run_name').'/end_last_external';
 					$ch = curl_init($url);
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -65,7 +65,7 @@ class TrainingSessionsController extends AppController {
 					
 				} else {
 					echo __('Ihre Trainingssitzung konnte nicht gespeichert werden. Kontaktieren Sie bitte die Studienleitung.');
-					pr($this->TrainingSession->validationErrors);
+					debug($this->TrainingSession->validationErrors);
 					
 				}
 			} else {

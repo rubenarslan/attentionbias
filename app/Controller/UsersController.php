@@ -27,27 +27,34 @@ class UsersController extends AppController {
 				'conditions' => array('User.email' => $this->request->data['User']['email'] ),
 				'limit' => 1,
 			));
-			$user = $user['User'];
-	    		$reset_token = $this->User->generateResetToken($user['id']);
-			$email = new CakeEmail('smtp');
-			$email
-			    ->to($user['email'])
-			    ->subject(__('Passwort zurücksetzen Zwang-Studie ATP.'))
-			    ->send(
-"Sehr geehrte/r Teilnehmer/in,
+            if(isset($user['User']))
+            {
+    			$user = $user['User'];
+        		$reset_token = $this->User->generateResetToken($user['id']);
+    			$email = new CakeEmail('smtp');
+    			$email
+    			    ->to($user['email'])
+    			    ->subject(__('Passwort zurücksetzen Zwang-Studie ATP.'))
+    			    ->send(
+    "Sehr geehrte/r Teilnehmer/in,
 
-Sie haben uns gebeten Ihnen einen Link zuzuschicken, um Ihr
-Passwort zurückzusetzen. Falls Sie den Link nicht angefordert
-haben, kontaktieren Sie bitte die Studienleitung, indem Sie
-auf diese Email antworten.
+    Sie haben uns gebeten Ihnen einen Link zuzuschicken, um Ihr
+    Passwort zurückzusetzen. Falls Sie den Link nicht angefordert
+    haben, kontaktieren Sie bitte die Studienleitung, indem Sie
+    auf diese Email antworten.
 
-".Router::url( "/users/resetPassword/".$user['email']."/".$reset_token, true)
-."
+    ".Router::url( "/users/resetPassword/".$user['email']."/".$reset_token, true)
+    ."
 
-Freundliche Grüße,
+    Freundliche Grüße,
 
-Ihr Studienteam");
-			$this->redirect("/");
+    Ihr Studienteam");
+    			$this->redirect("/");
+            } else {
+				$this->Session->setFlash(__('User not found.'));
+				$this->redirect("/users/forgotPassword");
+                
+            }
 		}
 	}
 	public function resetPassword($email = null,$reset_token = null) {
@@ -82,46 +89,37 @@ Ihr Studienteam");
 			}
 		}
 	}
-	public function linkLogin($email = NULL, $code = NULL,$goto_controller = NULL, $goto_action = NULL) {
-	    if ($code !== NULL AND $email !== NULL) {
-			if($id = $this->User->verifyCodeLogin($email,$code)) {
+	public function linkLogin($code = NULL,$goto_controller = NULL, $goto_action = NULL) {
+	    if ($code !== NULL) 
+        {
+			if($id = $this->User->verifyCodeLogin($code)) 
+            {
 				$this->User->id = $id;
-#				debug($user);
-				if($this->Auth->login($this->User->read(null))) {		
+				$user = $this->User->read(null);
+				$user['User']['Group'] = $user['Group'];
+				$user = $user['User'];
+				
+				if($this->Auth->login($user)) 
+                {		
 					$this->Session->setFlash(__('Sie wurden eingeloggt.'),'alert-info');
-							
 					if($goto_controller) $this->redirect("/$goto_controller/$goto_action");
-				} else
+				} 
+                else
+                {
 					$this->Session->setFlash(__('Login schlug fehl.'),'alert-error');
-			} else
+                }
+			} 
+            else
+            {
 				$this->Session->setFlash(__('Stimmt nicht.'),'alert-error');
-	    } else
+            }
+	    } 
+        else 
+        {
 			$this->Session->setFlash(__('Code oder Email fehlt.'),'alert-error');
+        }
 		
 		$this->redirect('/');
-	}
-	public function sendLoginLink($id,$goto = "/SocialNetworks/generate") {
-		$this->User->id = $id;
-		if($this->User->exists()) {
-			$user = $this->User->read(null);
-			$user = $user['User'];
-	    	$email = new CakeEmail('smtp');
-			$email
-			    ->to($user['email'])
-			    ->subject(__('Trainings-Link ATP gegen Zwänge'))
-			    ->send(
-"Hallo,
-
-Mit folgendem Link können Sie sich einloggen
-
-".Router::url( "/users/LinkLogin/".$user['email']."/".$user['code'].$goto, true)
-."
-
-Freundliche Grüße,
-
-Ihr Studienteam");
-			$this->redirect("/");
-		}
 	}
 	public function register() {
 	    if ($this->request->is('post')) {
