@@ -51,6 +51,13 @@ class User extends AppModel {
 			return $reset_token;
 		else return false;
 	}
+	public function verifyCodeLogin($code) {
+		return $this->field('id',array(
+			'User.group_id' => 2, # only non-admins can log in with this insecure method
+			'BINARY(User.code)' => $code, # binary for case-sensitivity
+		));
+	}
+    
 	
 /**
  * Display field
