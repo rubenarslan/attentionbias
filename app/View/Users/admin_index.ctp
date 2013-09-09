@@ -1,3 +1,7 @@
+<?php
+function reverse($x) { return -1 * round($x); }
+    
+?>
 <div class="users index">
 	<h2><?php echo __('Users'); ?></h2>
 	<table class="table">
@@ -20,22 +24,35 @@
 		<td>
 			<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
 		</td>
-		<td><?php echo h($user['User']['created']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
+		<td><small><?php echo h($user['User']['created']); ?></small>&nbsp;</td>
+		<td><small><?php echo h($user['User']['modified']); ?></small>&nbsp;</td>
 		<td><?php echo h($user['User']['firstname'])." ".h($user['User']['lastname']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
-		<td><?php echo h($user['User']['code']); ?>&nbsp;</td>
+		<td><small><?php echo h($user['User']['email']); ?></small>&nbsp;</td>
+		<td><div style="width:95px;word-wrap:break-word;"><small style="font-size:8px"><?php echo h($user['User']['code']); ?>&nbsp;</small></div></td>
 		<td><?php echo h($user['User']['condition']); ?>&nbsp;</td>
 		<td><?php 
 		$progress = $user['User']['progress'];
-		if(count($progress)>1) {
-			$dataseturl = '&amp;chd='.'t:' . implode(',',$progress);
-			if(max($progress)!=0) $dataseturl .= '&amp;chds=0,'.max($progress);
-			echo '<img src="http://chart.apis.google.com/chart?chs=300x70&amp;chm=B,0,0,0,0&amp;chco=0077CC&amp;cht=ls&amp;chxt=x,y&amp;chxr='
-			.'1,'. min($progress) . ',' . max($progress) .'|'.
-			'0,'. count($progress) . ',0'
-			.$dataseturl . '" alt="Graph Ihres Fortschritt" title="Ihr Fortschritt. Ihre neuesten Ergebnisse stehen rechts, die Zahlen auf der x-Achse zeigen die Trainingssitzungen an." />';
-		} elseif (count($progress)==1) {
+    if(count($progress)>1) {
+        $sesscount = range(1,count($progress));
+        #chxr=1,'. min($progress) . ',' . max($progress) .'|0,'. count($progress) . ',0'
+    #        chdl=Ihre+Schnelligkeit&amp;
+    #        chdlp=b&amp;
+        $progress = array_map("reverse",$progress);
+    	$dataseturl = 'chd=t:' . implode(',',$sesscount) .'|'. implode(',',$progress);
+    	if(max($progress)!=0) $dataseturl .= '&amp;chds=1,'.max($sesscount).','.min($progress).','.max($progress);
+    	echo '<img src="http://chart.apis.google.com/chart?
+chs=300x70&amp;
+chm=B,0,0,0,0&amp;
+chxl=0:|'.implode($sesscount,'. TE|').'. TE|1:|langsam|schnell&amp;
+chxr=0,'. min($sesscount) . ',' . max($sesscount) .',1|1,'. min($progress) . ',' . max($progress) .'&amp;
+chxt=x,y&amp;
+chco=0077CC&amp;
+cht=lxy&amp;
+'
+    .$dataseturl . '" 
+    
+        alt="Graph des Fortschritt" title="User-Fortschritt." />';
+    		} elseif (count($progress)==1) {
 			echo 'just 1 Session, AVG '. round(current($progress));
 		}
 		 ?>&nbsp;</td>
