@@ -18,13 +18,13 @@ $this->assign('title', 'Studie');
 
 <section id="programm">
 	<h3>Das Programm ATP</h3>
-	<p>Das Aufmerksamkeitstrainings-Programm (ATP) ist ein einfaches Programm, das Sie bei sich zu Hause am Computer durchführen können. Eine Trainingseinheit dauert etwa 10 bis 15 Minuten. Dabei werden Ihnen Bilder gezeigt, die Sie möglicherweise an Ihre Zwänge erinnern (z.B. einen tropfenden Wasserhahn) oder aber neutral sind (z.B. eine Blume). Ihre Aufgabe ist es, ähnlich wie bei einem Computerspiel, neben der Bildbetrachtung auf bestimmte Zeichen auf dem Bildschirm zu reagieren. Die genaue Anleitung für das Programm erhalten Sie, wenn Sie sich entschließen teilzunehmen.</p>
+	<p>Das Aufmerksamkeitstrainings-Programm (ATP) ist ein einfaches Programm, das Sie bei sich zu Hause am Computer durchführen können. Eine Trainingseinheit dauert etwa 10 bis 15 Minuten. Dabei werden Ihnen Bilder gezeigt, die Sie möglicherweise an Ihre Zwänge erinnern (z.B. ein tropfender Wasserhahn) oder aber neutral sind (z.B. eine Blume). Ihre Aufgabe ist es, ähnlich wie bei einem Computerspiel, neben der Bildbetrachtung auf bestimmte Zeichen auf dem Bildschirm zu reagieren. Die genaue Anleitung für das Programm erhalten Sie, wenn Sie sich entschließen teilzunehmen.</p>
 </section>
 
 <section id="wirkung">
 	<h4>Wirkung</h4>
 
-	<p>Bisherige Forschungsergebnisse weisen darauf hin, dass Menschen mit einer Zwangserkrankung ihre Aufmerksamkeit anders ausrichten, als Menschen ohne Zwangserkrankung. Jemand mit einem Kontrollzwang nimmt z.B. einen tropfenden Wasserhahn im Hintergrund sehr viel schneller und stärker wahr als jemand ohne Kontrollzwang. Wissenschaftler_Innen nehmen an, dass solche Aufmerksamkeitsprozesse eine wichtige Rolle für die Entstehung der Zwangsstörung spielen. Ein relativ neuer Behandlungsansatz ist es deshalb, diese Aufmerksamkeitsprozesse neu zu trainieren. Dafür setzt man - wie in unserer Studie - einfache Computerprogramme ein.</p>
+	<p>Bisherige Forschungsergebnisse weisen darauf hin, dass Menschen mit einer Zwangserkrankung ihre Aufmerksamkeit anders ausrichten, als Menschen ohne Zwangserkrankung. Jemand mit einem Kontrollzwang nimmt z.B. einen tropfenden Wasserhahn im Hintergrund sehr viel schneller und stärker wahr, als jemand ohne Kontrollzwang. Wissenschaftler_Innen nehmen an, dass solche Aufmerksamkeitsprozesse eine wichtige Rolle für die Entstehung der Zwangsstörung spielen. Ein relativ neuer Behandlungsansatz ist es deshalb, diese Aufmerksamkeitsprozesse neu zu trainieren. Dafür setzt man - wie in unserer Studie - einfache Computerprogramme ein.</p>
 
 	<p>Für die Behandlung verschiedener Angststörungen wurden diese Programme bereits überprüft - mit zum Teil vielversprechenden Erfolgen. In einer Studie der Florida State Universität (USA) konnte eine Vielzahl von Teilnehmer_Innen mit starken Ängsten vor sozialen Situationen diese deutlich reduzieren. Das gleiche Ergebnis konnte auch für andere Ängste erzielt werden.</p>
 
@@ -40,17 +40,17 @@ $this->assign('title', 'Studie');
 
 <section id="trainingsplan">
 	<h5>Trainingsplan</h5>
-	<p>Das Training umfasst insgesamt einen Zeitraum von vier Wochen und sollte mindestens zweimal die Woche zu festen Terminen stattfinden. Wochentag und Uhrzeit können Sie sich hierfür selbst aussuchen. Über diese zwei Mindesttermine hinaus steht es Ihnen frei, so oft zu trainieren wie Sie möchten. Wenn Sie Ihren Termin gewählt haben, werden Sie von uns an jede anstehende Trainingseinheit per E-Mail (oder auf Wunsch per SMS) erinnert. Damit möchten wir Ihnen das Einhalten Ihres Trainingsplans erleichtern.</p>
+	<p>Das Training umfasst insgesamt einen Zeitraum von vier Wochen und sollte mindestens zweimal die Woche zu festen Terminen stattfinden. Wochentag und Uhrzeit können Sie sich hierfür selbst aussuchen. Über diese zwei Mindesttermine hinaus steht es Ihnen frei, so oft zu trainieren wie Sie möchten. Wenn Sie Ihren Termin gewählt haben, werden Sie von uns an jede anstehende Trainingseinheit per E-Mail erinnert. Damit möchten wir Ihnen das Einhalten Ihres Trainingsplans erleichtern.</p>
 </section>	
 	
 <section id="abschlussbefragung">
 	<h5>Abschlussbefragung</h5>
-	<p>Am Ende der Studie und zu einer Nachsorgeuntersuchung vier Wochen später legen wir Ihnen noch einmal die gleichen Fragebögen wie zu Beginn vor. So können wir herausfinden, ob sich Ihre Zwangssymptome und sonstige Beschwerden durch das Training verbessert haben, und ob diese Verbesserungen auch über das Training hinaus stabil bleiben.</p>
+	<p>Am Ende der Studie und zu einer Nachsorgeuntersuchung vier Wochen später legen wir Ihnen noch einmal die gleichen Fragebögen wie zu Beginn vor. So können wir herausfinden, ob sich Ihre Zwangssymptome und sonstigen Beschwerden durch das Training verbessert haben, und ob diese Verbesserungen auch über das Training hinaus stabil bleiben.</p>
 </section>
 
 <section id="untersuchungsdurchfuehrung">
 	<h5>Untersuchungsdurchführung</h5>
-	<p>Bei unserer Untersuchung handelt es sich um eine sogenannte placebokontrollierte Doppelblindstudie. Das bedeutet, dass es zwei Gruppen gibt die miteinander verglichen werden, eine Trainingsgruppe und eine Placebogruppe. Zu Beginn werden alle Teilnehmer per Zufall einer der beiden Gruppen zugewiesen. Die Zuweisung nimmt der Computer automatisch vor, ohne dass Sie oder wir wissen, in welche Gruppe sie zunächst kommen (doppelblind). Die eine Gruppe bekommt unmittelbar das Training (Trainingsgruppe), die andere bekommt zunächst eine augenscheinlich ähnliche Aufgabe, die jedoch die Aufmerksamkeit nicht trainiert (Placebogruppe). Nur so können wir die Wirksamkeit des Trainings überprüfen. Sollten Sie im ersten Durchgang in der Placebogruppe sein, haben Sie direkt im Anschluss die Möglichkeit, das Training mitzumachen. Alle Teilnehmer_Innen werden also am Ende das richtige Aufmerksamkeitstraining durchlaufen haben.</p>
+	<p>Bei unserer Untersuchung handelt es sich um eine sogenannte placebokontrollierte Doppelblindstudie. Das bedeutet, dass es zwei Gruppen gibt, die miteinander verglichen werden: eine Trainingsgruppe und eine Placebogruppe. Zu Beginn werden alle Teilnehmer per Zufall einer der beiden Gruppen zugewiesen. Die Zuweisung nimmt der Computer automatisch vor, ohne dass Sie oder wir wissen, in welche Gruppe Sie zunächst kommen (doppelblind). Die eine Gruppe bekommt unmittelbar das Training (Trainingsgruppe), die andere bekommt zunächst eine augenscheinlich ähnliche Aufgabe, die jedoch die Aufmerksamkeit nicht trainiert (Placebogruppe). Nur so können wir die Wirksamkeit des Trainings überprüfen. Sollten Sie im ersten Durchgang in der Placebogruppe sein, haben Sie direkt im Anschluss die Möglichkeit, das Training mitzumachen. Alle Teilnehmer_Innen werden also am Ende das richtige Aufmerksamkeitstraining durchlaufen haben.</p>
 </section>
 
 

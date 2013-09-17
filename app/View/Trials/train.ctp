@@ -71,13 +71,13 @@ Je steiler die blaue Linie, desto größer ist ihr Trainingserfolg!</p></div>";
 	?>
 	
 	<h4>Hier gelangen Sie zu Ihrem persönlichen Trainingsbereich.</h4>
-	<p>	Bitte klicken Sie auf „Weiter“ um mit dem Training anzufangen.</p>
+	<p>	Bitte klicken Sie auf „Weiter“, um mit dem Training anzufangen.</p>
 	
 	<div id="session_outer">
 		<div id="session">
 			<div class="session_begin">
 				Für die korrekte Darstellung der Aufgabe, müssen Sie JavaScript in Ihren Browser-Einstellungen erlauben.
-				Eine genaue Anleitung dafür, finden Sie <a href="http://www.enable-javascript.com/de/">auf dieser Homepage</a>.
+				Eine genaue Anleitung dafür finden Sie <a href="http://www.enable-javascript.com/de/">auf dieser Homepage</a>.
 			</div>
 		</div>
 		<div id="trial">
@@ -91,7 +91,7 @@ Je steiler die blaue Linie, desto größer ist ihr Trainingserfolg!</p></div>";
 	</div>
 	<?php 
 	else: ?>
-	<h4>Das Training beendet.</h4>
+	<h4>Das Training ist beendet.</h4>
 	<p>Vielen Dank für Ihre Teilnahme!</p>
 	
 	<?php
