@@ -19,7 +19,7 @@ var fast_and_wrong_feedback = 'Gut, Ihre Reaktionsgeschwindigkeit war sehr hoch.
 var trial_test_instructions = 'Nun haben Sie die Übungsphase geschafft und sind bereit, um mit der richtigen Aufgabe anzufangen. <br> Stellen Sie sicher, dass Ihre Finger immernoch auf den richtigen Buchstaben liegen: linker Zeigefinger auf „' + key_probe1 + '“ und rechter Zeigefinger auf „' + key_probe2 + '“. <br><br>Es gibt ab jetzt keine Rückmeldung mehr, wenn Sie die falsche Taste drücken. Konzentrieren Sie sich bitte einfach darauf, möglichst genau und schnell durch Tastendruck auf den gezeigten Buchstaben zu reagieren. <br><br><button class="btn btn-primary btn-large">Drücken Sie  „' + key_probe1 + '“ um jetzt anzufangen.</button>'; 
 
 
-var session_end_message = 'Ende der Trainingseinheit. Sie haben es geschafft.<br><br>Vielen Dank für Ihre heutige Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :)';
+var session_end_message = '<h3>Ende der Trainingseinheit.</h3> Sie haben es geschafft.<br><br>Vielen Dank für Ihre heutige Teilnahme!<br><br>Sie können Radio, Dropbox, Chat und andere Programme jetzt wieder einschalten :)';
 var session_interruption = 'Training unterbrochen. Bitte drücken Sie während der Sitzung nicht "escape" um den Vollbildschirmmodus zu verlassen und verlassen Sie nicht den Test. Bitte schließen Sie vor dem Test Programme, die Sie während des Tests ablenken könnten (durch Töne oder indem sie Sie zwingen, das Test-Fenster zu verlassen). Um Ihre Trainingseinheit jetzt von vorne anzufangen, drücken Sie in der Menüleiste oben auf "Trainieren".';
 var session_fullscreenFail = 'Ihr Web-Browser unterstützt den Vollbildmodus nicht. Um das Problem zu beheben, installieren Sie bitte die aktuelle Version der Browser Mozilla Firefox oder Google Chrome. Diese Browser sind kostenlos und Sie können sie einfach hier herunterladen:<br><a href="//affiliates.mozilla.org/link/banner/33002"><img width="110" height="32" src="//affiliates.mozilla.org/media/uploads/banners/c535b958c0ce9b59b5f33b61b53c2bab38baf601.png" alt="Firefox herunterladen" /></a> <a href="//www.google.com/intl/de/chrome/browser/"><img width="110" height="30" src="'+webroot+'img/getchrome.png" alt="Google Chrome herunterladen" /></a> <br>Bitte folgen Sie zum Herunterladen und Installieren den Anweisungen auf der Seite <br>Wenn das Problem bestehen bleibt, schreiben Sie uns bitte eine E-Mail an <a href="mailto:zwang.psychologie@hu-berlin.de">zwang.psychologie@hu-berlin.de</a> wir werden Ihnen sobald wie möglich mit der Lösung helfen!';
 
@@ -458,6 +458,7 @@ Session.save = (function () {
 //			console.log("Session.saved");
 			$session.empty().append($('<div class="session_end_message">' + session_end_message +'</div>')).makeVisible();
 			window.onbeforeunload = function() {};
+            location.href = location.href+'ing_end';
 		}
 		
 	}).fail(ajaxErrorHandling);

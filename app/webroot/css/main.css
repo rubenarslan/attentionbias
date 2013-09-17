@@ -166,7 +166,8 @@ div.control-group div.date div.controls select[name*=year] {
     none !important;
 }
 .session_begin, .session_first_instructions, .session_interruption, .session_featurefail, .session_fullscreenFail,.session_saveFail {
-	font-size:14pt;
+	font-size:12pt;
+	line-height:16pt;
 	text-align:left;
 }
 .session_interruption, .session_featureFail, .session_fullscreenFail,.session_saveFail {

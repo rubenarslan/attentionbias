@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 class TrialsController extends AppController {
 	function isAuthorized($user = null, $request = null) {	
 		$req_action = $this->request->params['action'];
-		if(in_array($req_action, array('train','cg_train'))) return true; # viewing and adding is allowed to all users
+		if(in_array($req_action, array('train','training_end','cg_train'))) return true; # viewing and adding is allowed to all users
 
 		return parent::isAuthorized($user); # allow admins to do anything
 	}
@@ -44,6 +44,10 @@ class TrialsController extends AppController {
 		else $condition = $this->Auth->user('condition'); 
 		
 		$this->set(compact('progress','condition','hadLastSession','prevSessions'));
+	}
+	public function training_end() {
+		$progress =  current( $this->Trial->getProgress($this->Auth->user('id')) ); // current so I don't have a nested array with just one entry for the user id on the first level
+		$this->set(compact('progress'));
 	}
 	public function cg_train() {
 		$condition = 'bias_manipulation'; 
