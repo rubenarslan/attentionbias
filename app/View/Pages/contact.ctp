@@ -5,7 +5,7 @@ $this->assign('title', 'Kontakt');
 	<h4>Leitung der Studie</h4>
 
 	<p><a href="http://www.psychologie.hu-berlin.de/mitarbeiter/1682038">Dr. Andrea Ertle</a><br>
-	Cand.-Psych. Sarah Lennartz<br>
+	Cand.-Psych. Sarah J. Lennartz<br>
 	Cand.-Psych. Isabelle Habedank</p>
 
 
@@ -18,7 +18,7 @@ $this->assign('title', 'Kontakt');
 
 	<h4>Sitz</h4>
 
-	<p>Humboldt Universität zu Berlin<br>
+	<p>Humboldt-Universität zu Berlin<br>
 	Mathematisch - Naturwissenschaftliche Fakultät II<br>
 	Institut für Psychologie<br>
 	Abteilung Psychotherapie und Somatopsychologie<br>
@@ -27,8 +27,12 @@ $this->assign('title', 'Kontakt');
 	<h4>Postanschrift</h4>
 
 	<p>Dr. Andrea Ertle<br>
-	Humboldt Universität zu Berlin<br>
+	Humboldt-Universität zu Berlin<br>
 	Institut für Psychologie<br>
 	Unter den Linden 6<br>
 	10099 Berlin</p>
+	
+	<h4>Kooperationspartner</h4>
+	<p><a href="http://www.psych.uni-goettingen.de/de/personality/team-old/dipl-psych-ruben-arslan">Ruben C. Arslan</a>, Georg-August Universität Göttingen<br>
+	<a href="http://www.tilburguniversity.edu/webwijs/show/?uid=j.j.a.denissen">Jaap J. A. Denissen</a>, Universität Tilburg</p>
 </div>

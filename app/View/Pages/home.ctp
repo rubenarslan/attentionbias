@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', 'Willkommen');
+$this->assign('title', 'ATP gegen Zwänge');
 ?>
 <div class="hero-unit span9">
 	<h3>Willkommen zum Aufmerksamkeitstrainings-Programm (ATP) gegen Zwänge! Wir freuen uns, dass Sie sich für unsere Studie interessieren.</h3>
@@ -8,7 +8,7 @@ $this->assign('title', 'Willkommen');
 
 <div class="span-halfhero offset-hero">
     <h3>An wen richtet sich die Studie?</h3>
-    <p>Die Studie richtet sich an Menschen, die unter einer Zwangsstörung leiden. Nachfolgend finden Sie eine Beschreibung dieser Erkrankung. Wenn Sie sich in dieser Beschreibung der Zwangsstörung wiederfinden, könnte sich eine Teilnahme an unserer Studie für Sie lohnen. Sie können sich <?=$this->Html->link('anmelden', '/users/register'); ?>, wenn Sie zwischen 18 und 65 Jahre alt sind und sich aktuell nicht in Psychotherapie befinden.</p>
+    <p>Die Studie richtet sich an Menschen, die unter einer Zwangsstörung leiden. Nachfolgend finden Sie eine Beschreibung dieser Erkrankung. Wenn Sie sich in dieser Beschreibung der Zwangsstörung wiederfinden, könnte sich eine Teilnahme an unserer Studie für Sie lohnen. Sie können sich <?=$this->Html->link('anmelden', '/users/register'); ?>, wenn Sie zwischen 18 und 65 Jahre alt sind.</p>
 </div>
 <div class="span-halfhero">
     <h3>Ziel der Studie</h3>

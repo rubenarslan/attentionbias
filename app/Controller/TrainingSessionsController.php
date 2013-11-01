@@ -66,7 +66,6 @@ class TrainingSessionsController extends AppController {
 				} else {
 					echo __('Ihre Trainingssitzung konnte nicht gespeichert werden. Kontaktieren Sie bitte die Studienleitung.');
 					debug($this->TrainingSession->validationErrors);
-					
 				}
 			} else {
 				echo __('Haben Sie versucht, den Account zu wechseln, während Sie trainiert haben? Falls dieses Problem unerwartet auftritt, kontaktieren Sie die Studienleitung.');

@@ -10,7 +10,6 @@ function reverse($x) { return -1 * round($x); }
 			<th><?php echo $this->Paginator->sort('group_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th><?php echo $this->Paginator->sort('lastname','Name'); ?></th>
 			<th><?php echo $this->Paginator->sort('email'); ?></th>
 			<th><?php echo $this->Paginator->sort('code'); ?></th>
 			<th><?php echo $this->Paginator->sort('condition'); ?></th>
@@ -26,7 +25,6 @@ function reverse($x) { return -1 * round($x); }
 		</td>
 		<td><small><?php echo h($user['User']['created']); ?></small>&nbsp;</td>
 		<td><small><?php echo h($user['User']['modified']); ?></small>&nbsp;</td>
-		<td><?php echo h($user['User']['firstname'])." ".h($user['User']['lastname']); ?>&nbsp;</td>
 		<td><small><?php echo h($user['User']['email']); ?></small>&nbsp;</td>
 		<td><div style="width:95px;word-wrap:break-word;"><small style="font-size:8px"><?php echo h($user['User']['code']); ?>&nbsp;</small></div></td>
 		<td><?php echo h($user['User']['condition']); ?>&nbsp;</td>

@@ -33,6 +33,9 @@ var try_saving_again_button = 'Erneut versuchen, zu speichern';
 var session_close_with_unsaved_changes_prompt = 'Ihre Sitzung ist noch nicht gespeichert. Bitte verlassen Sie die Seite erst, wenn dies geschehen ist (es kann nicht mehr lange dauern).';
 
 /* BLOCKS */
+var test_trials_part1 = shuffle(test_imgs);
+var test_trials_part2 = test_trials_part1.splice(0,6);
+var test_trials_top = repeatArray([false], test_trials_part1.length); // dont need to shuffle twice
 var ocd_block1 = shuffle(ocd_imgs);
 var neutral_block1 = shuffle(neutral_imgs); // shuffle them once, repeat
 var ocd_top_block1 = shuffle(repeatArray([false,true], ocd_imgs.length)); // make array of positions, shuffle
@@ -66,15 +69,17 @@ ocd_block2 = ocd_block2.concat(sortByArray(ocd_block2,randomIndices));
 neutral_block2 = neutral_block2.concat(sortByArray(neutral_block2,randomIndices));
 ocd_top_block2 = ocd_top_block2.concat(sortByArray(ocd_top_block2R,randomIndices));
 
-var ocd_sequence = ocd_block1.concat(ocd_block2);
-var neutral_sequence = neutral_block1.concat(neutral_block2);
-var ocd_top_sequence = ocd_top_block1.concat(ocd_top_block2);
+var ocd_sequence = test_trials_part1.concat(ocd_block1.concat(ocd_block2)); // first test trials then block 1 then B2
+var neutral_sequence = test_trials_part2.concat(neutral_block1.concat(neutral_block2)); // accordingly
+var ocd_top_sequence = test_trials_top.concat(ocd_top_block1.concat(ocd_top_block2));
 
 var number_of_trials = ocd_sequence.length; // includes test trials, so increase it accordingly
-var number_of_test_trials = 10;
+var number_of_test_trials = 6;
 var can_be_wrong = 1; // number of test trials that can be wrong without triggering neg. feedback
 var sufficiently_fast_reaction_time = 650; // if the subject's mean RT in the test trials is smaller than this: neg. feedback
 
+
+console.log(number_of_trials);
 function repeatArray(arr, count) {
   var ln = arr.length;
   var b = new Array();
@@ -397,6 +402,7 @@ Session.nextTrial = (function() {
 //	console.log('Session.nextTrial');
 	
 	if(Session.interrupted == true) return;
+    console.log(Trial.current);
 	
 	if(Session.number_of_trials == Session.db.Trial.length) // last trial
 		Session.end();

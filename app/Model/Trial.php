@@ -198,7 +198,7 @@ class Trial extends AppModel {
 			'order' => 'Trial.session_id',
 			'conditions' => array(
 				'Trial.responded_1 = Trial.stimulus_1', 
-				'Trial.number <' => 10,
+				'Trial.number <' => 7,
 				'TrainingSession.user_id IS NOT NULL'
 				),
 			'contain' => array(

@@ -9,3 +9,4 @@
 
 	RewriteRule (.*) app/webroot/$1 
 </IfModule>
+php_value max_input_vars 100000

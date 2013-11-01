@@ -72,7 +72,6 @@
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('User Id'); ?></th>
 		<th><?php echo __('Session Id'); ?></th>
 		<th><?php echo __('Number'); ?></th>
 		<th><?php echo __('Began Unixtime'); ?></th>
@@ -80,7 +79,6 @@
 		<th><?php echo __('Neutral Image Id'); ?></th>
 		<th><?php echo __('Ocd On Top'); ?></th>
 		<th><?php echo __('Probe On Top'); ?></th>
-		<th><?php echo __('First Valid Response'); ?></th>
 		<th><?php echo __('First Reaction Time Since Trial Began'); ?></th>
 		<th><?php echo __('First Reaction Time Since Probe Shown'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -90,7 +88,6 @@
 		foreach ($trainingSession['Trial'] as $trial): ?>
 		<tr>
 			<td><?php echo $trial['id']; ?></td>
-			<td><?php echo $trial['user_id']; ?></td>
 			<td><?php echo $trial['session_id']; ?></td>
 			<td><?php echo $trial['number']; ?></td>
 			<td><?php echo $trial['began_unixtime']; ?></td>
@@ -98,7 +95,6 @@
 			<td><?php echo $trial['neutral_image_id']; ?></td>
 			<td><?php echo $trial['ocd_on_top']; ?></td>
 			<td><?php echo $trial['probe_on_top']; ?></td>
-			<td><?php echo $trial['first_valid_response']; ?></td>
 			<td><?php echo $trial['first_reaction_time_since_trial_began']; ?></td>
 			<td><?php echo $trial['first_reaction_time_since_probe_shown']; ?></td>
 			<td class="actions">
