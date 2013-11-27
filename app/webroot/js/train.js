@@ -79,7 +79,7 @@ var can_be_wrong = 1; // number of test trials that can be wrong without trigger
 var sufficiently_fast_reaction_time = 650; // if the subject's mean RT in the test trials is smaller than this: neg. feedback
 
 
-console.log(number_of_trials);
+// console.log(number_of_trials);
 function repeatArray(arr, count) {
   var ln = arr.length;
   var b = new Array();
@@ -236,6 +236,11 @@ Session.preLoad = (function() {
 		if(sheight >= available_sheights[i]) chosen_height = available_sheights[i];
 	}
 	Session.db.displayed_height = chosen_height;
+    
+    if(chosen_height==600)
+    {
+        $session.addClass("session600");
+    }
 	
 	imgpath = imgpath_base + chosen_height + "/"; // append to path
 	$trial.addClass('sh' + chosen_height); // add class for widths and heights
@@ -319,6 +324,7 @@ Session.showTryoutInstructions = (function() {
 		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1) {
 			$(document).off('keydown');
 			Session.beginTryout();
+            return false;
 		}
 	});
 	
@@ -371,6 +377,7 @@ Session.showTestInstructions = (function() {
 		if( String.fromCharCode( e.which ).toUpperCase()  == key_probe1) {
 				$(document).off('keydown');
 				Session.beginTest();
+                return false;
 			}
 	});
 	
@@ -402,7 +409,7 @@ Session.nextTrial = (function() {
 //	console.log('Session.nextTrial');
 	
 	if(Session.interrupted == true) return;
-    console.log(Trial.current);
+//    console.log(Trial.current);
 	
 	if(Session.number_of_trials == Session.db.Trial.length) // last trial
 		Session.end();
@@ -585,6 +592,7 @@ Trial.response = (function(e) { // log valid responses
 				Trial.end();
 			}
 		}
+        return false;
 	}
 });
 

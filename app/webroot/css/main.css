@@ -510,3 +510,11 @@ PS = 11
 #trial.sh600 div.probe_top img {
 	top:152px; /* 15 px + 0.5*IH */
 }
+
+/*.session600 .session_begin, .session600 .session_first_instructions,.session600  .session_interruption,.session600  .session_featurefail, .session600 .session_fullscreenFail,.session600 .session_saveFail,
+*/
+.session600 .session_walkthrough, .session600 .session_instructions, .session600 .trial_instructions
+ {
+    font-size:12px;
+	line-height:13px;
+}
