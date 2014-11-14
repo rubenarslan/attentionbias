@@ -1,0 +1,512 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+body {
+    padding-bottom: 40px;
+}
+
+.offset-hero {
+	margin-left:90px;
+}
+.span-halfhero {
+	width:420px;
+}
+.span-hero {
+	width:870px;
+}
+@media (min-width: 940px) { 
+	header.study-header {
+		background-image:url(../img/Study_header_big.png);
+		height:208px;
+	}
+}
+@media (min-width: 1170px) {
+	header.study-header {
+		margin-left:-230px;
+	}
+}
+header.study-header {
+	/*width:940px;*/
+	background-repeat:no-repeat;
+	background-position:center 5px;
+}
+#study_nav {
+	box-shadow:none !important;
+}
+div.hero-unit {
+  	font-size: 16px;
+	line-height: 22px;
+}
+div.maincontent {
+	padding-top:20px;
+}
+#flashMessage,.error-message {
+	color: #3a87ad;
+	font-weight:bold;
+}
+h2.nav {
+	color:black;
+}
+.navbar .brand {
+	padding:0;
+}
+@media (min-width: 940px) { 
+	.navbar .brand {
+		padding:0;
+		display:none;
+	}
+}
+/* ==========================================================================
+   Register.ctp styles
+   ========================================================================== */
+
+
+.control-group.controls-checkbox input[type=checkbox] {
+	margin-top:-3px;
+	margin-left: -30px;
+	margin-right: 17px;
+}
+.control-group.controls-checkbox label {
+	display:inline;
+	width:330px;
+}
+div.control-group div.date div.controls select[name*=day] {
+	width:60px;
+}
+div.control-group div.date div.controls select[name*=month] {
+	width:120px;
+}
+div.control-group div.date div.controls select[name*=year] {
+	width:80px;
+}
+
+/* ==========================================================================
+   Study.ctp styles
+   ========================================================================== */
+
+.atp-affix-sidenav {
+    background-color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    padding: 0;
+}
+.atp-sidenav-container {
+	width:200px;
+}
+@media (max-width: 820px) { 
+	.atp-affix-sidenav.affix  {
+		position:static !important;
+	}
+}
+
+.atp-affix-sidenav.affix {
+	top:10px;
+	width:200px;
+}
+
+.atp-affix-sidenav .icon-chevron-right {
+	float: right;
+	margin-right: -6px;
+	margin-top: 2px;
+	opacity: 0.25;
+}
+.atp-affix-sidenav > li > a {
+    border: 1px solid #E5E5E5;
+    display: block;
+    margin: 0 0 -1px;
+    padding: 8px 14px;
+}
+.atp-affix-sidenav > li:first-child > a {
+    border-radius: 6px 6px 0 0;
+}
+.atp-affix-sidenav > li.sub > a{
+    font-size:13px;
+	padding-left:28px;
+}
+.atp-affix-sidenav > li:last-child > a {
+    border-radius: 0 0 6px 6px;
+}
+.atp-affix-sidenav > .active > a {
+    border: 0 none;
+    box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1) inset, -1px 0 0 rgba(0, 0, 0, 0.1) inset;
+    padding: 9px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+/* ==========================================================================
+   Styles for attention training session
+   ========================================================================== */
+#session_outer {
+	display:block;
+	width:100%;
+	height:100%;
+}
+#session,#trial {
+	color:black;
+	background-color:white;
+}
+#session {
+	display:table;
+}
+#session.fullscreen,#trial.fullscreen	{
+	background-color:black;
+	font:Verdana;
+	color:white;
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+}
+#trial.fullscreen {
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjbQg61aAAAADUlEQVQYV2P4//8/IwAI/QL/+TZZdwAAAABJRU5ErkJggg=='),
+    url(../img/blank.cur),
+    none !important;
+}
+.session_begin, .session_first_instructions, .session_interruption, .session_featurefail, .session_fullscreenFail,.session_saveFail {
+	font-size:12pt;
+	line-height:16pt;
+	text-align:left;
+}
+.session_interruption, .session_featureFail, .session_fullscreenFail,.session_saveFail {
+	color:red;
+}
+.session_walkthrough, .session_instructions, .trial_instructions {
+	display:table-cell;
+	vertical-align:middle;
+	font-size:12pt;
+	line-height:18pt;
+	text-align:left;
+	margin:auto auto;
+	max-width:70%;
+	padding-left:100px;
+	padding-right:100px;
+	height:100%;
+}
+div.instruction_image {
+	background-image:url(../img/training/instructions/Monitor.png);
+	background-repeat:no-repeat;
+	width:490px;
+	height:360px;
+	margin-left:20px;
+	float:right;
+}
+div.instruction_image img {
+	margin-left:50px;
+	margin-top:30px;
+}
+
+
+/* ==========================================================================
+   General Styles for attention training trials
+   ========================================================================== */
+div#trial div#mistake_message {
+	position:absolute;
+	width:30%;
+	height:10%;
+	left:35%;
+	top:45%;
+	text-align:center;
+	font:Verdana;
+	font-size:160%;
+	color:red;
+	font-weight:bold;
+}
+div#trial div#fixation img {
+	position:absolute;
+	left:50%;
+}
+div#trial div.trial_images img.top {
+	top:15px !important;
+}
+div#trial div.trial_images img {
+	display:block;
+	position:absolute;
+	left:50%;
+}
+div#trial div[class*=probe] img {
+	display:block;
+	position:absolute;
+	left:50%;
+}
+/* ==========================================================================
+   Screen resolution (and image-size) specific styles for trials
+   ========================================================================== 
+Units: 
+SH Screen height
+IH Image height: (SH - OS) / 2.08
+GH Gap height (= Fixation height): 0.08 * IH
+PS Probe size = 0.5 * GH = 0.04 * IH
+FS Fixation size = GH
+OS Offset from screen (top + bottom) = 30px
+
+Somewhat common screen heights (very similar ones rounded down):
+600,720,768,800,900,1024,1200,1440
+corresponding image heights
+274,332,355,370,418, 478, 562, 677
+corresponding fixation cross sizes
+ 22, 27, 28, 30, 33,  38,  45,  54
+corresponding probe sizes
+ 11, 13, 14, 15, 16,  19,  22,  27
+*/
+
+/* ==========================
+   Screen height 1440
+   ========================== 
+(1440-30)/2.08 = 677
+IW (1 + 1/3) * 677 = 903
+IH 677
+GH 677 * 0.08 = 54
+PS = 54/2 = 27
+*/
+#trial.sh1440 .trial_images img {
+	margin-left:-451px;
+	width:903px;
+	height:677px;
+}
+#trial.sh1440 .trial_images img.bottom {
+	top:746px; /* offset of lower image = offset of upper image + image height + gap height */
+}
+#trial.sh1440 #fixation img {
+	margin-left:-27px; /* half its width (to center) */
+	width:54px;
+	height:54px;
+	top:692px;
+}
+#trial.sh1440 div[class*=probe] img {
+	margin-left:-27px; /* half its width (to center) */
+	margin-top:-27px; /* half its width (to center) */
+	width:54px;
+	height:54px;
+	top:1085px;
+}
+#trial.sh1440 div.probe_top img {
+	top:353px;
+}
+
+/* ==========================
+   Screen height 1200
+   ========================== 
+IH (1200-30)/2.08 = 562
+IW (1 + 1/3) * 562 = 749
+GH 562 * 0.08 = 45
+PS = 22
+*/
+#trial.sh1200 .trial_images img {
+	margin-left:-375px; /* IW / 2 */
+	width:750px;
+	height:562px;
+}
+#trial.sh1200 .trial_images img.bottom {
+	top:622px; /* 15px + IH + GH */
+}
+#trial.sh1200 #fixation img {
+	margin-left:-22px; /* half its width (to center) */
+	width:45px;
+	height:45px;
+	top:577px; /* 15px + IH */
+}
+#trial.sh1200 div[class*=probe] img {
+	margin-left:-22px; /* half its width (to center) */
+	margin-top:-22px; /* half its width (to center) */
+	width:45px;
+	height:45px;
+	top:903px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh1200 div.probe_top img {
+	top:296px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 1024
+   ========================== 
+IH (1024-30)/2.08 = 478
+IW (1 + 1/3) * 478 = 638
+GH 478 * 0.08 = 38
+PS = 19
+*/
+#trial.sh1024 .trial_images img {
+	margin-left:-319px; /* IW / 2 */
+	width:638px;
+	height:478px;
+}
+#trial.sh1024 .trial_images img.bottom {
+	top:531px; /* 15px + IH + GH */
+}
+#trial.sh1024 #fixation img {
+	margin-left:-19px; /* half its width (to center) */
+	width:38px;
+	height:38px;
+	top:493px; /* 15px + IH */
+}
+#trial.sh1024 div[class*=probe] img {
+	margin-left:-19px; /* half its width (to center) */
+	margin-top: -19px;
+	width:38px;
+	height:38px;
+	top:770px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh1024 div.probe_top img {
+	top:254px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 900
+   ========================== 
+IH (900-30)/2.08  = 418
+IW (1 + 1/3) * 418 = 557
+GH 418 * 0.08 = 33
+PS = 17
+*/
+#trial.sh900 .trial_images img {
+	margin-left:-278px;
+	width:557px;
+	height:418px;
+}
+#trial.sh900 .trial_images img.bottom {
+	top:466px; /* 15px + IH + GH */
+}
+#trial.sh900 #fixation img {
+	margin-left:-17px; /* half its width (to center) */
+	width:33px;
+	height:33px;
+	top:433px; /* 15px + IH */
+}
+#trial.sh900 div[class*=probe] img {
+	margin-left:-17px; /* half its width (to center) */
+	margin-top:-17px; /* half its width (to center) */
+	width:33px;
+	height:33px;
+	top:675px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh900 div.probe_top img {
+	top:224px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 800
+   ========================== 
+IH (800-30)/2.08 = 370
+IW (1 + 1/3) * 370 = 493
+GH 370 * 0.08 = 30
+PS = 15
+*/
+#trial.sh800 .trial_images img {
+	margin-left:-246px;
+	width:493px;
+	height:370px;
+}
+#trial.sh800 .trial_images img.bottom {
+	top:415px; /* 15px + IH + GH */
+}
+#trial.sh800 #fixation img {
+	margin-left:-15px; /* half its width (to center) */
+	width:30px;
+	height:30px;
+	top:385px; /* 15px + IH */
+}
+#trial.sh800 div[class*=probe] img {
+	margin-left:-15px; /* half its width (to center) */
+	margin-top:-15px; /* half its width (to center) */
+	width:30px;
+	height:30px;
+	top:600px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh800 div.probe_top img {
+	top:200px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 768
+   ========================== 
+IH (768-30)/2.08 = 355
+IW (1 + 1/3) * 355 = 473
+GH 355 * 0.08 = 28.4
+PS = 14
+*/
+#trial.sh768 .trial_images img {
+	margin-left:-236px;
+	width:473px;
+	height:355px;
+	top:398px; /* 15px + IH + GH */
+}
+#trial.sh768 #fixation img {
+	margin-left:-14px; /* half its width (to center) */
+	width:28px;
+	height:28px;
+	top:370px; /* 15px + IH */
+}
+#trial.sh768 div[class*=probe] img {
+	margin-left:-14px; /* half its width (to center) */
+	margin-top:-14px; /* half its width (to center) */
+	width:28px;
+	height:28px;
+	top:575px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh768 div.probe_top img {
+	top:192px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 720
+   ========================== 
+IH (720-30)/2.08 = 332
+IW (1 + 1/3) * 332 = 443
+GH 332 * 0.08 = 27
+PS = 13
+*/
+#trial.sh720 .trial_images img {
+	margin-left:-221px;
+	width:443px;
+	height:332px;
+	top:374px; /* 15px + IH + GH */
+}
+#trial.sh720 #fixation img {
+	margin-left:-13px; /* half its width (to center) */
+	width:27px;
+	height:27px;
+	top:347px; /* 15px + IH */
+}
+#trial.sh720 div[class*=probe] img {
+	margin-left:-13px; /* half its width (to center) */
+	margin-top:-13px; /* half its width (to center) */
+	width:27px;
+	height:27px;
+	top:540px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh720 div.probe_top img {
+	top:181px; /* 15 px + 0.5*IH */
+}
+
+/* ==========================
+   Screen height 600
+   ========================== 
+IH (600-30)/2.08 = 274
+IW (1 + 1/3) * 274 = 365
+GH 274 * 0.08 = 22
+PS = 11
+*/
+#trial.sh600 .trial_images img {
+	margin-left:-182px;
+	width:365px;
+	height:274px;
+	top:311px; /* 15px + IH + GH */
+}
+#trial.sh600 #fixation img {
+	margin-left:-11px; /* half its width (to center) */
+	width:22px;
+	height:22px;
+	top:289px; /* 15px + IH */
+}
+#trial.sh600 div[class*=probe] img {
+	margin-left:-11px; /* half its width (to center) */
+	margin-top:-11px; /* half its width (to center) */
+	width:22px;
+	height:22px;
+	top:448px; /* 15 px + IH + GH + 0.5*IH */
+}
+#trial.sh600 div.probe_top img {
+	top:152px; /* 15 px + 0.5*IH */
+}
