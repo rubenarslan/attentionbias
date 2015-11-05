@@ -39,7 +39,7 @@ var test_trials_top = repeatArray([false], test_trials_part1.length); // dont ne
 var ocd_block1 = shuffle(ocd_imgs);
 var neutral_block1 = shuffle(neutral_imgs); // shuffle them once, repeat
 var ocd_top_block1 = shuffle(repeatArray([false,true], ocd_imgs.length)); // make array of positions, shuffle
-ocd_top_block1R = $.makeArray( $(ocd_top_block1).map(function(m) { return !m; }) );
+var ocd_top_block1R = $.makeArray( ocd_top_block1.map(function(m) { return !m; }) );
 
 var n = ocd_block1.length;
 var randomIndices = [];
@@ -62,7 +62,9 @@ ocd_top_block1 = ocd_top_block1.concat(sortByArray(ocd_top_block1R,randomIndices
 var ocd_block2 = shuffle(ocd_imgs);
 var neutral_block2 = shuffle(neutral_imgs); // shuffle them once, repeat
 var ocd_top_block2 = shuffle(repeatArray([false,true], ocd_imgs.length)); // make array of positions, shuffle
-ocd_top_block2R = $.makeArray( $(ocd_top_block2).map(function(m) { return !m; }) );
+
+var ocd_top_block2R = $.makeArray( ocd_top_block2.map(function(m) { return !m; }) );
+
 
 randomIndices = shuffle(randomIndices); // new pair shuffle
 ocd_block2 = ocd_block2.concat(sortByArray(ocd_block2,randomIndices));
