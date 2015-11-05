@@ -62,9 +62,7 @@ ocd_top_block1 = ocd_top_block1.concat(sortByArray(ocd_top_block1R,randomIndices
 var ocd_block2 = shuffle(ocd_imgs);
 var neutral_block2 = shuffle(neutral_imgs); // shuffle them once, repeat
 var ocd_top_block2 = shuffle(repeatArray([false,true], ocd_imgs.length)); // make array of positions, shuffle
-
 var ocd_top_block2R = $.makeArray( ocd_top_block2.map(function(m) { return !m; }) );
-
 
 randomIndices = shuffle(randomIndices); // new pair shuffle
 ocd_block2 = ocd_block2.concat(sortByArray(ocd_block2,randomIndices));
@@ -80,8 +78,6 @@ var number_of_test_trials = 6;
 var can_be_wrong = 1; // number of test trials that can be wrong without triggering neg. feedback
 var sufficiently_fast_reaction_time = 650; // if the subject's mean RT in the test trials is smaller than this: neg. feedback
 
-
-// console.log(number_of_trials);
 function repeatArray(arr, count) {
   var ln = arr.length;
   var b = new Array();
@@ -411,7 +407,6 @@ Session.nextTrial = (function() {
 //	console.log('Session.nextTrial');
 	
 	if(Session.interrupted == true) return;
-//    console.log(Trial.current);
 	
 	if(Session.number_of_trials == Session.db.Trial.length) // last trial
 		Session.end();

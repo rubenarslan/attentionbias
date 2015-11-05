@@ -32,7 +32,6 @@
         <script src="<?php echo $this->webroot; ?>js/main.js"></script>
 <?php 		echo $this->fetch('script'); ?>
 
-		
     </head>
     <body data-spy="scroll" data-offset="233">
         <!--[if lt IE 7]>

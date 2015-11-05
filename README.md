@@ -1,51 +1,23 @@
-Zwangstudie
-=======
+Attention Bias Modification Training
+====================================
 
-## Dotprobe-Ablauf:
+This is the entire website that was used to conduct attention bias modification training for OCD patients (Habedank, Lennartz, Arslan, & Ertle, submitted).
 
--	Instruktionen (Erklärung wie es gleich abläuft und dass sie so schnell und genau wie möglich auf die Position des Punktes reagieren sollen... gleich werden sie erstmal Übungsdurchgänge machen...) 
--	Übungstrials: 10 Trials, bei denen RTs nicht erfasst werden, hier immer Rückmeldung/ Warnung wenn falsch
--	dann nochmal ne seite wo steht: jetzt geht’s wirklich los
--	Trial-Ablauf:
- - erst Fixationskreuz im Zentrum des Bildschirms für 500 ms
- - dann zwei Bilder (ein Zwang, ein Neutral-Bild) für 500 ms
-     - übereinander
-     - (bei Böttcher jeweils 6cm hoch, 4,7 cm breit) 
-     - horizontal und vertikal zentriert
-     - 1 cm/ 1,5 cm Abstand zwischen dem unteren und dem oberen Bild
- - dann ein Punkt/ Kreuz an der Stelle des oberen oder des unteren Bildes bis Reaktion erfolgt (oben oder unten Pfeil oder vielleicht besser rechts/links Pfeil, so dass sie es gut mit einer Hand machen können)
--	Darbietung der Stimuli:
- - 42 Zwangsbilder, 42 neutrale Bilder
- - 2 mögliche Positionen des Zwangsbildes (oben vs. unten)
- - das ganze 2 mal 
-→ 2x2x42 = 168 Trials
-(d.h. jedes einzelne Bild wird pro session 4 mal dargeboten)
- - in Trainingsgruppe: Probe immer hinter neutralem Bild (100% Kontingenz)
- - in Kontrollgruppe: Probe 50% nach neutralem, 50% nach Zwangsbild
- - für Messung: Probe 50% nach neutralem, 50% nach Zwangsbild
+The software is released as free, open source software. 
 
-## Was Website können muss:
+## Modified dot probe task
+Please confer Habedank, Lennartz, Arslan, and Ertle (submitted) for an extensive description of the modified dot probe task.
+Please confer the train.js, train.ctp and TrialsController.php files, if you are interested in the Javascript application
+at the heart of this training. 
+In short, we use `performance.now()` and `window.requestAnimationFrame()` to ensure tight control over stimulus presentation
+times and accurate measurement of participant reaction. We enforce full screen mode for the duration of the training to minimise distractions and request that participants turn off any distractors (e.g. chat programs) that might intrude into full screen mode anyway. Additionally, we have taken care to minimise reflows and repaints, preloaded images and followed other best-practice guidelines. See these two Stackoverflow questions on ["Control and measure precisely how long an image is displayed"](https://stackoverflow.com/questions/14323792/control-and-measure-precisely-how-long-an-image-is-displayed/) and ["Capturing reaction times using Javascript, accuracy concerns"](https://stackoverflow.com/questions/13973321/capturing-reaction-times-using-javascript-accuracy-concerns) for further reading on the topic.
 
-### für Training:
+There is further documentation in the code in the form of comments. The language used is German, but all verbal chunks are stored separately and easily translatable.
 
--	den Personen je nach Gruppenzugehörigkeit automatisch Training vs. Placebo zuordnen
--	registrieren wer wie oft trainiert hat
--	am Ende einer session Feedback geben (wie oft richtig und wie schnell) → zur Motivation
--	full-screen Modus
+The stimuli used for the training are not contained in this repository. Please confer Habedank, Lennartz, Arslan, and Ertle (submitted) for further information on obtaining them.
 
-### für Bias-Messung:
-
--	RTs messen und zuordnen können in welchem Trial (kongruent, inkongruent)
--	wissen, welche Person (bzw. code) und welcher Gruppe sie angehört
-
-### für Fragebögen:
-
--	Pausen erlauben, nicht dass alles wieder weg ist nach längerer Pause, sondern so, dass sie da weitermachen können wo sie aufgehört haben, vielleicht aufgeteilt nach einzelnen Fragebögen
--	Fortschrittsbalken, damit sie sehen wieviel sie schon geschafft haben
-
-### Allgemein:
-
--	wäre cool, wenn sie sich auf der Hauptseite einloggen könnten mit ihrem codename und passwort und dann zu ner Übersichtsseite gelangen (wie bei vomstudiumindenberuf), auf der sie sehen, was sie schon gemacht haben und was sie noch machen müssen (á la „sie haben schon viermal trainiert und müssen nur noch 4 mal“) und Zugriff zum Training haben 
--	Fragebögen und Bias-messung würden wir wahrscheinlich am besten über personalisierte Links machen, die wir am Anfang und am Ende per email schicken, oder? (also kein Zugriff über die Übersichtsseite notwendig)
--	Personen können erst mit dem Training anfangen, wenn sie die pretest-Fragebögen ausgefüllt haben und pretest-Messung gemacht haben, d.h. Homepage muss erkennen, ob jeweilige Person (bzw. Code) schon Zugriff zum Training haben soll
--	Personen können erst nach 4 Wochen bzw. nach mind. 8 mal trainieren (beides Untergrenzen, die erfüllt sein müssen) die post-test Fragebögen ausfüllen und post-test Messung machen (ergibt sich ja sowieso wenn wir dann erst die personalisierten Links verschicken
+## Website
+On the website, users can sign up and are automatically randomly assigned to the training or the placebo group.
+The website registers who has trained how often and provides feedback on improvements in mean reaction time.
+Email addresses are verified here, but most of the survey control was done using [formr](https://github.com/rubenarslan/formr.org/),
+a free survey and study control software, which automated email invitations, progress monitoring and so on.
